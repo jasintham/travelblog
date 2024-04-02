@@ -1,0 +1,128 @@
+:root {
+  --background-color: rgba(247, 246, 246, 0.2);
+  --link-color: rgb(127, 126, 126);
+  --menu-font-size: 18px;
+  --sub-avatar-width: 35px;
+  --sub-avatar-height: 35px;
+  --sub-avatar-margin-right: 7px;
+}
+
+.post-topic {
+  text-align: left;
+}
+
+.post-img {
+  max-width: 100%;
+}
+
+.post-body {
+  text-align: left;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.post-text {
+  font-size: 18px;
+  border-top: 1px solid var(--link-color);
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+}
+
+.main-post-avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.btn-group {
+  border-top: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid red;
+}
+
+.related-posts {
+  color: var(--link-color);
+  text-align: left;
+}
+
+.card {
+  border: none;
+}
+
+.card-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card-img {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: left;
+}
+
+
+
+.search {
+  flex-grow: 1;
+}
+
+
+.rencet-posts-list {
+  text-align: left;
+}
+
+.menu-text {
+  font-size: var(--menu-font-size);
+  color: var(--link-color);
+  text-align: left;
+}
+
+.recent-post {
+  font-size: var(--menu-font-size);
+  text-align: left;
+}
+
+.avatar {
+  width: var(--sub-avatar-width);
+  height: var(--sub-avatar-height);
+  border-radius: 50%;
+}
+
+.location-pin {
+  width: 15px;
+}
+
+.recent-post-time {
+  font-size: 13px;
+  margin-top: 9px;
+  margin-left: 95px;
+}
+
+.pagination a {
+  margin-top: 12px;
+  margin-left: 5px;
+  color: var(--link-color);
+  float: left;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: background-color 0.9s;
+}
+
+.pagination a.active {
+  color: black;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
