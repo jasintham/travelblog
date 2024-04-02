@@ -20,15 +20,7 @@ async function fetchUserDetails() {
         }
 
         // Parse the JSON response to get user details. (receive the response from the server/routes/userRoutes.js. which is database table user related details in JSON format)
-        const userDetails = await response.json();
-        /*
-        The 'userDetails' variable an object that contains information about the user fetched from the server in JSON format
-        {
-            "username": "johnDoe123",
-            "bio": "Hello, I'm John Doe! I love coding and exploring new technologies. Currently learning about web development.",
-            "profile_picture": "https://example.com/path/to/johnDoe123/profile_picture.jpg"
-        }
-        */
+        const userDetails = await response.json();        
 
         // Call updateProfile to update the webpage with the user's details.
         updateProfile(userDetails);
@@ -40,8 +32,7 @@ async function fetchUserDetails() {
     }
 }
 
-// Update the user's profile on the webpage using the details fetched. (The names of the parametes should be same as userDetails JSON properties due to Object destructuring in JavaScript)
-//O bject destructuring in JavaScript allows us to unpack values from objects into distinct variables based on the names of the properties
+
 function updateProfile({ username, bio, profile_picture }) {
     // Update the DOM elements with the user's details.
     document.getElementById('userName').textContent = username;

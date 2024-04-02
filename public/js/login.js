@@ -18,19 +18,7 @@ login_btn.addEventListener('click', function(event) {
     // Call the authenticate method of the oser1 object. Passing in the username and password as parameters. This method returns a promise.
     user1.authenticate(username, password)
 
-    /*
-    user is an object created by the User class constructor, which might look something like this:
-    {
-        username: "user123",
-        bio: "A short bio here",
-        profile_picture: "url/to/profile_picture.jpg"
-    }
-
-    So this is passed to below .then as user argument
-
     
-    */
-
     // If the authentication is successful, (If the promise resolves in Users.js), so this block of code executes.
     .then(user => 
     {        
