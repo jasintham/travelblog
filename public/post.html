@@ -13,179 +13,270 @@
     <link rel="stylesheet" href="./css/post.css" />
   </head>
   <body>
-    <div class="container text-center mt-5">
+    <div class="container mt-5">
       <div class="row justify-content-start">
         <div class="col-md-9">
           <div class="post mb-3">
-            <h4 class="post-topic mb-3">Blog Topic</h4>
+            <p class="fs-3 text-capitalize">blog topic</p>
             <img src="./images/postpage/image.jpg" class="post-img" alt="" />
             <div class="post-body mt-3">
               <div class="post-metadata d-flex">
                 <img
                   src="./images/postpage/avatar.jpg"
                   alt="Avatar"
-                  class="main-post-avatar"
+                  class="main-post-avatar rounded-circle"
                 />
                 <p class="post-author mt-4 ms-2">by Xuan</p>
-                <p class="post-updated mt-4 ms-4"><small>Last updated 3 mins ago</small></p>
+                <p class="updatedtime mt-4 ms-3 text-black-50">
+                  <small>Last updated 3 mins ago</small>
+                </p>
               </div>
 
-              <p class="post-text pt-3">This is the post body</p>
+              <p class="post-text pt-3 border-top">This is the post body</p>
             </div>
-            <div class="container btn-group">
-              <div class="row">
-                <div class="col btn-like-share">
-                  <button class="btn btn-like">
-                    <img src="./images/postpage/heart.png" alt="">
-                  </button>
-                  <button class="btn btn-share">
-                    <img src="./images/postpage/share.png" alt="">
-                  </button>
-                </div>
-          
-                <div class="col btn-comment">
-                  <button class="btn btn-comment">
-                    <img src="./images/postpage/comment-alt-dots.png" alt="">
-                  </button>
-                  
+            <div class="container border-top">
+              <div class="btn-group mt-4">
+                <button class="btn btn-like">
+                  <img src="./images/postpage/heart.png" alt="" /></button
+                ><span class="total-like mt-2">999+</span>
+                <span class="visually-hidden">total likes</span>
+                <button class="btn btn-share ms-3 me-4">
+                  <img src="./images/postpage/share.png" alt="" />
+                </button>
+                <button
+                  class="btn btn-comment"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
+                  <img
+                    src="./images/postpage/comment-alt-dots.png"
+                    alt=""
+                  /></button
+                ><span class="total-comments mt-2">999+</span>
+                <span class="visually-hidden">total comments</span>
+              </div>
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse hide"
+              >
+                <div class="comment comment-editor">
+                  <div class="accordion-collapse collapse show">
+                    <div class="form-floating mt-3">
+                      <textarea
+                        class="form-control"
+                        placeholder="Leave a comment here"
+                        id="floatingTextarea2"
+                        style="height: 90px; width: 100%"
+                      ></textarea>
+                      <label for="floatingTextarea2">Comments</label>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div class="comment-list mt-4 border-top"></div>
             </div>
-          
           </div>
-          <div class="menu-text mt-4"><p>Related Posts</p>
-          <div class="card-group">
-            <div class="card">
-              <img src="./images/postpage/card1.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic 1</h5>
-                <p class="card-text">
-          
-                  <small class="text-body-secondary">Asia Forest</small>
-                  <div>
-                    <img src="./images/postpage/marker.svg" alt="" class="location-pin">
+          <div class="menu-text mt-4 text-capitalize border-top">
+            <p class="mt-4">RELATED POSTS</p>
+            <div class="card-group">
+              <div class="card">
+                <img
+                  src="./images/postpage/card1.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 1</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
                     <small class="text-body-secondary">Location</small>
                   </div>
-                  
-                </p>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <img src="./images/postpage/card2.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic2</h5>
-                <p class="card-text">
-                  <small class="text-body-secondary">Birds</small>
-                </p>
+              <div class="card">
+                <img
+                  src="./images/postpage/card2.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 2</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
+                    <small class="text-body-secondary">Location</small>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <img src="./images/postpage/card3.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic3</h5>
-                <p class="card-text">
-                  <small class="text-body-secondary">Nature</small>
-                </p>
+              <div class="card">
+                <img
+                  src="./images/postpage/card3.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 3</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
+                    <small class="text-body-secondary">Location</small>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <img src="./images/postpage/card4.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic4</h5>
-                <p class="card-text">
-                  <small class="text-body-secondary">Description</small>
-                </p>
+              <div class="card">
+                <img
+                  src="./images/postpage/card4.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 4</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
+                    <small class="text-body-secondary">Location</small>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <img src="./images/postpage/card5.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic5</h5>
-                <p class="card-text">
-                  <small class="text-body-secondary">Description</small>
-                </p>
+              <div class="card">
+                <img
+                  src="./images/postpage/card5.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 5</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
+                    <small class="text-body-secondary">Location</small>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="card">
-              <img src="./images/postpage/card6.jpg" class="card-img" alt="" />
-              <div class="card-body">
-                <h5 class="card-topic">Topic6</h5>
-                <p class="card-text">
-                  <small class="text-body-secondary">Description</small>
-                </p>
+              <div class="card">
+                <img
+                  src="./images/postpage/card6.jpg"
+                  class="card-img shadow"
+                  alt=""
+                />
+                <div class="card-body">
+                  <p class="fs-5 mb-2">topic 6</p>
+                  <div class="location position-absolute bottom-0 end-0">
+                    <img
+                      src="./images/postpage/marker.svg"
+                      alt=""
+                      class="location-pin"
+                    />
+                    <small class="text-body-secondary">Location</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
         <div class="col-md-3">
-          <div class="nav-categories">
-            <button type="button" class="category-collection">
-              Destinations
-            </button>
-            <div class="category-list">
-              <p>Asia</p>
-              <p>Europe</p>
-              <p>Africa</p>
-              <p>North America</p>
-              <p>South America</p>
-              <p>Antarctica</p>
+          <div class="nav-categories my-4">
+            <p class="menu-text mt-4">DESTINATIONS</p>
+
+            <div class="category-list ms-4">
+              <p class="fs-5">Asia</p>
+              <p class="fs-5">Europe</p>
+              <p class="fs-5">Africa</p>
+              <p class="fs-5">North America</p>
+              <p class="fs-5">South America</p>
+              <p class="fs-5">Antarctica</p>
             </div>
           </div>
-          <div class="rencet-posts-list">
-            <p class="menu-text">Recent Posts</p>
-            <div class="recent-post">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
+          <div class="rencet-posts-list text-capitalize mt-5 mb-3">
+            <p class="menu-text">RECENT POSTS</p>
+            <div class="recent-post ms-4">
+              <tr class="list-group list-group-flush">
+                <li class="list-group-item" style="height: 65px">
                   <img
                     src="./images/postpage/avatar6.png"
                     alt="Avatar"
                     class="avatar me-2"
-                  />Recent Post Topic 1
-                  
-                  <p class="recent-post-time">Last updated time</p>
+                  />recent topic 1
+                  <p
+                    class="updated-time mb-0 text-black-50 position-absolute bottom-0 end-0"
+                  >
+                    <small>Last updated time</small>
+                  </p>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" style="height: 65px">
                   <img
                     src="./images/postpage/avatar2.png"
                     alt="Avatar"
                     class="avatar me-2"
-                  />Recent Post Topic 2
-                  <p class="recent-post-time">Last updated time</p>
+                  />Recent Topic 2
+                  <p
+                    class="updated-time mb-0 text-black-50 position-absolute bottom-0 end-0"
+                  >
+                    <small>Last updated time</small>
+                  </p>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" style="height: 65px">
                   <img
                     src="./images/postpage/avatar5.png"
                     alt="Avatar"
                     class="avatar me-2"
-                  />Recent Post Topic 3
-                  <p class="recent-post-time">Last updated time</p>
+                  />Recent Topic 3
+                  <p
+                    class="updated-time mb-0 text-black-50 position-absolute bottom-0 end-0"
+                  >
+                    <small>Last updated time</small>
+                  </p>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" style="height: 65px">
                   <img
                     src="./images/postpage/avatar1.png"
                     alt="Avatar"
                     class="avatar me-2"
-                  />Recent Post Topic 4
-                  <p class="recent-post-time">Last updated time</p>
+                  />Recent Topic 4
+                  <p
+                    class="updated-time mb-0 text-black-50 position-absolute bottom-0 end-0"
+                  >
+                    <small>Last updated time</small>
+                  </p>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" style="height: 65px">
                   <img
                     src="./images/postpage/avatar3.png"
                     alt="Avatar"
                     class="avatar me-2"
-                  />Recent Post Topic 5
-                  <p class="recent-post-time">Last updated time</p>
+                  />Recent Topic 5
+                  <p
+                    class="updated-time mb-0 text-black-50 position-absolute bottom-0 end-0"
+                  >
+                    <small>Last updated time</small>
+                  </p>
                 </li>
-              </ul>
+              </tr>
             </div>
           </div>
-          <div class="pagination">
+          <div class="pagination mt-2">
             <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a class="active" href="#">2</a>
+            <a class="active" href="#">1</a>
+            <a href="#">2</a>
             <a href="#">3</a>
-            <a href="#">4</a>
             <a href="#">&raquo;</a>
           </div>
         </div>
