@@ -29,7 +29,7 @@ login_btn.addEventListener('click', function(event) {
         if (token)
         {
             localStorage.setItem('token', token);  // Save the token to localStorage (Can checked browser developer tools-> Application -> Local Storage)
-            window.location.href = '/profile.html'; // Redirect the user to the profile page upon successful login.
+            window.location.href = '/public/profile.html'; // Redirect the user to the profile page upon successful login.
         }
         else
         {

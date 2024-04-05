@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+# Environment variables
+.env
+
+# Editor directories and files
+.vscode/
+
+# Dependency locks
+package-lock.json
