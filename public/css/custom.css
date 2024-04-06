@@ -167,3 +167,33 @@ div[class*="col-lg-"]{
     color: #fff;
     padding: 0 5px;
 }
+.recent-posts-tag a {
+    border-radius: 8px ;
+    padding: 8px;
+    margin: 5px;
+    font-size:14px;
+    transition-duration: 0.3s;
+    background-color: #f0f0f0;
+    font-weight:bold;
+    color: #8d8d8d;
+    
+    
+}
+.recent-posts-tag a:hover {
+    background-color: #47c9e5;
+    
+}
+
+.recent-posts-tag {
+   max-width: max-content;
+   margin: 3px;
+   margin-left: 0px;
+}
+
+.footer-tag-content  a {
+
+    background-color: #3a3a3a;
+    color: #c8c8c8;
+    
+    
+}
