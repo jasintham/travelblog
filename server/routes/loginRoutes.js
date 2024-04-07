@@ -16,62 +16,17 @@ router.post('/login', async (req, res) => {
     try 
     {
         // Extract 'username' and 'password' from the request body. Request body comes from FronEnd login.js ->Users.js-> authenticate() method).
-        const { username, password } = req.body;
-        /*
-        req.body like this:
-        req.body = {
-            "username": "user123",
-            "password": "pass123"
-        };
-
-        On the server side, Express parses this JSON body and places it into req.body.
-        Without destructuring, we would access these values like so:
-        const username = req.body.username;
-        const password = req.body.password;        
-        */
+        const { username, password } = req.body;     
 
         
         // Execute a database query to find a user by 'username'. '$1' is replaced by 'username' to prevent SQL injection.
-        const result = await query('SELECT * FROM users WHERE username = $1', [username]);
-        /*
-        result = {
-            command: 'SELECT',    // The SQL command that was executed
-            rowCount: 1,          // The number of rows affected by the SQL command
-            oid: null,            // Object ID of the row
-            rows: [
-                {
-                    user_id: 1,   // The user_id of the matched user, assuming '123' was the first user inserted
-                    username: '123', // The username of the matched user
-                    password: '123'  // The password of the matched user
-                }
-            ],
-            fields: [
-                // Array of field information objects (name, tableID, columnID, dataTypeID, etc.)
-                // Details about each column in the result set
-            ],
-            _parsers: [Function: parseBigInteger, Function: noParse, Function: noParse],
-            RowCtor: null,
-            rowAsArray: false
-            // Additional internal details about the result
-        }
-
-        */
+        const result = await query('SELECT * FROM users WHERE username = $1', [username]);        
 
         
         if (result.rows.length > 0)     // If the query returns at least one row, it means a user with the provided username exists.
         {
             // Assigning the first result row to 'user'.
-            const user = result.rows[0];
-            /*
-            Assuming the result of the query is as follows:
-            result.rows[0] = {
-                "username": "user123",
-                "password": "pass123",
-                "bio": "Example bio",
-                "profile_picture": "url/to/profile_picture.jpg"
-            };
-            This is the user object retrieved from the database.
-            */
+            const user = result.rows[0];           
     
             // Check if the provided password matches the one stored in the database.
             if (user.password === password) 
@@ -83,16 +38,8 @@ router.post('/login', async (req, res) => {
                     { userId: user.user_id }, // Ensure this matches the database field
                     process.env.JWT_SECRET, // Replace 'your_secret_key' with a real secret key stored in .env file
                     { expiresIn: '1h' } // Options: Token expires in 1 hour
-                );     
-                /*
-                Hence the payload encoded into the JWT would like this: 
-                {
-                    userId: "user's unique identifier",
-                    iat: 1619623058,
-                    exp: 1619626658
-                }
-                */
-
+                );    
+                
 
                 // If user.password === password match, send a response indicating successful login.
                 res.status(200).json({
@@ -104,20 +51,7 @@ router.post('/login', async (req, res) => {
                     profile_picture: user.profile_picture
                 });
             } 
-            // This is what the client (e.g., browser or mobile app) receives as a response:
-            /*
-            HTTP/1.1 200 OK
-            Content-Type: application/json
-
-            {
-                "login": true,
-                "message": "Login successful",
-                "username": "user123",
-                "bio": "A short bio here",
-                "profile_picture": "url/to/profile_picture.jpg"
-            }
-            */
-
+            
             else 
             {
                 // If they don't match, send a response indicating the password is incorrect.

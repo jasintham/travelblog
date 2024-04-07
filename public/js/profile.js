@@ -111,18 +111,7 @@ document.addEventListener('DOMContentLoaded', function()
         }
 
         // Prepare data to be sent
-        const userData = { username, password: newPassword, bio };
-        /*
-        {
-            Shorthand: { username, password: newPassword, bio }
-            Full Syntax: { username: username, password: newPassword, bio: bio }
-
-            "username": "RyanWick1",
-            "password": "123",
-            "bio": "I'm a web developer."
-        }
-
-        */
+        const userData = { username, password: newPassword, bio };        
 
         // Make fetch request to update user details
         fetch('http://localhost:3001/api/user/updateDetails', 

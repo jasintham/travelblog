@@ -24,7 +24,6 @@ class Users {
         {
             
             const requestPayload = JSON.stringify({ username, password });  // Convert the username and password into a JSON string for the request body.
-            /*                                                              ex:   requestPayload = { 'username': 'user123', 'password': 'pass123' }*/
             
             // Make a POST request to the backend API's login endpoint with the provided credentials.
             fetch(`${this.#backend_url}/api/auth/login`,    // 'this.#backend_url' is the base URL for your backend, and '/api/auth/login' is the specific endpoint for user login.
@@ -33,30 +32,11 @@ class Users {
                 headers: { 'Content-Type': 'application/json' }, // Set header to indicate the body format as JSON.
                 body: requestPayload // The request body, containing the username and password, is stringified into JSON format and included here. This is the data we're sending to the server for authentication.
             })
-            /*sends to server -> routes -> authRoutes.js: 
-            POST /api/auth/login HTTP/1.1
-            Host: localhost:3001
-            Content-Type: application/json
-
-            {
-                "username": "user123",
-                "password": "pass123"
-            }
-            */
+            
 
             // The fetch call returns a Promise that resolves to the response to that request as soon as the server responds with headers.
             .then(response => response.json()) // This line takes the response stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON.
-            /*server response body is: 
-            {
-                "login": true,
-                "message": "Login successful",
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMTk2ODUyOSwiZXhwIjoxNzExOTcyMTI5fQ.zaXN-faJ4uHK05_GgIOHIWS4JOZR9TkZd5-XRTb7UH4l",
-                "username": "user123",
-                "bio": "A short bio here",
-                "profile_picture": "url/to/profile_picture.jpg"
-            }
-            */
-            //After calling .json(), the above data parsed as a JavaScript object.
+            
 
             .then(data => {
                 if (data.login==true)  
@@ -66,7 +46,7 @@ class Users {
 
                     user.setToken(data.token); // Set the token that we receive from the login response
 
-                    resolve(user);  //*** FINALLY RETURNs: user Object (This retreives by Frontend login.js eventHadler)
+                    resolve(user);  
                 } 
                 
                 else 
