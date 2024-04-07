@@ -1,5 +1,8 @@
 -- ****** Create a Database with this name: travelBlog ******
+-- CREATE DATABASE travelBlog;
 
+
+-- ............................................. USERS TABLE .............................................
 
 -- users Table (For Login and Registration)
 CREATE TABLE users (
@@ -10,6 +13,7 @@ CREATE TABLE users (
     profile_picture TEXT
 );
 
+-- Insert some sample users
 INSERT INTO users (username, password, bio, profile_picture) 
 VALUES ('123', '123', 'My name is 123', 'default-profile.jpg');
 INSERT INTO users (username, password, bio, profile_picture) 
@@ -18,6 +22,7 @@ VALUES ('RyanWick1', '123', 'Hey there, I''m from Sri Lanka.', 'default-profile.
 SELECT * FROM users;
 
 
+-- ............................................. TRAVEL STATS TABLE .............................................
 
 -- travel_stats Table (For Profile)
 CREATE TABLE travel_stats (
@@ -38,90 +43,54 @@ SELECT * FROM travel_stats;
 
 
 
+-- ............................................. POSTS TABLE .............................................
 
-
-
-
-
-
-
-
-
--- Users
-CREATE TABLE Users (
-    UserID SERIAL PRIMARY KEY,
-    Username VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL UNIQUE,
-    Password VARCHAR(255) NOT NULL,
-    ProfilePicture TEXT,
-    Role VARCHAR(50) NOT NULL CHECK (Role IN ('Admin', 'Viewer', 'Critic'))
+-- Posts Table (Includes Categories as a field)
+CREATE TABLE IF NOT EXISTS posts (
+    post_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    category_name VARCHAR(255) NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    post_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    cover_image TEXT
 );
 
--- Categories (Genres)
-CREATE TABLE Categories (
-    GenreID SERIAL PRIMARY KEY,
-    GenreName VARCHAR(255) NOT NULL,
-    Description TEXT
-);
+-- Insert some sample posts
+-- Note: You should adjust these values according to your actual users' IDs and desired content.
+INSERT INTO posts (user_id, category_name, title, content, cover_image) VALUES
+(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', 'path/to/image1.jpg'),
+(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', 'path/to/image2.jpg');
 
--- Films
-CREATE TABLE Films (
-    FilmID SERIAL PRIMARY KEY,
-    Title VARCHAR(255) NOT NULL,
-    Director VARCHAR(255),
-    ReleaseDate DATE,
-    GenreID INT,
-    Synopsis TEXT,
-    CoverImage TEXT,
-    FOREIGN KEY (GenreID) REFERENCES Categories(GenreID)
-);
 
--- Reviews
-CREATE TABLE Reviews (
-    ReviewID SERIAL PRIMARY KEY,
-    UserID INT NOT NULL,
-    FilmID INT NOT NULL,
-    ReviewText TEXT NOT NULL,
-    Rating DECIMAL CHECK (Rating >= 0 AND Rating <= 5), -- Assuming a 1-5 rating scale
-    ReviewDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (FilmID) REFERENCES Films(FilmID)
-);
+-- ............................................. COMMENTS TABLE .............................................
 
--- Comments
-CREATE TABLE Comments (
-    CommentID SERIAL PRIMARY KEY,
-    ReviewID INT NOT NULL,
-    UserID INT NOT NULL,
-    CommentText TEXT NOT NULL,
-    CommentDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ReviewID) REFERENCES Reviews(ReviewID),
-    FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
-
--- Tags
-CREATE TABLE Tags (
-    TagID SERIAL PRIMARY KEY,
-    TagName VARCHAR(255) NOT NULL,
-    Description TEXT
-);
-
--- Film_Tags (Junction table for Films to Tags Many-to-Many relationship)
-CREATE TABLE Film_Tags (
-    FilmID INT NOT NULL,
-    TagID INT NOT NULL,
-    PRIMARY KEY (FilmID, TagID),
-    FOREIGN KEY (FilmID) REFERENCES Films(FilmID),
-    FOREIGN KEY (TagID) REFERENCES Tags(TagID)
-);
-
--- Review_Tags (Junction table for Reviews to Tags Many-to-Many relationship)
-CREATE TABLE Review_Tags (
-    ReviewID INT NOT NULL,
-    TagID INT NOT NULL,
-    PRIMARY KEY (ReviewID, TagID),
-    FOREIGN KEY (ReviewID) REFERENCES Reviews(ReviewID),
-    FOREIGN KEY (TagID) REFERENCES Tags(TagID)
+-- Comments Table
+CREATE TABLE IF NOT EXISTS comments (
+    comment_id SERIAL PRIMARY KEY,
+    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    comment_text TEXT NOT NULL,
+    comment_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 
+-- ............................................. LIKES TABLE .............................................
+
+-- Likes Table
+CREATE TABLE IF NOT EXISTS likes (
+    like_id SERIAL PRIMARY KEY,
+    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+    like_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+
+-- Example of how to query joined data
+-- This will get all posts along with their user's username and profile picture.
+SELECT p.post_id, p.title, p.content, p.post_date, p.cover_image, u.username, u.profile_picture
+FROM posts p
+JOIN users u ON p.user_id = u.user_id;
