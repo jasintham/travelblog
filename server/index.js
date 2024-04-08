@@ -4,8 +4,8 @@ const cors = require('cors'); // Import CORS to allow cross-origin requests
 require('dotenv').config(); // Import and configure dotenv to load environment variables from .env file
 
 // Import route handlers
-const authRoutes = require('./routes/authRoutes'); // Import routes for authentication-related endpoints
-const userRoutes = require('./routes/userRoutes'); // Import routes for user-related endpoints
+const authRoutes = require('./routes/loginRoutes.js'); // Import routes for authentication-related endpoints
+const userRoutes = require('./routes/profileRoutes.js'); // Import routes for user-related endpoints
 
 
 
