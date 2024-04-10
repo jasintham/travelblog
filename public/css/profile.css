@@ -93,6 +93,7 @@ body, html {
 .user-details-section .form-control {
     border-radius: 0.25rem;
     box-shadow: none;
+    width: 70%;
 }
 
 .user-details-section .form-control:focus {
