@@ -197,3 +197,70 @@ div[class*="col-lg-"]{
     
     
 }
+
+
+/*Start custom css for the addPost.html*/
+
+#description {
+    height: 200px;
+    width: 600px;
+    vertical-align: top;
+}
+
+::placeholder{
+    vertical-align: top;
+}
+.addPost {
+    max-width: 1400px;
+}
+
+.image-content{
+    margin-right: 5px;
+}
+
+a{
+    color: #b50808;
+}
+
+.preview{
+    margin-left: auto;
+}
+
+.publish {
+    background-color: #e2a2a2;
+    padding: 4px;
+    border: 0.5px solid black;
+
+    
+}
+
+.add {
+    background-color: #d6d6d6;
+    padding: 4px;
+    border: 0.5px solid black;
+    
+}
+.bg-color{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.bg-color-publish{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.image-content{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.textArea{
+    border-radius: 12px;
+    border-width: 1px;
+ 
+}
+
