@@ -1,44 +1,51 @@
-//................................. ROUTE FOR USER PROFILE SECTION .................................//
-// Require necessary modules: Express for routing, custom middleware for token authentication, and a database querying helper.
+// Importing necessary modules.
 const express = require('express');
+const profileRouter = express.Router();   // Initializing a router object.
+
+const { query } = require('../helpers/db.js'); 
 const authenticateToken = require('../middleware/authenticateToken.js');    //Middleware to Verify Token
-const { query } = require('../helpers/db.js');
 
-const router = express.Router();    // Create a new router instance to define routes for this module.
+//................................. ROUTE FOR USER PROFILE SECTION .................................//
 
-
-
-// Define a GET route for '/details' to fetch user details. This route is protected by the authenticateToken middleware.
-// So authenticateToken.js Middleware runs here background.
-// This middleware ensure that only requests with a valid JWT can access it.
-router.get('/details', authenticateToken, async (req, res) => 
+// Define a GET route for '/headerdetails' to fetch user details. This route is protected by the authenticateToken middleware.
+profileRouter.get('/headerDetails', authenticateToken, async (req, res) => 
 {
     try {
-        // Execute a database query to fetch user details based on the userId extracted from the token.
-        // Here assumes that the 'userId' is attached to 'req.user' by the authenticateToken middleware after successful token verification.
         const result = await query('SELECT * FROM users WHERE user_id = $1', [req.user.userId]);    //This userID comes from token's user object
         
-        if (result.rows.length > 0)     // Check if the query returned any rows. If so, the user exists, and their details are returned.
+        if (result.rows.length > 0)     
         {
-            const user1 = result.rows[0];    // Extract the first row which contains the user's details
-            res.json({ username: user1.username, bio: user1.bio, profile_picture: user1.profile_picture });    // Send the user's database details as JSON. (This send to Fronend profile.js file)
+            try //Try to catch if there any sytax error of this
+            {
+                res.json({ 
+                    username: result.rows[0].username, 
+                    bio: result.rows[0].bio, 
+                    profile_picture: result.rows[0].profile_picture,
+                    followers_count: result.rows[0].followers_count});    // Send the user's database details as JSON. (This send to Fronend profile.js file)
+            }
+
+            catch(error)
+            {
+                res.status(400).json({message:error.message});
+            }
+            
         } 
         else 
         {
-            res.status(404).json({ message: 'User not found' });    // If no rows are returned, the user does not exist in the database. 
+            res.status(401).json({ message: 'User not found' });    // If no rows are returned, the user does not exist in the database. 
         }
     } 
+
     catch (error) 
     {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(402).json({ message: 'Internal server error' });
     }
 });
 
 
 
 //................................. ROUTE FOR FETCH DETAILS FOR WHOLE TRAVEL STATS SECTION .................................//
-router.get('/stats', authenticateToken, async (req, res) => 
+profileRouter.get('/travelerStats', authenticateToken, async (req, res) => 
 {
     try 
     {
@@ -66,19 +73,52 @@ router.get('/stats', authenticateToken, async (req, res) =>
 
 
 
+//................................. ROUTE FOR GET USER DETAILS FOR FORM CONTROL TEXT FEILDS .................................//
+profileRouter.get('/getUserDetails', authenticateToken, async (req, res) => 
+{
+    // Proceed without hashing the password. Note: Storing passwords in plain text is not secure.
+
+    try 
+    {
+        const resultQuery = await query('SELECT * FROM users WHERE user_id = $1', [req.user.userId] );
+
+        if (resultQuery.rows.length === 0) 
+        {
+            // User not found in database
+            return res.status(401).json({ message: 'User not found.' });
+        }
+
+        else
+        {
+            // Return updated user details (excluding password)
+            res.status(200).json(
+                {
+                    username: resultQuery.rows[0].username,
+                    bio: resultQuery.rows[0].bio
+                });
+        }
+        
+
+    } 
+    
+    catch (error) 
+    {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 //................................. ROUTE FOR POST NEW USER DETAILS WHICH FETCH FROM FRONTEND profile.js .................................//
-router.post('/updateDetails', authenticateToken, async (req, res) => {
-    const { userId } = req.user; // Extracted from JWT token
-    const { username, password, bio } = req.body;
-
-    // Proceed without hashing the password. Note: Storing passwords in plain text is not secure.
+profileRouter.post('/saveNewUserDetails', authenticateToken, async (req, res) => 
+{
+    
+    // Proceed without hashing the password.
 
     try 
     {
         const result = await query(
             'UPDATE users SET username = $1, password = $2, bio = $3 WHERE user_id = $4 RETURNING username, bio;', // Not returning the password
-            [username, password, bio, userId]
+            [req.body.username, req.body.password, req.body.bio, req.user.userId]
         );
 
         if (result.rows.length === 0) 
@@ -87,13 +127,16 @@ router.post('/updateDetails', authenticateToken, async (req, res) => {
             return res.status(404).json({ message: 'User not found.' });
         }
 
-        // Return updated user details (excluding password)
-        res.json(result.rows[0]);
+        else
+        {
+            // Return updated user details (excluding password)
+            res.json(result.rows[0]);
+        }        
 
     } 
     
-    catch (error) {
-        console.error('Failed to update user details:', error);
+    catch (error) 
+    {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
@@ -107,7 +150,7 @@ router.post('/updateDetails', authenticateToken, async (req, res) => {
 //................................. NOW ROUTES FOR POST(UPDATE) THE Travel Stat SECTION .................................//
 
 //................................. i. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
-router.post('/countriesVisited', authenticateToken, async (req, res) => 
+profileRouter.post('/countriesVisited', authenticateToken, async (req, res) => 
 {
     // Extract the user ID from the authenticated user's data and the new 'countriesVisited' value from the request body.
     const { userId } = req.user;            // // Extract the user ID from the JWT payload which is in network request header part
@@ -147,7 +190,7 @@ router.post('/countriesVisited', authenticateToken, async (req, res) =>
 
 //................................. ii. ROUTE FOR POST(UPDATE) THE Travel Stat - Cities Explored .................................//
 // Example using Express.js and assuming `query` is a function to execute SQL commands
-router.post('/citiesExplored', authenticateToken, async (req, res) => {
+profileRouter.post('/citiesExplored', authenticateToken, async (req, res) => {
     const { userId } = req.user; // Extract user ID from JWT
     const { citiesExplored } = req.body;
 
@@ -177,7 +220,7 @@ router.post('/citiesExplored', authenticateToken, async (req, res) => {
 
 //................................. iii. ROUTE FOR POST(UPDATE) THE Travel Stat - Favorite Destination .................................//
 // Example using Express.js
-router.post('/favoriteDestination', authenticateToken, async (req, res) => {
+profileRouter.post('/favoriteDestination', authenticateToken, async (req, res) => {
     const { userId } = req.user; // Extract user ID from JWT
     const { favoriteDestination } = req.body;
 
@@ -204,7 +247,7 @@ router.post('/favoriteDestination', authenticateToken, async (req, res) => {
 
 
 //................................. iv. ROUTE FOR POST(UPDATE) THE Travel Stat - Bucket List .................................//
-router.post('/bucketList', authenticateToken, async (req, res) => {
+profileRouter.post('/bucketList', authenticateToken, async (req, res) => {
     const { userId } = req.user; // Extract user ID from JWT
     const { bucketList } = req.body;
 
@@ -249,4 +292,4 @@ router.post('/bucketList', authenticateToken, async (req, res) => {
 
 
 // Export the router to make it available for use in other parts of the application, particularly in the main server file (index.js).
-module.exports = router;
+module.exports = profileRouter;
