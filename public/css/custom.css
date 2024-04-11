@@ -198,24 +198,15 @@ div[class*="col-lg-"]{
     
 }
 
-
 /*Start custom css for the addPost.html*/
 
-#description {
-    height: 200px;
-    width: 600px;
-    vertical-align: top;
-}
+.custom-textarea{
+
+    max-height: 10cm;
+} 
 
 ::placeholder{
     vertical-align: top;
-}
-.addPost {
-    max-width: 1400px;
-}
-
-.image-content{
-    margin-right: 5px;
 }
 
 a{
@@ -228,7 +219,7 @@ a{
 
 .publish {
     background-color: #e2a2a2;
-    padding: 4px;
+    padding: 2px;
     border: 0.5px solid black;
 
     
@@ -236,7 +227,7 @@ a{
 
 .add {
     background-color: #d6d6d6;
-    padding: 4px;
+    padding: 2px;
     border: 0.5px solid black;
     
 }
@@ -258,9 +249,5 @@ a{
     border-radius: 8px;
 }
 
-.textArea{
-    border-radius: 12px;
-    border-width: 1px;
- 
-}
+
 
