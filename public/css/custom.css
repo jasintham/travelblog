@@ -10,6 +10,12 @@ a{ text-decoration: none;}
     color: rgba(255, 255, 255, 1);
 }
 
+.login-link{
+    margin-left: 30px;
+    font-weight: bold;
+    color: #f30e0e !important;
+}
+
 .main-nav{
     padding: 10px 0;
     background-color: #0404044f;
