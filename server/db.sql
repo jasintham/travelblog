@@ -21,6 +21,14 @@ VALUES ('RyanWick1', '123', 'Hey there, I''m from Sri Lanka.', 'default-profile.
 
 SELECT * FROM users;
 
+-- Add a column to the table and add data for that column
+ALTER TABLE users
+ADD COLUMN followers_count INT;
+
+UPDATE users
+SET followers_count = 0  -- Setting the followers count to 0 as an example
+WHERE user_id = 1;
+
 
 -- ............................................. TRAVEL STATS TABLE .............................................
 

@@ -4,8 +4,8 @@ const cors = require('cors'); // Import CORS to allow cross-origin requests
 require('dotenv').config(); // Import and configure dotenv to load environment variables from .env file
 
 // Import route handlers
-const authRoutes = require('./routes/loginRoutes.js'); // Import routes for authentication-related endpoints
-const userRoutes = require('./routes/profileRoutes.js'); // Import routes for user-related endpoints
+const loginRouter = require('./routes/loginRoutes.js'); // Import routes for authentication-related endpoints
+const profileRouter = require('./routes/profileRoutes.js'); // Import routes for user-related endpoints
 
 
 
@@ -19,8 +19,8 @@ app.use(express.json()); // Enable parsing of JSON request bodies
 
 
 // Routes setup
-app.use('/api/auth', authRoutes); // Recieve requests from login.js
-app.use('/api/user', userRoutes); // Recieve requests from profile,js
+app.use('/login', loginRouter); // Recieve requests from login.js
+app.use('/profile', profileRouter); // Recieve requests from profile,js
 
 
 // Static file serving (optional)
