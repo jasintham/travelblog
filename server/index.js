@@ -21,6 +21,10 @@ app.use('/login', loginRouter); // Use the Login Route
 const profileRouter = require('./routes/profileRoutes.js'); // Import profile route object
 app.use('/profile', profileRouter); // Use the Profile Route
 
+const indexRouter = require('./routes/indexRoutes.js'); // Import profile route object
+app.use('/index', indexRouter); // Use the Profile Route
+
+
 
 
 

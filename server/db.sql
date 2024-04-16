@@ -66,10 +66,45 @@ CREATE TABLE IF NOT EXISTS posts (
 -- Insert some sample posts
 -- Note: You should adjust these values according to your actual users' IDs and desired content.
 INSERT INTO posts (user_id, category_name, title, content, cover_image) VALUES
-(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', 'path/to/image1.jpg'),
-(1, 'Adventure', 'My Journey to Finland', 'Great!!!', 'path/to/image1.jpg'),
-(2, 'Travel', 'Finland Journey', 'Great!!!', 'path/to/image1.jpg'),
-(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', 'path/to/image2.jpg');
+(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', './images/post/post_1.jpg'),
+(1, 'Adventure', 'My Journey to Finland', 'Great!!!', './images/post/post_2.jpg'),
+(2, 'Travel', 'Finland Journey', 'Great!!!', './images/post/post_3.jpg'),
+(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_4.jpg'),
+
+(1, 'Games', 'Sri Lanka!!!', 'It was a fantastic experience!', './images/post/post_2.jpg'),
+(1, 'Swim', 'Jouney of Carlos', 'Great!!!', './images/post/post_3.jpg'),
+(2, 'Fun', 'Me with my friend', 'Great!!!', './images/post/post_4.jpg'),
+(2, 'Photography', 'We played here', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_1.jpg'),
+
+(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', './images/post/post_3.jpg'),
+(1, 'Adventure', 'My Journey to Finland', 'Great!!!', './images/post/post_4.jpg'),
+(2, 'Travel', 'Finland Journey', 'Great!!!', './images/post/post_1.jpg'),
+(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_2.jpg'),
+
+(1, 'Games', 'Sri Lanka!!!', 'It was a fantastic experience!', './images/post/post_4.jpg'),
+(1, 'Swim', 'Jouney of Carlos', 'Great!!!', './images/post/post_1.jpg'),
+(2, 'Fun', 'Me with my friend', 'Great!!!', './images/post/post_2.jpg'),
+(2, 'Photography', 'We played here', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_3.jpg'),
+
+(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', './images/post/post_1.jpg'),
+(1, 'Adventure', 'My Journey to Finland', 'Great!!!', './images/post/post_2.jpg'),
+(2, 'Travel', 'Finland Journey', 'Great!!!', './images/post/post_3.jpg'),
+(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_4.jpg'),
+
+(1, 'Games', 'Sri Lanka!!!', 'It was a fantastic experience!', './images/post/post_2.jpg'),
+(1, 'Swim', 'Jouney of Carlos', 'Great!!!', './images/post/post_3.jpg'),
+(2, 'Fun', 'Me with my friend', 'Great!!!', './images/post/post_4.jpg'),
+(2, 'Photography', 'We played here', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_1.jpg'),
+
+(1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', './images/post/post_3.jpg'),
+(1, 'Adventure', 'My Journey to Finland', 'Great!!!', './images/post/post_4.jpg'),
+(2, 'Travel', 'Finland Journey', 'Great!!!', './images/post/post_1.jpg'),
+(2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_2.jpg'),
+
+(1, 'Games', 'Sri Lanka!!!', 'It was a fantastic experience!', './images/post/post_4.jpg'),
+(1, 'Swim', 'Jouney of Carlos', 'Great!!!', './images/post/post_1.jpg'),
+(2, 'Fun', 'Me with my friend', 'Great!!!', './images/post/post_2.jpg'),
+(2, 'Photography', 'We played here', 'Climbing Adam''s Peak was breathtaking.', './images/post/post_3.jpg');
 
 
 SELECT * FROM posts;

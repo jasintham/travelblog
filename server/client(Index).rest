@@ -1,0 +1,6 @@
+### ------- PROFILE page req and res check -------
+
+### Get Header Details
+GET http://localhost:3001/index/allPosts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI3NzAwMywiZXhwIjoxNzEzMjgwNjAzfQ.-ZdytO7YakJjtN6zS3BXcURXEeWPbLre3CrLTut5NSc
