@@ -1,6 +1,12 @@
 -- ****** Create a Database with this name: travelBlog ******
 -- CREATE DATABASE travelBlog;
 
+-- DROP existing Tables
+DROP TABLE IF EXISTS travel_stats;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS users;
 
 -- ............................................. USERS TABLE .............................................
 
@@ -17,17 +23,10 @@ CREATE TABLE users (
 INSERT INTO users (username, password, bio, profile_picture) 
 VALUES ('123', '123', 'My name is 123', 'default-profile.jpg');
 INSERT INTO users (username, password, bio, profile_picture) 
-VALUES ('RyanWick1', '123', 'Hey there, I''m from Sri Lanka.', 'default-profile.jpg');
+VALUES ('groupu', '123', 'Hey there, I''m from Finland', 'default-profile.jpg');
 
 SELECT * FROM users;
 
--- Add a column to the table and add data for that column
-ALTER TABLE users
-ADD COLUMN followers_count INT;
-
-UPDATE users
-SET followers_count = 0  -- Setting the followers count to 0 as an example
-WHERE user_id = 1;
 
 
 -- ............................................. TRAVEL STATS TABLE .............................................
@@ -68,7 +67,12 @@ CREATE TABLE IF NOT EXISTS posts (
 -- Note: You should adjust these values according to your actual users' IDs and desired content.
 INSERT INTO posts (user_id, category_name, title, content, cover_image) VALUES
 (1, 'Travel', 'My Journey to Japan', 'It was a fantastic experience!', 'path/to/image1.jpg'),
+(1, 'Adventure', 'My Journey to Finland', 'Great!!!', 'path/to/image1.jpg'),
+(2, 'Travel', 'Finland Journey', 'Great!!!', 'path/to/image1.jpg'),
 (2, 'Adventure', 'Climbing in Sri Lanka', 'Climbing Adam''s Peak was breathtaking.', 'path/to/image2.jpg');
+
+
+SELECT * FROM posts;
 
 
 -- ............................................. COMMENTS TABLE .............................................
@@ -82,6 +86,15 @@ CREATE TABLE IF NOT EXISTS comments (
     comment_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert sample comments with specific timestamps
+INSERT INTO comments (post_id, user_id, comment_text, comment_date) VALUES
+(1, 1, 'Love this post about Japan!', '2023-10-01 14:30:00'),
+(1, 2, 'Really inspiring journey!', '2023-10-01 15:00:00'),
+(2, 2, 'I want to visit Finland too!', '2023-10-02 16:00:00'),
+(3, 1, 'Nice insights on Finland!', '2023-10-02 17:00:00'),
+(4, 2, 'Climbing Adam''s Peak is on my bucket list!', '2023-10-03 18:00:00');
+
+SELECT * FROM comments;
 
 -- ............................................. LIKES TABLE .............................................
 
@@ -93,12 +106,47 @@ CREATE TABLE IF NOT EXISTS likes (
     like_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Insert sample likes with specific timestamps
+INSERT INTO likes (post_id, user_id, like_date) VALUES
+(1, 1, '2023-10-01 19:00:00'),
+(1, 2, '2023-10-01 20:00:00'),
+(2, 1, '2023-10-02 21:00:00'),
+(3, 1, '2023-10-02 22:00:00'),
+(3, 2, '2023-10-03 23:00:00'),
+(4, 1, '2023-10-04 23:30:00'),
+(4, 2, '2023-10-05 00:00:00');
+
+SELECT * FROM likes;
 
 
 
+
+
+
+
+-- ..................................................................................................
 
 -- Example of how to query joined data
--- This will get all posts along with their user's username and profile picture.
-SELECT p.post_id, p.title, p.content, p.post_date, p.cover_image, u.username, u.profile_picture
-FROM posts p
-JOIN users u ON p.user_id = u.user_id;
+-- This will get all the details of the all posts
+SELECT 
+    p.post_id,
+    p.title,
+    p.content,
+    p.post_date,
+    p.cover_image,
+    u.username,
+    u.profile_picture,
+    ARRAY_AGG(DISTINCT c.comment_text) AS comments,
+    COUNT(DISTINCT l.like_id) AS like_count
+FROM 
+    posts p
+JOIN 
+    users u ON p.user_id = u.user_id
+LEFT JOIN 
+    comments c ON p.post_id = c.post_id
+LEFT JOIN 
+    likes l ON p.post_id = l.post_id
+GROUP BY
+    p.post_id, p.title, p.content, p.post_date, p.cover_image, u.username, u.profile_picture
+ORDER BY
+    p.post_date DESC;
