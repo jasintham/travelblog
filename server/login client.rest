@@ -1,9 +1,0 @@
-### Search the user
-# This will search the specific user in the database
-POST http://localhost:3001/login
-Content-Type: application/json
-
-{
-  "username": "RyanWick1",
-  "password": "123"
-}
