@@ -3,44 +3,33 @@
 // Define an asynchronous function to fetch user details from the server.
 async function fetchUserDetails() {
     try {
-        // Use the Fetch API to send a GET request to the server endpoint that returns user details.        
-        const response = await fetch('http://localhost:3001/profile/headerDetails', {
-            method: 'GET', // Specify the HTTP method.
+        
+        fetch('http://localhost:3001/profile/headerDetails', {
+            method: 'GET', 
             headers: {
-                'Content-Type': 'application/json', // Indicate the type of content expected in the response.
+                'Content-Type': 'application/json', 
                 'Authorization': `Bearer ${localStorage.getItem('token')}` // Include the authentication token stored in localStorage in the Authorization header.
             },
-        });
-        // The response recieving by server/routes/userRoutes.js route of /details
-        // Response is Database Table specific user values in JSON format
+        })
+        
+        .then((response)=>
+        {
+            return response.json();
+        })
 
-        // If the response is not successful, log the error.
-        if (response.ok === false) {
-            console.error('Failed to fetch user details due to response status:', response.status);
-            return; // Exit the function if there was a problem with the request.
-        }
+        .then((response)=>
+        {
+            // Update the DOM elements with the user's details.
+            document.getElementById('userName').textContent = response.username;
+            document.getElementById('userBio').textContent = response.bio;
+        })
 
-        // Parse the JSON response to get user details. (receive the response from the server/routes/userRoutes.js. which is database table user related details in JSON format)
-        const userDetails = await response.json();        
-
-        // Call updateProfile to update the webpage with the user's details.
-        updateProfile(userDetails);
     } 
     
     catch (error) 
     {
         console.error('Error fetching user details:', error);
     }
-}
-
-
-function updateProfile({ username, bio, profile_picture }) {
-    // Update the DOM elements with the user's details.
-    document.getElementById('userName').textContent = username;
-    document.getElementById('userBio').textContent = bio;
-
-    // Uncomment the line below if you want to update the profile picture as well.
-    // document.getElementById('profilePicture').setAttribute('src', profilePicture);
 }
 
 // Call fetchUserDetails to initiate the fetch operation.
@@ -53,27 +42,32 @@ fetchUserDetails();
 
 //................................. FETCH THE PROFILE HEADERS FROM BACKEND TO THE FRONTEND .................................//
 async function fetchTravelerStats() {
-    try {
-        const response = await fetch('http://localhost:3001/profile/travelerStats', 
+    try 
+    {        
+        fetch('http://localhost:3001/profile/travelerStats', 
         {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-        });
+        })
         
-
-        if (!response.ok) 
+        .then((response)=>
         {
-            throw new Error('Failed to fetch traveler stats');
-        }
+            return response.json();
+        })
 
-        else
-        {            
-            const stats = await response.json();
-            updateTravelerStatsSection(stats);
-        }
+
+        .then((response)=>
+        {
+            // Update the DOM elements with the travel stat details.
+            document.getElementById('countriesVisited').textContent = response.countries_visited;
+            document.getElementById('citiesExplored').textContent = response.cities_explored;
+            document.getElementById('favoriteDestination').textContent = response.favorite_destination;
+            document.getElementById('bucketList').textContent = response.bucket_list;
+        })
+        
     } 
     catch (error) 
     {
@@ -81,16 +75,13 @@ async function fetchTravelerStats() {
     }
 }
 
-function updateTravelerStatsSection(stats) 
-{
-    document.getElementById('countriesVisited').textContent = stats.countries_visited;
-    document.getElementById('citiesExplored').textContent = stats.cities_explored;
-    document.getElementById('favoriteDestination').textContent = stats.favorite_destination;
-    document.getElementById('bucketList').textContent = stats.bucket_list;
-}
 
 // Ensure to call fetchTravelerStats along with fetchUserDetails or at the appropriate time
 fetchTravelerStats();
+
+
+
+
 
 
 //................................. FUNCTION TO GET USER's DATA to FROM CONTROL INPUT FIELDS .................................//
@@ -118,7 +109,7 @@ document.addEventListener('DOMContentLoaded', ()=>
             //console.log("Get Response of Form Input data is: " + response.username)
             document.getElementById('username').value = response.username;
             document.getElementById('bio').value = response.bio;
-        });        
+        })       
     }
     //Call the function
     getUsersDataToInputFields()
@@ -157,12 +148,7 @@ document.addEventListener('DOMContentLoaded', function()
             body: JSON.stringify(userData)
         })
 
-        .then(response => {
-            if (!response.ok) 
-            {
-                throw new Error('Failed to update user details');
-            }
-
+        .then(response => {           
             return response.json();
         })
 
@@ -222,12 +208,11 @@ function updateCountriesVisited(value) {
         },
         body: JSON.stringify({ countriesVisited: value })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
+
+    .then(response => {           
         return response.json();
     })
+
     .then(data => {
         // Assuming the server responds with the updated value
         document.getElementById('countriesVisited').textContent = data.countries_visited;
@@ -268,13 +253,8 @@ function updateCitiesExplored(value) {
         body: JSON.stringify({ citiesExplored: value })
     })
     
-    .then(response => {
-        if (!response.ok) 
-        {
-            throw new Error('Network response was not ok');
-        }
-
-        return response.json(); // Assuming the server sends back the updated value
+    .then(response => {           
+            return response.json();
     })
 
     .then(data => {
@@ -314,17 +294,17 @@ function updateFavoriteDestination(value) {
         },
         body: JSON.stringify({ favoriteDestination: value })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Assuming server responds with updated value
+
+    .then(response => {           
+        return response.json();
     })
+
     .then(data => {
         // Update UI with new value and close the modal
         document.getElementById('favoriteDestination').textContent = data.favorite_destination;
         $('#editDestinationModal').modal('hide'); // Using jQuery to hide modal
     })
+    
     .catch(error => {
         console.error('Error updating favorite destination:', error);
         alert('Failed to update favorite destination.');
@@ -356,17 +336,17 @@ function updateBucketList(value) {
         },
         body: JSON.stringify({ bucketList: value })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Assuming the server responds with the updated bucket list
+    
+    .then(response => {           
+        return response.json();
     })
+
     .then(data => {
         // Update the UI with the new bucket list and close the modal
         document.getElementById('bucketList').textContent = data.bucket_list;
         $('#editBucketListModal').modal('hide'); // Using jQuery to hide the modal
     })
+
     .catch(error => {
         console.error('Error updating bucket list:', error);
         alert('Failed to update bucket list.');
