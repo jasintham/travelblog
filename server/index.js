@@ -24,6 +24,8 @@ app.use('/profile', profileRouter); // Use the Profile Route
 const indexRouter = require('./routes/indexRoutes.js'); // Import profile route object
 app.use('/index', indexRouter); // Use the Profile Route
 
+const postRouter = require('./routes/postRoutes.js'); // Import post route object
+app.use('/post', postRouter); // Use the Post Route
 
 
 

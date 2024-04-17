@@ -15,25 +15,90 @@
   <body>
     <div class="container mt-5">
       <div class="row justify-content-start">
+
+        <!-- ---------------------------- Post Column ---------------------------- -->
         <div class="col-md-9">
+          <!-- ---------------------------- Post Section ---------------------------- -->
           <div class="post mb-3">
-            <p class="fs-3 text-capitalize">blog topic</p>
-            <img src="./images/postpage/image.jpg" class="post-img" alt="" />
+            <p class="fs-3 text-capitalize" id="post_title">blog topic</p>
+            <img src="./images/postpage/image.jpg" id="post_image" class="post-img" alt="" />
             <div class="post-body mt-3">
               <div class="post-metadata d-flex">
-                <img
-                  src="./images/postpage/avatar.jpg"
-                  alt="Avatar"
-                  class="main-post-avatar rounded-circle"
-                />
-                <p class="post-author mt-4 ms-2">by Xuan</p>
+                <img src="./images/postpage/avatar.jpg" id="author_image" alt="Avatar" class="main-post-avatar rounded-circle"/>
+                <p class="post-author mt-4 ms-2" id="author_name">by Xuan</p>
                 <p class="updatedtime mt-4 ms-3 text-black-50">
-                  <small>Last updated 3 mins ago</small>
+                  <small>Posted on <span id="post_date"></span>2024-04-16</small>
                 </p>
+              </div>             
+
+              <p class="post-text pt-3 border-top" id="post_content">This is the post body</p>
+
+              <div class="form-group">
+                <label for="comment_area">Add a Comment</label>
+                <textarea class="form-control" id="comment_area" rows="3"></textarea>
               </div>
 
-              <p class="post-text pt-3 border-top">This is the post body</p>
+              <br>
+
+              <button>Submit</button>
+
+              <!-- Comments Section -->
+            <div id="post_comments">
+              <div class="card-body p-4">                
+                <div class="d-flex flex-start">
+                  <img class="rounded-circle shadow-1-strong me-3"
+                    src="./images/post/post_4.jpg" alt="avatar" width="60" height="60" />
+                  <div>
+                    <h6 class="fw-bold mb-1">Ryan</h6>
+                    <div class="d-flex align-items-center mb-3">
+                      <p class="mb-0">
+                        March 07, 2021
+                      </p>
+                      <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                      <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                      <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                    </div>
+                    <p class="mb-0">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                      Placeat velit architecto temporibus maiores excepturi sunt recusandae ut? Rem quas dolores corrupti a ipsa voluptas reiciendis, 
+                      pariatur provident, accusamus, omnis eveniet!
+                    </p>
+                  </div>
+                </div>
+              </div>
+    
+              <hr class="my-0" />
+    
+              <div class="card-body p-4">
+                <div class="d-flex flex-start">
+                  <img class="rounded-circle shadow-1-strong me-3"
+                    src="./images/post/post_1.jpg" alt="avatar" width="60" height="60" />
+                  <div>
+                    <h6 class="fw-bold mb-1">Xuan</h6>
+                    <div class="d-flex align-items-center mb-3">
+                      <p class="mb-0">
+                        March 15, 2021
+                      </p>
+                      <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                      <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
+                      <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
+                    </div>
+                    <p class="mb-0">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                      Corrupti cupiditate recusandae voluptatem quaerat placeat totam repellendus eius ab iure mollitia! 
+                      Rerum fugiat corporis maxime sequi autem repellendus et explicabo ex!
+                    </p>
+                  </div>
+                </div>
+              </div>           
+
             </div>
+
+            </div>
+
+            
+
+            
             <div class="container border-top">
               <div class="btn-group">
                 <button class="btn btn-like">
@@ -78,6 +143,7 @@
               <div class="comment-list mt-4 border-top"></div>
             </div>
           </div>
+          <!-- ---------------------------- Post Section End ---------------------------- -->
           <div class="menu-text mt-4 text-capitalize border-top">
             <p class="mt-4">RELATED POSTS</p>
             <div class="card-group">
@@ -192,6 +258,9 @@
             </div>
           </div>
         </div>
+        <!-- ----------------------------Post Column End ---------------------------- -->
+
+        <!-- ----------------------------Side Bar Column ------------------------------>
         <div class="col-md-3">
           <div class="categories my-4">
             <p class="menu-text mt-4">DESTINATIONS</p>
@@ -286,6 +355,7 @@
             <img src="./images/postpage/twitter.png" alt="">
           </div>
       </div>
+      <!-- ----------------------------Side Bar Column End ---------------------------- -->
     </div>
 
     <script
