@@ -1,0 +1,29 @@
+### ------- PROFILE page req and res check -------
+
+### Get Header Details
+GET http://localhost:3001/profile/headerDetails
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+
+### Get Traveler Stats Details
+GET http://localhost:3001/profile/travelerStats
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+
+
+### GET User Details (To From Control)
+GET http://localhost:3001/profile/getUserDetails
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+
+
+### Update User Details (From From Control)
+POST http://localhost:3001/profile/saveNewUserDetails
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+
+{
+  "username":"123",
+  "password":"123",
+  "bio":"Bio 123"
+}

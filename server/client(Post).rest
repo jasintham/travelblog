@@ -1,0 +1,29 @@
+### ------- POST page req and res check -------
+
+### Get a Post Specific Details
+POST http://localhost:3001/post/getPostData
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+
+{
+    "postId" : "1"
+}
+
+### Get a Post Specific Comment Details
+POST http://localhost:3001/post/getCommentData
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+
+{
+    "postId" : "1"
+}
+
+
+### Get likes count for a specific post
+POST http://localhost:3001/post/getLikesCount
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+
+{
+    "postId" : "1"
+}

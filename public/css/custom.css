@@ -10,6 +10,12 @@ a{ text-decoration: none;}
     color: rgba(255, 255, 255, 1);
 }
 
+.login-link{
+    margin-left: 30px;
+    font-weight: bold;
+    color: #f30e0e !important;
+}
+
 .main-nav{
     padding: 10px 0;
     background-color: #0404044f;
@@ -197,3 +203,57 @@ div[class*="col-lg-"]{
     
     
 }
+
+/*Start custom css for the addPost.html*/
+
+.custom-textarea{
+
+    max-height: 10cm;
+} 
+
+::placeholder{
+    vertical-align: top;
+}
+
+a{
+    color: #b50808;
+}
+
+.preview{
+    margin-left: auto;
+}
+
+.publish {
+    background-color: #e2a2a2;
+    padding: 2px;
+    border: 0.5px solid black;
+
+    
+}
+
+.add {
+    background-color: #d6d6d6;
+    padding: 2px;
+    border: 0.5px solid black;
+    
+}
+.bg-color{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.bg-color-publish{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.image-content{
+    background-color: #f3f3f3;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+
