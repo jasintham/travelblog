@@ -107,7 +107,7 @@ a {
   cursor: pointer;
 }
 
-.blog-text {
+.post-text {
   width: 100%;
   max-height: 40rem;
   font-size: 2rem;
@@ -117,7 +117,7 @@ a {
   border-bottom: var(--border-bottom);
 }
 
-.blog-text:first-letter {
+.post-text:first-letter {
   text-transform: uppercase;
 }
 
@@ -147,7 +147,20 @@ a {
 }
 
 .btn-like:hover {
-  stroke: red;
-  fill: red;
   cursor: pointer;
 }
+
+.pagination{
+  color: var(--text-color);
+  font-size: 1.6rem;
+  justify-content: center;
+  gap: 3.2rem;
+  margin-bottom: var(--content-spacing);
+}
+
+.page:hover,
+.page:active{
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
