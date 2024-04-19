@@ -8,6 +8,7 @@
         button-color: #eee
         border-color:#fff*/
 
+/* GENERAL SETTING */
 :root {
   --text-color: #212529;
   --border-bottom: 1px solid #eee;
@@ -40,6 +41,7 @@ body {
   padding-right: 12rem;
 }
 
+/* STYLE */
 a {
   display: inline-block;
   text-decoration: none;
