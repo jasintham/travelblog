@@ -21,7 +21,7 @@ loginRouter.post('/', async (req, res) => {
         const token = jwt.sign(
             { userId: resultQuery.rows[0].user_id }, 
             process.env.JWT_SECRET, // Replace 'your_secret_key' with a real secret key stored in .env file
-            { expiresIn: '1h' } // Token expires in 1 hour
+            { expiresIn: '8h' } // Token expires in 1 hour
         );    
 
         // Response is....

@@ -33,6 +33,7 @@
 
               <p class="post-text pt-3 border-top" id="post_content">This is the post body</p>
 
+              <!-- Make a Comments -->
               <div class="form-group">
                 <label for="comment_area">Add a Comment</label>
                 <textarea class="form-control" id="comment_area" rows="3"></textarea>
@@ -40,243 +41,47 @@
 
               <br>
 
-              <button>Submit</button>
+              <button id="comment_btn">Submit</button>
 
-              <!-- Comments Section -->
-            <div id="post_comments">
-              <div class="card-body p-4">                
-                <div class="d-flex flex-start">
-                  <img class="rounded-circle shadow-1-strong me-3"
-                    src="./images/post/post_4.jpg" alt="avatar" width="60" height="60" />
-                  <div>
-                    <h6 class="fw-bold mb-1">Ryan</h6>
-                    <div class="d-flex align-items-center mb-3">
-                      <p class="mb-0">
-                        March 07, 2021
-                      </p>
-                      <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                      <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
-                      <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
-                    </div>
-                    <p class="mb-0">
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                      Placeat velit architecto temporibus maiores excepturi sunt recusandae ut? Rem quas dolores corrupti a ipsa voluptas reiciendis, 
-                      pariatur provident, accusamus, omnis eveniet!
-                    </p>
-                  </div>
-                </div>
+              <!-- Display Comments Area -->              
+              <div id="post_comments">
+
               </div>
-    
-              <hr class="my-0" />
-    
-              <div class="card-body p-4">
-                <div class="d-flex flex-start">
-                  <img class="rounded-circle shadow-1-strong me-3"
-                    src="./images/post/post_1.jpg" alt="avatar" width="60" height="60" />
-                  <div>
-                    <h6 class="fw-bold mb-1">Xuan</h6>
-                    <div class="d-flex align-items-center mb-3">
-                      <p class="mb-0">
-                        March 15, 2021
-                      </p>
-                      <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                      <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
-                      <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
-                    </div>
-                    <p class="mb-0">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                      Corrupti cupiditate recusandae voluptatem quaerat placeat totam repellendus eius ab iure mollitia! 
-                      Rerum fugiat corporis maxime sequi autem repellendus et explicabo ex!
-                    </p>
-                  </div>
-                </div>
-              </div>           
 
-            </div>
 
-            </div>
+              </div>
 
             
 
-            
+            <!-- Likes and Commnet Counts Area -->
             <div class="container border-top">
               <div class="btn-group">
-                <button class="btn btn-like">
-                  <img src="./images/postpage/heart.png" alt="" /></button
-                ><span class="total-like mt-2">999+</span>
-                <span class="visually-hidden">total likes</span>
-                <button class="btn btn-share ms-3 me-4">
-                  <img src="./images/postpage/share.png" alt="" />
-                </button>
-                <button
-                  class="btn btn-comment"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseOne"
-                  aria-expanded="true"
-                  aria-controls="panelsStayOpen-collapseOne"
-                >
-                  <img
-                    src="./images/postpage/comment-alt-dots.png"
-                    alt=""
-                  /></button
-                ><span class="total-comments mt-2" id="like_count">999+</span>
-                <span class="visually-hidden">total comments</span>
-              </div>
-              <div
-                id="panelsStayOpen-collapseOne"
-                class="accordion-collapse collapse hide"
-              >
-                <div class="comment comment-editor">
-                  <div class="accordion-collapse collapse show">
-                    <div class="form-floating mt-3">
-                      <textarea
-                        class="form-control"
-                        placeholder="Leave a comment here"
-                        id="floatingTextarea2"
-                        style="height: 90px; width: 100%"
-                      ></textarea>
-                      <label for="floatingTextarea2">Comments</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="comment-list mt-4 border-top"></div>
+
+                  <button class="btn btn-like"> <img src="./images/postpage/heart.png" alt="" /> </button>
+                  <span class="total-like mt-2" id="like_count">999+</span>
+                  
+                  <button class="btn btn-comment"> <img src="./images/postpage/comment-alt-dots.png" alt=""/> </button>
+                  <span class="total-comments mt-2" id="comment_count">999+</span>
+
+                  <button class="btn btn-share ms-3 me-4"> <img src="./images/postpage/share.png" alt="" /> </button> 
+                
+              </div>              
+             
             </div>
+
           </div>
           <!-- ---------------------------- Post Section End ---------------------------- -->
-          <div class="menu-text mt-4 text-capitalize border-top">
-            <p class="mt-4">RELATED POSTS</p>
-            <div class="card-group">
-              <div class="card">
-                <img
-                  src="./images/postpage/card1.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 1</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="./images/postpage/card2.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 2</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="./images/postpage/card3.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 3</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="./images/postpage/card4.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 4</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="./images/postpage/card5.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 5</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <img
-                  src="./images/postpage/card6.jpg"
-                  class="card-img shadow"
-                  alt=""
-                />
-                <div class="card-body">
-                  <p class="fs-5 mb-2">topic 6</p>
-                  <div class="location position-absolute bottom-0 end-0">
-                    <img
-                      src="./images/postpage/marker.svg"
-                      alt=""
-                      class="location-pin"
-                    />
-                    <small class="text-body-secondary">Location</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
         <!-- ----------------------------Post Column End ---------------------------- -->
 
         <!-- ----------------------------Side Bar Column ------------------------------>
         <div class="col-md-3">
           <div class="categories my-4">
-            <p class="menu-text mt-4">DESTINATIONS</p>
-
-            <div class="category-list ms-4">
-              <p class="fs-5">All Posts</p>
-              <p class="fs-5">Asia</p>
-              <p class="fs-5">Europe</p>
-              <p class="fs-5">Africa</p>
-              <p class="fs-5">North America</p>
-              <p class="fs-5">South America</p>
-              <p class="fs-5">Antarctica</p>
-            </div>
+            
           </div>
           <div class="rencet-posts-list text-capitalize mt-5 mb-3">
-            <p class="menu-text">RECENT POSTS</p>
+            <p class="menu-text">Recent Posts</p>
             <div class="recent-post ms-4">
               <tr class="list-group list-group-flush">
                 <li class="list-group-item" style="height: 65px">

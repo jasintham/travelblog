@@ -10,7 +10,7 @@ const authenticateToken = require('../middleware/authenticateToken.js');    //Mi
 indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
     try 
     {
-        const result = await query('SELECT post_id, title, content, cover_image FROM posts WHERE user_id =$1', [req.user.userId]);
+        const result = await query('SELECT post_id, title, content, cover_image FROM posts');
         res.json(result.rows);
     } 
     catch (error) 

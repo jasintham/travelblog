@@ -3,27 +3,39 @@
 ### Get a Post Specific Details
 POST http://localhost:3001/post/getPostData
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
 
 {
     "postId" : "1"
 }
+
 
 ### Get a Post Specific Comment Details
 POST http://localhost:3001/post/getCommentData
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
 
 {
     "postId" : "1"
 }
 
 
-### Get likes count for a specific post
+### Get likes count and comments count for a specific post
 POST http://localhost:3001/post/getLikesCount
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzMxNDYzMSwiZXhwIjoxNzEzMzE4MjMxfQ.0bFkn4Mo14StpH8NAmjJunkobi_dNpYNM168vfyG8Do
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
 
 {
     "postId" : "1"
+}
+
+
+### Insert a comment to the database
+POST http://localhost:3001/post/makeComment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
+
+{
+    "postId" : "1",
+    "comment" : "This is the comment 3"
 }
