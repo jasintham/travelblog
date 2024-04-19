@@ -1,35 +1,29 @@
 // Import required modules and middleware
-const express = require('express'); // Import the Express framework to simplify server creation
+const express = require("express"); // Import the Express framework to simplify server creation
 const app = express();
 
-const cors = require('cors'); // Import CORS to allow cross-origin requests
+const cors = require("cors"); // Import CORS to allow cross-origin requests
 app.use(cors());
-
-
 
 // Allow Express to automatically parse JSON payloads in incoming requests,
 // Which means this allows to access request data via 'req.body'.
-app.use(express.json()); 
-
-
-
+app.use(express.json());
 
 // Routes setup
-const loginRouter = require('./routes/loginRoutes.js'); // Import login route object
-app.use('/login', loginRouter); // Use the Login Route
+const loginRouter = require("./routes/loginRoutes.js"); // Import login route object
+app.use("/login", loginRouter); // Use the Login Route
 
-const profileRouter = require('./routes/profileRoutes.js'); // Import profile route object
-app.use('/profile', profileRouter); // Use the Profile Route
+const profileRouter = require("./routes/profileRoutes.js"); // Import profile route object
+app.use("/profile", profileRouter); // Use the Profile Route
 
-const indexRouter = require('./routes/indexRoutes.js'); // Import profile route object
-app.use('/index', indexRouter); // Use the Profile Route
+const indexRouter = require("./routes/indexRoutes.js"); // Import profile route object
+app.use("/index", indexRouter); // Use the Profile Route
 
-const postRouter = require('./routes/postRoutes.js'); // Import post route object
-app.use('/post', postRouter); // Use the Post Route
+const postRouter = require("./routes/postRoutes.js"); // Import post route object
+app.use("/post", postRouter); // Use the Post Route
 
-
-
-
+const allpostsRouter = require("./routes/allpostsRoutes.js"); //Import post route object
+app.use("/allposts", allpostsRouter); //Use the allpost Route
 
 // Determine the port to listen on from environment variables or use 3001 as a default
 const PORT = 3001;
