@@ -137,6 +137,7 @@ a {
 .btn-comment {
   width: 3rem;
   height: 3rem;
+  margin: var(--internal-spacing) 0;
 }
 
 .blog-icons p {
