@@ -13,6 +13,9 @@ app.use(express.json());
 const loginRouter = require("./routes/loginRoutes.js"); // Import login route object
 app.use("/login", loginRouter); // Use the Login Route
 
+const registerRouter = require('./routes/registerRoutes.js'); // Import register route object
+app.use('/register', registerRouter); // Use the register Route
+
 const profileRouter = require("./routes/profileRoutes.js"); // Import profile route object
 app.use("/profile", profileRouter); // Use the Profile Route
 
