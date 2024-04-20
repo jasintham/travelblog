@@ -1,0 +1,12 @@
+### Contact us page req and response check------
+
+### check a contact us request made by earlier
+POST http://localhost:3001/contactus/contactus
+Content-Type: application/json
+
+{
+    "name":"Cristy Perera",
+    "contact_number":"+3580417235270",
+    "email":"crisp@gmail.com",
+    "comments":"I need more informations about access the my profile with more images.Please provide me more deatails on that"
+}

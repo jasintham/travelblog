@@ -25,6 +25,9 @@ app.use("/post", postRouter); // Use the Post Route
 const allpostsRouter = require("./routes/allpostsRoutes.js"); //Import post route object
 app.use("/allposts", allpostsRouter); //Use the allpost Route
 
+const contactusRouter = require('./routes/contactusRoutes.js');// Import contact_us route object
+app.use('/contactus',contactusRouter); // use the contact_us route
+
 // Determine the port to listen on from environment variables or use 3001 as a default
 const PORT = 3001;
 app.listen(PORT, () => {

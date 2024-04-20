@@ -185,3 +185,20 @@ GROUP BY
     p.post_id, p.title, p.content, p.post_date, p.cover_image, u.username, u.profile_picture
 ORDER BY
     p.post_date DESC;
+
+
+    --___________________________________________________________________________________contactus table__________________
+    -- contactus table
+
+    CREATE TABLE contact_us (
+    contact_us_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    contact_number VARCHAR(20) NULL,
+    email VARCHAR(255) NOT NULL
+    comments VARCHAR(255) NOT NULL
+    
+);
+
+-- insert data into the table
+
+insert into contact_us (name,contact_number,email,comments) values ('James Smith','+3580417230250','jame@foo.com','Need Assistance on adding images');
