@@ -1,0 +1,16 @@
+### ------- REGISTER page req and res check -------
+
+### Check a new registration
+POST http://localhost:3001/register/
+Content-Type: application/json
+
+{
+  "username": "12345",
+  "password": "12345"
+}
+
+
+
+
+
+//D:\project\travelblog\public\js\register.js

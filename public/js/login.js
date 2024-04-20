@@ -48,3 +48,12 @@ login_btn.addEventListener('click', function(event) {
 
     
 });
+
+
+//Register Button Event Handling
+const register_button = document.getElementById('register_btn');
+
+register_button.addEventListener('click', ()=>
+{
+    window.location.href = './register.html'
+})
