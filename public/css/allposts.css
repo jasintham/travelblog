@@ -79,9 +79,8 @@ a {
   margin-bottom: var(--internal-spacing);
 }
 
-.blog-info {
-  display: flex;
-  gap: 1.2rem;
+.post-date {
+  color: #343a40;
   margin-bottom: var(--internal-spacing);
 }
 
@@ -91,20 +90,11 @@ a {
   border-radius: 50%;
 }
 
-.info {
+.post-date {
   font-size: 1.8rem;
   display: flex;
   align-items: flex-end;
   gap: 2.4rem;
-}
-
-.poster-info {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.post-name:hover {
-  cursor: pointer;
 }
 
 .post-text {
