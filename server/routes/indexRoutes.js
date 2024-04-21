@@ -29,7 +29,7 @@ indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
         GROUP BY
             p.post_id, u.username, u.profile_picture
         ORDER BY 
-            p.post_date
+            p.post_date DESC
         `);
         res.json(result.rows);
     } 

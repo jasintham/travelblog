@@ -1,7 +1,7 @@
 #Get a Post Specific Details
 GET http://localhost:3001/allposts/getAllPosts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzYzNTA5MCwiZXhwIjoxNzEzNjYzODkwfQ.AB7sEJ5tsNqmNBt5uNKdXzlnBuq1cmCKFSV7RvGFbrw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzczOTcwNCwiZXhwIjoxNzEzNzY4NTA0fQ.8nReSeu5Qrf1_ye3PTA5X4Zsny8tGdiStyOXxpDZW1w
 
 
 
