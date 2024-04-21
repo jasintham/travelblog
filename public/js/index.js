@@ -96,15 +96,22 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="card-body">
                 <div class="post-content-container">
                     <div class="post-meta post-meta-one">
-                        <span class="post-meta-author">by <a href="#" class="bypostauthor">${post.author}</a></span>
-                        <a href="#" class="post-meta-date">${post.date}</a>
+                        <span class="post-meta-author">by <a href="#" class="bypostauthor">${post.username} </a></span>
+                        <br>
+                        <a href="#" class="post-meta-date">${post.post_date.substring(0, 10)}</a>
                     </div>
                     <a href="#" class="post-title"><h2>${post.title}</h2></a>
                     <div class="post-content">${post.content.substring(0, 100)}...</div>
                     <div class="post-meta post-meta-two">
                         <div class="sh-columns post-meta-comments">
-                            <span class="post-meta-categories"><i class="icon-tag"></i> ${post.categories}</span>
-                            <a href="#" class="post-meta-comments"><i class="bi bi-chat"></i>${post.commentsCount}</a>
+                            <span class="post-meta-categories"><i class="fa-solid fa-heart" style="color: #ff0000;"></i></i></i> ${post.likes_count}</span>
+                            <br>
+                            <span class="post-meta-categories"><i class="fa-solid fa-comment" style="color: #74C0FC;"></i></i> ${post.comments_count}</span>
+                            <br>
+                            <hr>
+                            <span class="post-meta-categories"> ${post.category_name}</span>
+                            <a href="#" class="post-meta-comments"><i class="fa-solid fa-eye"></i></i>Click for more details</a>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -125,4 +132,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call fetchPosts to load and display posts
     fetchPosts();
 
+});
+
+
+//................................. NAV BAR ITEM's RELATED CODES .................................//
+
+
+//Login Nav Item Related Code
+addEventListener('DOMContentLoaded', ()=>
+{
+    if(localStorage.getItem('token'))
+    {
+        const loginNavItem = document.getElementById('login_nav_item')
+        loginNavItem.style.display = 'none'
+    }
+});
+
+//Logout Nav Item Related Code
+addEventListener('DOMContentLoaded', ()=>
+{
+    if(localStorage.getItem('token'))
+    {
+        const loginNavItem = document.getElementById('logout_nav_item')
+        loginNavItem.style.display = 'block'
+    }
+});
+
+
+//Logout related code
+const logoutLink = document.getElementById('logout_nav_item');
+
+logoutLink.addEventListener('click', ()=>
+{
+    localStorage.removeItem('token');
+    window.location.href = 'index.html'
 });

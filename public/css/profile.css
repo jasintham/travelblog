@@ -4,16 +4,14 @@ body, html {
     background: url('../images/profile-page-background.jpg') no-repeat center center fixed; 
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
-
+    font-family: 'Montserrat';
     
-    margin-top: 80px;   /*Leave space for Nav Bar*/
 }
 
 /* Consistent padding and background for the content containers */
 .container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    margin-bottom: 30px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 
