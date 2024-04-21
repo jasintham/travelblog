@@ -38,19 +38,16 @@
                             <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./contactus.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="./allposts.html">My posts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./profile.html">My Profile</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contactus.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link login-link" id="login_nav_item" href="./login.html" style="display: block;">Login</a>
@@ -112,6 +109,27 @@
         </div>
     </section>
     <!-- EndNavigation -->
+
+
+
+
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 20px;">
+        <button onclick="navigateToPage()" class="btn btn-primary">Add Post <i class="fa-solid fa-circle-plus fa-fade" style="color: #21e82f;"></i> </button>
+    </div>
+    
+    <script>
+        function navigateToPage() {
+            // Set the window's location to the URL of the page you want to navigate to
+            window.location.href = './addNewPost.html'; // Change './addPost.html' to the appropriate path for your new post page
+        }
+    </script>
+    
+
+
+
+
+
 
     <!-- Content Start -->
     <section class="container">

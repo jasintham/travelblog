@@ -83,9 +83,6 @@ function loadAllComments()
                             <p class="mb-0">
                                 ${element.comment_date}
                             </p>
-                            <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                            <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
-                            <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
                         </div>
 
                         <p class="mb-0">${element.comment_text}</p>

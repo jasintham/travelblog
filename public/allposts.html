@@ -1,186 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Company Name</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Name</title>
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Font Weight 400 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:ital@0;1&family=Rubik:ital,wght@0,700;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font Weight 500,700 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Montserrat:ital,wght@0,500;0,700;1,500;1,700&family=Rubik:ital,wght@0,700;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Bootstrap -->
-    <link
+      <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <!-- link with custom.css -->
-    <link rel="stylesheet" href="./css/custom.css" />
 
-    <!-- link with allposts.css -->
-    <link rel="stylesheet" href="./css/allposts.css" />
-  </head>
+    <!-- Font Awesome for a wide range of icons and css file for profile -->
+    <script src="https://kit.fontawesome.com/81702bbfaa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/allposts.css"> <!-- Path to profile custom CSS -->   
+
+    <!-- Path to nav bar css and it related css importing URL --> 
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link href="./css/navbar.css" rel="stylesheet">
+
+
+
+</head>
   <body>
-    <div class="container-fluid">
-      <!-- Navbar Section -->
-      <section class="custom-width">
-        <nav
-          class="navbar navbar-expand-lg navbar-dark fixed-top shadow-5-strong opacity-100 main-nav"
-        >
+
+    <!-- Navigation -->
+    <section class="custom-width">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
-            <a class="navbar-brand" href="#"
-              ><img src="./images/logo-large.png" alt="Logo" width="200px"
-            /></a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarResponsive"
-              aria-controls="navbarResponsive"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul class="navbar-nav ms-auto text-white">
-                <li class="nav-item active">
-                  <a class="nav-link" href="./index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
-                </li>
-              </ul>
-            </div>
+              <a class="navbar-brand" href="#"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                  aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse items-orientation" id="navbarResponsive">
+                  <ul class="navbar-nav ms-auto text-white">
+                      <li class="nav-item">
+                          <a class="nav-link" href="./index.html">Home</a>
+                      </li>
+                      <li class="nav-item active">
+                          <a class="nav-link" href="./allposts.html">My posts</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="./profile.html">My Profile</a>
+                      </li>                        
+                      <li class="nav-item">
+                          <a class="nav-link" href="./contactus.html">Contact Us</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link login-link" id="login_nav_item" href="./login.html" style="display: block;">Login</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link login-link" id="logout_nav_item" href="#" style="display: none;">Logout</a>
+                      </li>
+                  </ul>
+              </div>
           </div>
-        </nav>
-      </section>
+      </nav>
+  </section>
 
-      <!-- Posts Section -->
-      <main>
-        <div id="posts-container" class="article">
-          <ul class="post-lists">
-            <li class="post-list">
-              <!-- Post image -->
-              <div class="main-post-img">
-                <img
-                  src="./images/postpage/card5.jpg"
-                  class="post-img"
-                  alt="Blue sky and sea"
-                />
-              </div>
-              <div class="post-content">
-                <!-- post topic with link to specific post page -->
-                <a href="#" class="post-topic"
-                  >This is a very very very very long Topic of the post for
-                  grid</a
-                >
-                <p class="post-date">12 April 2024</p>
-                <a href="#" class="post-text">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Placeat eaque eos tempore provident itaque. Accusamus culpa
-                  pariatur quidem nostrum similique, commodi animi
-                  necessitatibus ipsam repudiandae tempora aspernatur laborum
-                  sit totam.
-                </a>
 
-                <div class="blog-actions">
-                  <div class="blog-icons">
-                    <div class="like">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="btn-like"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                        />
-                      </svg>
-
-                      <p class="like-number">999+</p>
-                    </div>
-                    <div class="comment">
-                      <!-- Comment icon with link to specific post page -->
-                      <a href="#">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="1.5"
-                          stroke="currentColor"
-                          class="btn-comment"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
-                          />
-                        </svg>
-                      </a>
-                      <p class="comment-number">999+</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <!-- Navigation -->
-          <nav aria-label="Page navigation">
-            <ul class="pagination">
-              <li>
-                <a href="#" class="page" aria-label="Previous">
-                  <span aria-hidden="true">&laquo</span>
-                </a>
-              </li>
-              <li class="page"><a href="#" class="page">1</a></li>
-              <li class="page"><a href="#" class="page">2</a></li>
-              <li class="page"><a href="#" class="page">3</a></li>
-              <li class="page">
-                <a href="#" class="page" aria-label="Next">
-                  <span aria-hidden="true">&raquo</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+<!-- Root Container with Flexbox to Center the Child -->
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+  <!-- First Post Card -->
+  <div class="container-fluid" style="max-width: 75%; margin: 20px;">
+    <div class="post" style="font-size: 0.9rem; padding: 10px; border: none;">
+      <p class="fs-3 text-capitalize" style="font-size: 1.5rem;">First Blog Topic</p>
+      <p class="updatedtime mt-0 ms-3 text-black-50" style="margin-top: 0;">
+        <small>Posted on <span>2024-04-16</span></small>
+      </p>
+      <img src="./images/postpage/image.jpg" class="post-img" alt="" style="max-width: 600px; width: 100%; height: auto;"/>
+      <div class="post-body mt-3">
+        <p class="post-text pt-3">This is the body of the first post</p>   
+        <!-- Likes and Commnet Counts Area -->
+        <div class="container" style="padding: 5px;">
+          <div class="btn-group">
+            <button class="btn btn-like"><img src="./images/postpage/heart.png" alt="" /></button>
+            <span class="total-like mt-0">999</span>
+            <button class="btn btn-comment"><img src="./images/postpage/comment-alt-dots.png" alt=""/></button>
+            <span class="total-comments mt-0">999</span>
+            <button class="btn btn-share ms-3 me-4"><img src="./images/postpage/share.png" alt="" /></button> 
+          </div> 
+          <hr style="max-width: 600px; width: 100%; margin-top: 10px;"> <!-- Reduced margin -->
         </div>
-      </main>
-
-      <!-- Copyright -->
-      <footer
-        class="text-center p-3"
-        style="background-color: rgba(0, 0, 0, 0.2)"
-      >
-        &copy; 2024 Copyright:
-        <a class="text-white" href="#">travelblog.com</a>
-      </footer>
-
-      <!-- Copyright -->
+        <!-- End of the post card area -->
+      </div> 
     </div>
+  </div>
+  <!-- First Post Card -->
+  <div class="container-fluid" style="max-width: 75%; margin: 20px;">
+    <div class="post" style="font-size: 0.9rem; padding: 10px; border: none;">
+      <p class="fs-3 text-capitalize" style="font-size: 1.5rem;">First Blog Topic</p>
+      <p class="updatedtime mt-0 ms-3 text-black-50" style="margin-top: 0;">
+        <small>Posted on <span>2024-04-16</span></small>
+      </p>
+      <img src="./images/postpage/image.jpg" class="post-img" alt="" style="max-width: 600px; width: 100%; height: auto;"/>
+      <div class="post-body mt-3">
+        <p class="post-text pt-3">This is the body of the first post</p>   
+        <!-- Likes and Commnet Counts Area -->
+        <div class="container" style="padding: 5px;">
+          <div class="btn-group">
+            <button class="btn btn-like"><img src="./images/postpage/heart.png" alt="" /></button>
+            <span class="total-like mt-0">999</span>
+            <button class="btn btn-comment"><img src="./images/postpage/comment-alt-dots.png" alt=""/></button>
+            <span class="total-comments mt-0">999</span>
+            <button class="btn btn-share ms-3 me-4"><img src="./images/postpage/share.png" alt="" /></button> 
+          </div> 
+          <hr style="max-width: 600px; width: 100%; margin-top: 10px;"> <!-- Reduced margin -->
+        </div>
+        <!-- End of the post card area -->
+      </div> 
+    </div>
+  </div>
+</div>
+
+
+  
+          
+      
     <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
