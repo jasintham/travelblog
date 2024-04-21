@@ -41,17 +41,23 @@ register_button.addEventListener('click', function(event) {
 
             .then((response) =>
             {
-                if(response.ok) //This line checks if the response status is within the success range (200-299). If it is, it parses the response body as JSON and returns it.
-                {
-                    return response.json();
-                }
+                return response.json();
             })
 
             .then((response)=> //This line sets up another .then() block to handle the parsed JSON response from the server.
             {
-                console.log('Signup Successful');
 
-                window.location.href = '/public/login.html';
+                if(response.message == 'Registration successful')
+                {    
+                    window.location.href = '/public/login.html';
+                }
+
+                else
+                {
+                    alert(response.message);
+                }
+
+                
                 
             })
 

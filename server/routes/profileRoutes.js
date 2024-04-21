@@ -152,31 +152,48 @@ profileRouter.post('/saveNewUserDetails', authenticateToken, async (req, res) =>
 //................................. i. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
 profileRouter.post('/countriesVisited', authenticateToken, async (req, res) => 
 {
-    // Extract the user ID from the authenticated user's data and the new 'countriesVisited' value from the request body.
-    const { userId } = req.user;            // // Extract the user ID from the JWT payload which is in network request header part
-    const { countriesVisited } = req.body;  // // Extract the new "countriesVisited" value from network request body part
-
-    // Additional Part: Validate the 'countriesVisited' input to ensure it's a positive number. (For example Countries Visited: -1 is not possible)
-    if (!countriesVisited || countriesVisited < 0) 
-    {
-        return res.status(400).json({ message: 'Invalid input for countries visited.' });
-    }
-
-    //Important Part
+    console.log("Received userID from token:", req.user.userId);
+        
     try 
     {
-        const result = await query(
-            'UPDATE travel_stats SET countries_visited = $1 WHERE user_id = $2 RETURNING *;',
-            [countriesVisited, userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+        // First, check if there is an existing entry for the user
+        const existingStats = await query(
+            'SELECT * FROM travel_stats WHERE user_id = $1;',
+            [req.user.userId]
         );
 
-        // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
-        if (result.rows.length === 0) {
-            // No rows updated, possibly because the user_id doesn't exist in travel_stats
-            return res.status(404).json({ message: 'User stats not found.' });
+        if (existingStats.rows.length === 0) 
+        {
+            console.log("New user");
+
+            // No existing stats, consider inserting default data or returning a specific message
+            // Here, we opt to insert a new record with default values
+            const result = await query(
+                'INSERT INTO travel_stats (user_id, countries_visited) VALUES ($1, $2) RETURNING *;',
+                [req.user.userId, req.body.countriesVisited]
+            );
+
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
         }
 
-        res.json(result.rows[0]);   // If the update is successful, return the updated record.
+        else
+        {
+            console.log("Existing user");
+
+            const result = await query(
+                'UPDATE travel_stats SET countries_visited = $1 WHERE user_id = $2 RETURNING *;',
+                [req.body.countriesVisited, req.user.userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+            );
+    
+            // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
+            if (result.rows.length === 0) {
+                // No rows updated, possibly because the user_id doesn't exist in travel_stats
+                return res.status(404).json({ message: 'User stats not found.' });
+            }
+    
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
+        }
+        
     } 
     
     catch (error) 
@@ -191,23 +208,47 @@ profileRouter.post('/countriesVisited', authenticateToken, async (req, res) =>
 //................................. ii. ROUTE FOR POST(UPDATE) THE Travel Stat - Cities Explored .................................//
 // Example using Express.js and assuming `query` is a function to execute SQL commands
 profileRouter.post('/citiesExplored', authenticateToken, async (req, res) => {
-    const { userId } = req.user; // Extract user ID from JWT
-    const { citiesExplored } = req.body;
 
     try 
     {
-        // Update the number of cities explored for the user
-        const result = await query(
-            'UPDATE travel_stats SET cities_explored = $1 WHERE user_id = $2 RETURNING cities_explored;',
-            [citiesExplored, userId]
+        // First, check if there is an existing entry for the user
+        const existingStats = await query(
+            'SELECT * FROM travel_stats WHERE user_id = $1;',
+            [req.user.userId]
         );
 
-        if (result.rows.length === 0) 
+        if (existingStats.rows.length === 0) 
         {
-            return res.status(404).json({ message: 'User stats not found.' });
+            console.log("New user");
+
+            // No existing stats, consider inserting default data or returning a specific message
+            // Here, we opt to insert a new record with default values
+            const result = await query(
+                'INSERT INTO travel_stats (user_id, cities_explored) VALUES ($1, $2) RETURNING *;',
+                [req.user.userId, req.body.citiesExplored]
+            );
+
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
         }
 
-        res.json(result.rows[0]);
+        else
+        {
+            console.log("Existing user");
+
+            const result = await query(
+                'UPDATE travel_stats SET cities_explored = $1 WHERE user_id = $2 RETURNING *;',
+                [req.body.citiesExplored, req.user.userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+            );
+    
+            // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
+            if (result.rows.length === 0) {
+                // No rows updated, possibly because the user_id doesn't exist in travel_stats
+                return res.status(404).json({ message: 'User stats not found.' });
+            }
+    
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
+        }
+        
     } 
     
     catch (error) {
@@ -220,23 +261,52 @@ profileRouter.post('/citiesExplored', authenticateToken, async (req, res) => {
 
 //................................. iii. ROUTE FOR POST(UPDATE) THE Travel Stat - Favorite Destination .................................//
 // Example using Express.js
-profileRouter.post('/favoriteDestination', authenticateToken, async (req, res) => {
-    const { userId } = req.user; // Extract user ID from JWT
-    const { favoriteDestination } = req.body;
+profileRouter.post('/favoriteDestination', authenticateToken, async (req, res) => 
+{
 
-    try {
-        // Update favorite destination for the user in the database
-        const result = await query(
-            'UPDATE travel_stats SET favorite_destination = $1 WHERE user_id = $2 RETURNING favorite_destination;',
-            [favoriteDestination, userId]
+    try 
+    {
+        // First, check if there is an existing entry for the user
+        const existingStats = await query(
+            'SELECT * FROM travel_stats WHERE user_id = $1;',
+            [req.user.userId]
         );
 
-        if (result.rows.length === 0) {
-            return res.status(404).json({ message: 'User stats not found.' });
+        if (existingStats.rows.length === 0) 
+        {
+            console.log("New user");
+
+            // No existing stats, consider inserting default data or returning a specific message
+            // Here, we opt to insert a new record with default values
+            const result = await query(
+                'INSERT INTO travel_stats (user_id, favorite_destination) VALUES ($1, $2) RETURNING *;',
+                [req.user.userId, req.body.favoriteDestination]
+            );
+
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
         }
 
-        res.json(result.rows[0]);
-    } catch (error) {
+        else
+        {
+            console.log("Existing user");
+
+            const result = await query(
+                'UPDATE travel_stats SET favorite_destination = $1 WHERE user_id = $2 RETURNING *;',
+                [req.body.favoriteDestination, req.user.userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+            );
+    
+            // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
+            if (result.rows.length === 0) {
+                // No rows updated, possibly because the user_id doesn't exist in travel_stats
+                return res.status(404).json({ message: 'User stats not found.' });
+            }
+    
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
+        }
+        
+    } 
+    
+    catch (error) {
         console.error('Failed to update favorite destination:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
@@ -245,25 +315,52 @@ profileRouter.post('/favoriteDestination', authenticateToken, async (req, res) =
 
 
 
-
 //................................. iv. ROUTE FOR POST(UPDATE) THE Travel Stat - Bucket List .................................//
 profileRouter.post('/bucketList', authenticateToken, async (req, res) => {
-    const { userId } = req.user; // Extract user ID from JWT
-    const { bucketList } = req.body;
 
-    try {
-        // Update the bucket list for the user in the database
-        const result = await query(
-            'UPDATE travel_stats SET bucket_list = $1 WHERE user_id = $2 RETURNING bucket_list;',
-            [bucketList, userId]
+    try 
+    {
+        // First, check if there is an existing entry for the user
+        const existingStats = await query(
+            'SELECT * FROM travel_stats WHERE user_id = $1;',
+            [req.user.userId]
         );
 
-        if (result.rows.length === 0) {
-            return res.status(404).json({ message: 'User stats not found.' });
+        if (existingStats.rows.length === 0) 
+        {
+            console.log("New user");
+
+            // No existing stats, consider inserting default data or returning a specific message
+            // Here, we opt to insert a new record with default values
+            const result = await query(
+                'INSERT INTO travel_stats (user_id, bucket_list) VALUES ($1, $2) RETURNING *;',
+                [req.user.userId, req.body.bucketList]
+            );
+
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
         }
 
-        res.json(result.rows[0]);
-    } catch (error) {
+        else
+        {
+            console.log("Existing user");
+
+            const result = await query(
+                'UPDATE travel_stats SET bucket_list = $1 WHERE user_id = $2 RETURNING *;',
+                [req.body.bucketList, req.user.userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+            );
+    
+            // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
+            if (result.rows.length === 0) {
+                // No rows updated, possibly because the user_id doesn't exist in travel_stats
+                return res.status(404).json({ message: 'User stats not found.' });
+            }
+    
+            res.json(result.rows[0]);   // If the update is successful, return the updated record.
+        }
+        
+    } 
+    
+    catch (error) {
         console.error('Failed to update bucket list:', error);
         res.status(500).json({ message: 'Internal server error' });
     }

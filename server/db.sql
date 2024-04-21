@@ -33,12 +33,11 @@ SELECT * FROM users;
 
 -- travel_stats Table (For Profile)
 CREATE TABLE travel_stats (
-    user_id INT PRIMARY KEY,
+    user_id INT PRIMARY KEY REFERENCES users(user_id) ON DELETE CASCADE,
     countries_visited INT,
     cities_explored INT,
     favorite_destination VARCHAR(255),
-    bucket_list TEXT, -- Assuming this might be a longer list, TEXT is chosen
-    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+    bucket_list TEXT  -- This could be a long list, so TEXT is used
 );
 
 INSERT INTO travel_stats (user_id, countries_visited, cities_explored, favorite_destination, bucket_list)

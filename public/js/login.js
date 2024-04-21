@@ -24,19 +24,25 @@ login_btn.addEventListener('click', function(event) {
 
         .then((response) =>
         {
-            if(response.ok)
-            {
-                return response.json();
-            }
+            return response.json();
         })
 
         .then((response)=>
-        {
-            console.log('Login Successful');
+        {           
 
-            localStorage.setItem('token', response.token);  //Set token in the cache
+            if(response.message == 'Login successful')
+            {
+                localStorage.setItem('token', response.token);  //Set token in the cache
 
-            window.location.href = '/public/profile.html';
+                window.location.href = '/public/profile.html';
+            }
+
+            else
+            {
+                alert(response.message);
+            }
+
+
         })
 
     }

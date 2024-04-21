@@ -8,8 +8,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 ### Get Traveler Stats Details
 GET http://localhost:3001/profile/travelerStats
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzcyMTk1NSwiZXhwIjoxNzEzNzUwNzU1fQ.EimEBXTdMneJ9WUVd5mtXdMdrsxWC0LWcvcxt6McSdE
 
 ### GET User Details (To From Control)
 GET http://localhost:3001/profile/getUserDetails
@@ -26,4 +25,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
   "username":"123",
   "password":"123",
   "bio":"Bio 123"
+}
+
+
+### Update Travel Stats Details (Countries Visited)
+POST http://localhost:3001/profile/countriesVisited
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTcxMzcyNDY3MSwiZXhwIjoxNzEzNzUzNDcxfQ.q18hphTCMkiFCmWUmjpOFdjbxtN-QKvRVhFeaSexUU0
+
+{
+  "countriesVisited":"2"
 }

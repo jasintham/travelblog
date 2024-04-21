@@ -196,6 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Call the function to update the server and UI
         updateCountriesVisited(countriesVisited);
+
+        
+        
     });
 });
 
@@ -216,7 +219,11 @@ function updateCountriesVisited(value) {
     .then(data => {
         // Assuming the server responds with the updated value
         document.getElementById('countriesVisited').textContent = data.countries_visited;
-        $('#editCountriesModal').modal('hide'); // Close the modal on successful update
+
+        // Hide the modal using Bootstrap's JavaScript method
+        const modalElement = document.getElementById('editCountriesModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide(); // Hide the modal
     })
     .catch(error => {
         console.error('Error updating countries visited:', error);
@@ -260,7 +267,11 @@ function updateCitiesExplored(value) {
     .then(data => {
         // Update the UI with the new value and close the modal
         document.getElementById('citiesExplored').textContent = data.cities_explored;
-        $('#editCitiesModal').modal('hide'); // Using jQuery to hide the modal
+
+        // Hide the modal using Bootstrap's JavaScript method
+        const modalElement = document.getElementById('editCitiesModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide(); // Hide the modal
     })
 
     .catch(error => {
@@ -302,7 +313,11 @@ function updateFavoriteDestination(value) {
     .then(data => {
         // Update UI with new value and close the modal
         document.getElementById('favoriteDestination').textContent = data.favorite_destination;
-        $('#editDestinationModal').modal('hide'); // Using jQuery to hide modal
+
+        // Hide the modal using Bootstrap's JavaScript method
+        const modalElement = document.getElementById('editDestinationModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide(); // Hide the modal
     })
     
     .catch(error => {
@@ -344,7 +359,12 @@ function updateBucketList(value) {
     .then(data => {
         // Update the UI with the new bucket list and close the modal
         document.getElementById('bucketList').textContent = data.bucket_list;
-        $('#editBucketListModal').modal('hide'); // Using jQuery to hide the modal
+
+        // Hide the modal using Bootstrap's JavaScript method
+        const modalElement = document.getElementById('editBucketListModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+        modalInstance.hide(); // Hide the modal
+
     })
 
     .catch(error => {

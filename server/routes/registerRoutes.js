@@ -10,11 +10,11 @@ registerRouter.post('/', /*authenticateToken,*/async (req, res) => {
   
   try {
     // Check if user with the provided username or email already exists
-    const result = await query('SELECT * FROM users WHERE username = $1', [req.body.username]);
+    const checkUser = await query('SELECT * FROM users WHERE username = $1', [req.body.username]);
 
-    if (result.rows.length > 0) {
+    if (checkUser.rows.length > 0) {
       // User already exists, send back a response indicating registration failure
-      return res.status(400).json({ error: 'Username or email already registered' });
+      return res.status(400).json({ message: 'User already registered' });
     }
 
     else
