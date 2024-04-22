@@ -1,28 +1,28 @@
 window.onload = async () => {
   try {
-      // 发起获取所有帖子的请求
-      const response = await fetch('http://localhost:3001/allposts/getAllPosts', {
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${localStorage.getItem('token')}`, // 使用本地存储的 JWT token 进行身份验证
-              'Content-Type': 'application/json'
-          }
-      });
-      const posts = await response.json(); // 解析返回的帖子数据
-      renderPosts(posts); // 调用渲染帖子的函数
+    // Send request to fetch all posts
+    const response = await fetch("http://localhost:3001/allposts/getAllPosts", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Use JWT token stored locally for authentication
+        "Content-Type": "application/json",
+      },
+    });
+    const posts = await response.json(); // Parse the returned post data
+    renderPosts(posts); // Call the function to render posts
   } catch (error) {
-      console.error('Error fetching posts:', error);
+    console.error("Error fetching posts:", error);
   }
 };
 
 // Function to render posts to the page
 function renderPosts(posts) {
-  const postsContainer = document.querySelector('.posts-container');
-  postsContainer.innerHTML = ''; // Clear posts container
+  const postsContainer = document.querySelector(".posts-container");
+  postsContainer.innerHTML = ""; // Clear posts container
 
-  posts.forEach(post => {
-      const postElement = createPostElement(post);
-      postsContainer.appendChild(postElement);
+  posts.forEach((post) => {
+    const postElement = createPostElement(post);
+    postsContainer.appendChild(postElement);
   });
 }
 
@@ -32,7 +32,7 @@ function createPostElement(post) {
   const postList = document.createElement("li");
   postList.classList.add("post-list");
   postList.innerHTML = `
-  <img src="${post.cover_image}" class="post-img" alt="Post Image">`
+  <img src="${post.cover_image}" class="post-img" alt="Post Image">`;
 
   // create container for post
   const postContent = document.createElement("div");
@@ -42,7 +42,7 @@ function createPostElement(post) {
   postContent.innerHTML = `
       
       <a href="./post.html" class="post-topic">${post.title}</a>
-      <p class="post-date">Published on ${post.post_date}</p>
+      <p class="post-date"> ${post.post_date}</p>
       <p class="post-text">${post.content.substring(0, 100)}...</p>
   `;
 
@@ -69,7 +69,6 @@ function createPostElement(post) {
         d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
       />
     </svg>
-
     <p class="like-number">${post.comments_count}</p>
   </div>
   <div class="comment">
