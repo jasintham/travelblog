@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         .catch((error) => {
             console.error('Error loading posts:', error);
-            displayError('Failed to load posts.'); // Display a user-friendly error message
+            displayError('Failed to load posts. Please Login'); // Display a user-friendly error message
         });
     }
 
@@ -133,6 +133,33 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchPosts();
 
 });
+
+
+
+//................................. ADD POST Button .................................//
+const add_post_button = document.getElementById('add_post_btn');
+
+add_post_button.addEventListener('click', (event)=>
+{    
+    event.preventDefault();
+
+    if(localStorage.getItem('token'))
+    {
+        window.location.href = './addNewPost.html';
+    }
+    else
+    {
+        alert('You need to login first!')
+    }
+});
+
+
+
+
+
+
+
+
 
 
 //................................. NAV BAR ITEM's RELATED CODES .................................//

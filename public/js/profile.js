@@ -1,3 +1,12 @@
+//To Check Whether User Logged in or Not
+document.addEventListener('DOMContentLoaded', ()=>{
+    if(!localStorage.getItem('token'))
+    {
+        return alert('Please Log in')
+    }
+});
+
+
 //................................. FETCH THE PROFILE HEADERS FROM BACKEND TO THE FRONTEND .................................//
 
 // Define an asynchronous function to fetch user details from the server.

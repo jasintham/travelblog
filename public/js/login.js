@@ -34,7 +34,7 @@ login_btn.addEventListener('click', function(event) {
             {
                 localStorage.setItem('token', response.token);  //Set token in the cache
 
-                window.location.href = '/public/profile.html';
+                window.location.href = '/public/index.html';
             }
 
             else
