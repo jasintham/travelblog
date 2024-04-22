@@ -117,13 +117,20 @@ a {
 
 .blog-icons {
   display: flex;
+  justify-content: space-between;
+}
+
+.icons-left,
+.icons-right{
+  display: flex;
   gap: 6.4rem;
+  color: var(--text-color);
 }
 
 .like,
 .comment {
   display: flex;
-  color: var(--text-color);
+  gap: 0.8rem;
 }
 
 .btn-like,
