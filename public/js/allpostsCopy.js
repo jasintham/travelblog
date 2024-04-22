@@ -42,7 +42,7 @@ function createPostElement(post) {
   postContent.innerHTML = `
       
       <a href="./post.html" class="post-topic">${post.title}</a>
-      <p class="post-date"> ${post.post_date}</p>
+      <p class="post-date"> ${new Date(post.post_date).toLocaleDateString()}</p>
       <p class="post-text">${post.content.substring(0, 100)}...</p>
   `;
 
