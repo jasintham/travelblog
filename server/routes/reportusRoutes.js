@@ -1,11 +1,11 @@
 //Importing Modules
 const express = require('express');
-const contactusRouter = express.Router();
+const reportusRouter = express.Router();
 
 const { query} = require('../helpers/db.js');
 
 //const jwt = require('jsonwbtoken');
-contactusRouter.post('/contactus',async(req,res) => {
+reportusRouter.post('/reportus',async(req,res) => {
     try {
         const sql = "insert into contact_us (name,contact_number,email,comments) values ($1,$2,$3,$4) returning contact_us_id";
         const result = await query(sql,[req.body.fullname,req.body.contactnumber,req.body.email,req.body.message]);
@@ -17,5 +17,5 @@ contactusRouter.post('/contactus',async(req,res) => {
 })
 
 
-module.exports = contactusRouter;
+module.exports = reportusRouter;
     

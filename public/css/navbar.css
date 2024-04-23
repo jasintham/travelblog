@@ -64,3 +64,89 @@
 *, ::after, ::before {
     box-sizing: border-box;
 }
+
+
+/* Drop down menu styles */
+/* Dropdown Styles */
+.navbar .dropdown-menu {
+    background-color: #333; /* Same as navbar for consistency */
+    border: none; /* Removes the default border */
+    border-radius: 5px; /* Rounded corners for dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    margin-top: 5px; /* Small space between the dropdown toggle and the dropdown menu */
+}
+
+/* Dropdown item styling */
+.navbar .dropdown-item {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 20px; /* Slightly larger horizontal padding for better spacing */
+}
+
+/* Dropdown item hover and focus styles */
+.navbar .dropdown-item:hover, .navbar .dropdown-item:focus {
+    color: #cccccc;
+    background-color: #222; /* Darker than the dropdown menu for distinction */
+    text-decoration: none;
+}
+
+/* Active dropdown item styling */
+.navbar .dropdown-item.active, .navbar .dropdown-item:active {
+    color: #94e0ee; /* Light blue to match the active nav link */
+    background-color: #444; /* Slightly darker than the dropdown menu for visibility */
+}
+
+
+
+
+
+/* Additional styles for the navbar search form */
+.navbar .collapse form {
+    margin-top: 0.5rem; /* Provides spacing from the navbar */
+}
+
+.navbar .form-control {
+    border-color: #fff; /* Matches the navbar theme */
+    color: #fff;
+    background-color: transparent;
+}
+
+.navbar .btn-outline-success {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.navbar .form-control:focus {
+    background-color: #333; /* Slightly darker background on focus */
+    color: #fff;
+    border-color: #aaa; /* Lighter border to indicate focus */
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #28a7a1;
+    color: #fff;
+}
+
+/* Placeholder styles */
+.navbar .form-control::placeholder {
+    color: #bbb; /* Lighter text color for placeholder */
+    opacity: 1; /* Full opacity to ensure visibility */
+}
+
+
+
+
+
+
+/* Search Link Grey */
+.navbar .nav-link.search-link {
+    color: #ffffff; /* Greyed out */
+    cursor: not-allowed; /* Change cursor to indicate disabled link */
+    pointer-events: none; /* Disable link interactions */
+    opacity: 0.5; /* Further indicate it's disabled */
+}
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+    color: #ffffff; /* Greyed out */
+}
+

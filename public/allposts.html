@@ -48,17 +48,34 @@
                         <a class="nav-link" href="./profile.html">My Profile</a>
                     </li>                        
                     <li class="nav-item">
-                        <a class="nav-link" href="./contactus.html">Contact Us</a>
+                        <a class="nav-link" href="./reportus.html">Report Us</a>
                     </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="./aboutus.html">About Us</a>
-                  </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="./aboutus.html">About Us</a>
+                            <a class="dropdown-item" href="./contactus.html">Contact Us</a>
+                            <a class="dropdown-item" href="#">Static Page 3</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch">Search</a>
+                    </li>
+                    <div class="collapse" id="navbarSearch">
+                        <form class="d-flex ms-auto">
+                            <input class="form-control me-2" type="search" placeholder="Search a Topic" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                    
                     <li class="nav-item">
                         <a class="nav-link login-link" id="login_nav_item" href="./login.html" style="display: block;">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link login-link" id="logout_nav_item" href="#" style="display: none;">Logout</a>
-                    </li>
+                    </li>                        
                 </ul>
             </div>
         </div>

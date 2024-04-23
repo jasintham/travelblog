@@ -1,7 +1,7 @@
 ### Contact us page req and response check------
 
 ### check a contact us request made by earlier
-POST http://localhost:3001/contactus/contactus
+POST http://localhost:3001/reportus/reportus
 Content-Type: application/json
 
 {
