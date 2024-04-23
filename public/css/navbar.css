@@ -21,7 +21,7 @@
 
 /* Active link styling */
 .navbar-dark .navbar-nav .nav-item.active .nav-link {
-    color: #ffa500;
+    color: #94e0ee;
     background-color: #222;
     border-radius: 5px;
 }

@@ -1,1 +1,141 @@
-/* No Css Needed Yet */
+
+body {  
+  color: var(--text-color);
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+
+/* Post Card Details Styles */
+.post {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(8, 212, 248, 0.3), 0 16px 40px rgba(8, 212, 248, 0.2); /* Enhanced shadow for depth */
+}
+
+.post-img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.post-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.updatedtime {
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.post-text {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+
+
+
+/* Post Image Responsive Styles */
+.post-img {
+  max-width: 100%; /* Ensures image does not exceed the container width */
+  width: auto; /* Adjust width automatically */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Default block display to allow margin auto to work */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+
+
+
+
+
+
+/* ------------- Icon and Action Styles ------------- */
+.blog-icons,
+.icons-left,
+.icons-right {
+  display: flex;
+  justify-content: space-between;
+  gap: 6.4rem;
+}
+
+/* Responsive Settings for Icons */
+.icons-left, .icons-right {
+  gap: 1.6rem; /* Butween a couple gap */
+}
+
+@media (max-width: 992px) {
+  .icons-left, .icons-right {
+    gap: 1.2rem; /* Smaller gap on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .icons-left, .icons-right {
+    gap: 0.8rem; /* Even smaller gap on small screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .icons-left, .icons-right {
+    flex-direction: column; /* Stack icons vertically on extra small screens */
+    gap: 0.5rem; /* Minimal gap for stacked icons */
+  }
+}
+
+/* Adjust overall blog icon container on different screen sizes */
+.blog-icons {
+  flex-wrap: wrap; /* Allow icons to wrap onto the next line on smaller screens */
+  justify-content: space-between; /* Center icons within the container */
+}
+
+/* Additional responsiveness for btn group */
+.btn-like, .btn-comment, .btn-edit, .btn-delete {
+  padding: 0.4rem; /* Reduce padding for smaller screen */
+  margin-right: 0.2rem; /* Adjust margin between buttons */
+}
+
+@media (max-width: 576px) {
+  .btn-like, .btn-comment, .btn-edit, .btn-delete {
+    margin-right: 0; /* Remove margin on very small screens */
+    margin-bottom: 0.2rem; /* Add vertical space when stacked */
+  }
+}
+
+
+.icon-button {
+  background: none; /* Removes any background color */
+  border: none; /* Removes the border */
+  cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+  padding: 5px; /* Adds some padding around the icon for easier clicking */
+  display: inline-flex; /* Uses flexbox for centering the icon */
+  align-items: center; /* Centers the icon vertically */
+  justify-content: center; /* Centers the icon horizontally */
+
+  width: 40px;            /* Set a fixed width */
+  height: 40px;           /* Set a fixed height to match the width for a circle shape */
+}
+
+/* Styles for hover effect to give feedback to the user */
+.icon-button:hover {
+  background-color: rgba(0, 255, 255, 0.1); /* Adds a light background on hover */
+  border-radius: 50%; /* Optional: makes the hover background rounded */
+}
+
+
+/* Styles for Like and Comment Count */
+.count-style {
+  margin-left: 10px; /* Adjusts space to your liking */
+  margin-top: 30px; /* Adjusts space to your liking */
+}
