@@ -44,5 +44,59 @@ allpostsRouter.get("/getAllPosts/", authenticateToken, async (req, res) => {
   }
 });
 
+
+allpostsRouter.post('/updatePost', async (req, res) => 
+{
+  
+  try 
+  {
+      // Assuming you're using some ORM or database query method
+      const result = await query('UPDATE posts SET title = $1, content = $2, cover_image =$3 WHERE post_id = $4 RETURNING *', 
+      [req.body.title, req.body.content, req.body.cover_image, req.body.post_id]);
+
+      if(result.rowCount > 0) 
+      {
+        res.status(200).json(result.rows[0]);
+      } 
+      else 
+      {
+        res.status(404).json({ message: 'Post not found' });
+      }
+  } 
+  
+  catch (error) 
+  {
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+allpostsRouter.delete('/deletePost', async (req, res) => 
+{
+  
+  try 
+  {
+      // Assuming you're using some ORM or database query method
+      const result = await query('DELETE FROM posts WHERE post_id = $1 RETURNING *', 
+      [req.body.post_id]);
+
+      if(result.rowCount > 0) 
+      {
+        res.status(200).json(result.rows[0]);
+      } 
+      else 
+      {
+        res.status(404).json({ message: 'Post not found' });
+      }
+  } 
+  
+  catch (error) 
+  {
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
 // Export the postRouter object
 module.exports = allpostsRouter;

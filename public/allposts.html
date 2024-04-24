@@ -89,6 +89,49 @@
 
   </div>
 
+
+
+
+
+
+    <!-- Edit Post Modal -->
+    <div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="editPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPostModalLabel">Edit Post</h5>
+                    <p id="post-id" hidden>post id</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPostForm">
+                        <div class="mb-3">
+                            <label for="postTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="postTitle">
+                        </div>
+                        <div class="mb-3">
+                            <label for="postContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="postContent" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="postImage" class="form-label">Profile Picture</label>
+                            <img src="" id="postProfilePicture" class="img-thumbnail mb-2" alt="Profile Picture">
+                            <div>
+                                <input type="file" class="form-control" id="newProfilePicture">
+                                <button type="button" class="btn btn-outline-secondary mt-2" onclick="removePicture()">Remove Picture</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="savePostForm">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
     
 
 

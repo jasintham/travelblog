@@ -1,7 +1,26 @@
-#Get a Post Specific Details
-GET http://localhost:3001/allposts/getAllPosts
+###Get a Post Specific Details
+GET http://localhost:3001/allposts/getAllPosts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzczOTcwNCwiZXhwIjoxNzEzNzY4NTA0fQ.8nReSeu5Qrf1_ye3PTA5X4Zsny8tGdiStyOXxpDZW1w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzkzOTg2MiwiZXhwIjoxNzEzOTY4NjYyfQ.G1dJipFTrhH1RYaiCjCmv7Dq8Za9_NQe_mWRyCJvJ18
+
+###Update a Post Specific Details
+POST http://localhost:3001/allposts/updatePost/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzkzOTg2MiwiZXhwIjoxNzEzOTY4NjYyfQ.G1dJipFTrhH1RYaiCjCmv7Dq8Za9_NQe_mWRyCJvJ18
+
+{
+    "title":"New Title",
+    "content":"New Content",
+    "cover_image":"./images/post/post_4.jpg",
+    "post_id":"34"
+}
 
 
+###DELETE a Specific Post
+DELETE http://localhost:3001/allposts/deletePost/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzkzOTg2MiwiZXhwIjoxNzEzOTY4NjYyfQ.G1dJipFTrhH1RYaiCjCmv7Dq8Za9_NQe_mWRyCJvJ18
 
+{
+    "post_id":"34"
+}
