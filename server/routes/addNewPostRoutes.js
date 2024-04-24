@@ -9,7 +9,7 @@ addNewPostRouter.post("/new",authenticateToken,async(req,res)=>
 {
     try {
         const sql = 'INSERT INTO posts (user_id, title, category_name, content, cover_image) VALUES ($1, $2, $3, $4, $5) returning *'
-        const result = await query(sql,[req.body.userId, req.body.title, req.body.catName, req.body.content, req.body.coverpic])
+        const result = await query(sql,[req.user.userId, req.body.title, req.body.catName, req.body.content, req.body.coverpic])
         res.status(200).json(result.rows[0])} 
         catch(error){        
         console.error('Error is ', error);

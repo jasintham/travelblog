@@ -37,7 +37,7 @@
                 </button>
                 <div class="collapse navbar-collapse items-orientation" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto text-white">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
@@ -85,7 +85,7 @@
                     </div>
                     <div class="postDescription my-2">
                         <label for="description">Description</label><br>
-                        <textarea class="form-control custom-textarea" rows="5" placeholder="Description of the image"></textarea>
+                        <textarea class="form-control custom-textarea" id="contentDetails" placeholder="Description of the post"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -95,73 +95,34 @@
                     <div class="my-2">
                         <div class="my-2 bg-color">
                             <div class="d-flex justify-content-between m-auto">
-                                <span class="mt-1"><input type="submit" value="Add Photo"></span>
-                                <span class="mt-1 preview"><input type="submit" value="Preview"></span><br>
+                                <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" onclick="document.getElementById('profilePicUpload').click()">
+                                    <i class="fas fa-camera"></i> Add a Photo
+                                </button>
+                                <!-- Hidden File Input for Profile Picture Upload -->
+                                <input type="file" id="profilePicUpload" class="d-none" accept="image/*">                                
                             </div>
                         </div>
-                        <div class="dropdown my-2 bg-color">
-                            <span><i class="bi bi-eye-fill"></i><h6 style="display: inline;">Status :</h6></span>
-                            <button class="btn border dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Select
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Draft</a></li>
-                                <li><a class="dropdown-item" href="#">Pending Review</a></li>
-                                <li><a class="dropdown-item" href="#">Published</a></li>
-                            </ul>
-                        </div>
                         <div class="my-2 d-flex justify-content-between bg-color-publish">
-                            <a href="#"><span id="trash">Move to Trash</span> <i class="bi bi-trash3"></i></a>
-                            <button type="submit" value="publish" class="btn publish">Publish</button>
+                            <button id="clear_btn"><i class="bi bi-trash3"></i> Clear</button>
+                            <button id="btn_save" value="publish" class="btn publish">Publish</button>
                         </div>
                     </div>
                     <div>
+                        
                         <div class="bg-color">
                             <div class="border-bottom">
                                 <h5>Categories</h5>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="nature">
-                                    <label class="form-check-label" for="nature">Nature</label>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1" value="Nature">
+                                    <label class="form-check-label" for="radio1">Nature</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="adventure" checked>
-                                    <label class="form-check-label" for="adventure">Adventure</label>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2" value="Travel" checked>
+                                    <label class="form-check-label" for="radio2">Travel</label>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="cultural">
-                                    <label class="form-check-label" for="cultural">Cultural</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="sport" checked>
-                                    <label class="form-check-label" for="sport">Sport</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="animal" checked>
-                                    <label class="form-check-label" for="animal">Animal</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="landscape">
-                                    <label class="form-check-label" for="landscape">Landscape</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="wildlife" checked>
-                                    <label class="form-check-label" for="wildlife">Wildlife</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="urban">
-                                    <label class="form-check-label" for="urban">Urban</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="food-drink" checked>
-                                    <label class="form-check-label" for="food-drink">Food and Drink</label>
-                                </div>
-                            </div>
-                            <div class="mt-3">
-                                <h6>Tags</h6>
-                                <input type="text" placeholder="Add Tag">
-                                <button type="submit" value="Add" class="btn add">Add</button>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
