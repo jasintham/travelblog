@@ -8,6 +8,9 @@ app.use(cors());
 // Allow Express to automatically parse JSON payloads in incoming requests,
 // Which means this allows to access request data via 'req.body'.
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+
 
 // Routes setup
 const loginRouter = require("./routes/loginRoutes.js"); // Import login route object
@@ -30,6 +33,15 @@ app.use("/allposts", allpostsRouter); //Use the allpost Route
 
 const contactusRouter = require('./routes/contactusRoutes.js');// Import contact_us route object
 app.use('/contactus',contactusRouter); // use the contact_us route
+
+const addNewPostRouter = require('./routes/addNewPostRoutes.js');// Import addNewPostRouter route object
+app.use('/newPost',addNewPostRouter); // use the caddNewPostRouter route
+
+
+
+
+/* const {addNewPostRouter} = require('./routes/addNewPost.js'); // Import addNewPost route object
+app.use('/new',addNewPostRouter); // use the addNewPost route  */
 
 // Determine the port to listen on from environment variables or use 3001 as a default
 const PORT = 3001;
