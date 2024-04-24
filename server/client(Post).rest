@@ -3,7 +3,7 @@
 ### Get a Post Specific Details
 POST http://localhost:3001/post/getPostData
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzg2MTA5OSwiZXhwIjoxNzEzODg5ODk5fQ.X3M4dWlePtXJ7wZbQeARqdsSlxsCNwrt0JQq8WhWqIk
 
 {
     "postId" : "1"

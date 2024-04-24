@@ -14,6 +14,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
     "cover_image":"./images/post/post_4.jpg",
     "post_id":"34"
 }
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzg1NzIyNiwiZXhwIjoxNzEzODg2MDI2fQ.4KuBR077yliFhI7FWiR2jJLIf8eo8FwNVxsw60MuBQk
 
 
 ###DELETE a Specific Post
