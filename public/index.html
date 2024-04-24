@@ -61,8 +61,8 @@
                         </li>
                         <div class="collapse" id="navbarSearch">
                             <form class="d-flex ms-auto">
-                                <input class="form-control me-2" type="search" placeholder="Search a Topic" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                <input id="searchInput" class="form-control me-2" type="search" placeholder="Search a Topic" aria-label="Search">
+                                <button id="btn_search" class="btn btn-outline-success" type="submit">Search</button>
                             </form>
                         </div>
                         
@@ -153,40 +153,15 @@
         <div class="row pt-5">
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
-                    <li class="nav-item">
-                        <a class="d-flex py-2 mx-3 bg-light rounded-pill active" data-bs-toggle="pill"
-                            href="#tab-2">
-                            <span class="text-dark">All</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex py-2 mx-3 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                            <span class="text-dark">USA</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex mx-3 py-2  bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                            <span class="text-dark">Canada</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                            <span class="text-dark">Europe</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                            <span class="text-dark">China</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-6">
-                            <span class="text-dark">Singapore</span>
-                        </a>
-                    </li>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill active" id="btn_search_all">All</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_tips">Travel Tips & Advice</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_adventure">Adventure Travel</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_solo">Solo Travel</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_family">Family Travel</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_friends">Travel with Friends</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_nature">Wildlife & Nature</button>
+                    <button class="d-flex py-2 mx-3 bg-light rounded-pill" id="btn_search_getaways">Beach & Island Getaways</button>
                 </ul>
-
-
             </div>
 
             <!-- ------------------------- Start  Masonry area (POSTs Showing Part) ------------------------- -->
