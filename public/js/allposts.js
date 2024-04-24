@@ -71,17 +71,108 @@ document.addEventListener('DOMContentLoaded', function()
 
           </div>
         </div>
-      `;
-
-      
+      `; 
       
 
-      postsContainer.appendChild(postCard);    
+      postsContainer.appendChild(postCard);       
 
       
+    });
 
 
+
+
+
+    //................................. SEARCH AN POST by NAV BAR .................................//
+    const btn_search = document.getElementById('btn_search')
+    btn_search.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the form from submitting traditionally
+        const searchQuery = document.getElementById('searchInput').value;
+        console.log(searchQuery);
+
+        fetch(`http://localhost:3001/allposts/search?query=${encodeURIComponent(searchQuery)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+            }
+        })
+        .then(response => response.json())
+        .then(response => 
+        {
+          console.log(response); 
+
+
+          const postsContainer = document.getElementById('posts_container');
+          postsContainer.innerHTML = ''; // Clear any existing content
+
+
+          response.forEach(postElement => {
+            const postCard = document.createElement('div');
+            postCard.className = 'container-fluid post-card'; // Added 'post-card' class for styling
+            postCard.style.maxWidth = '75%';
+            postCard.style.margin = '20px auto';
+            postCard.innerHTML = `
+              <div class="post" style="font-size: 0.9rem; padding: 10px;">          
       
+                <p class="post-title">${postElement.title}</p>
+                <p hidden>${postElement.post_id}</p>
+      
+                <p class="updatedtime mt-0 ms-3">
+                  <small>Posted on ${new Date(postElement.post_date).toLocaleDateString()}</small>
+                </p>
+      
+                <img src="http://localhost:3001/${postElement.cover_image}" class="post-img" alt="Post Image" style="max-width: 600px; width: 100%; height: auto;">
+                
+                <div class="post-body mt-3">
+                  <p class="post-text pt-3">${postElement.content.substring(0, 100)}...</p>     
+                  <hr>
+                  <br>
+                  <div class="blog-icons">
+      
+                    <div class="icons-left">
+                      <!-- Like Button with link to specific post page -->
+                      <button class="btn icon-button" id="btn_like">
+                        <i class="fa-regular fa-heart fa-lg"></i> <p class="like-number count-style">${postElement.likes_count}</p>
+                      </button>
+                      
+                      <!-- Comment Button with link to specific post page -->
+                      <button class="btn icon-button" id="btn_comment">
+                      <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
+                      </button>
+                    </div>
+      
+                    <div class="icons-right">
+                      <!-- Edit Button with link to specific post page -->
+                      <button class="btn icon-button" id="btn_edit" data-post-id="${postElement.post_id}" data-bs-toggle="modal" data-bs-target="#editPostModal">
+                        <i class="fa-regular fa-pen-to-square fa-lg"></i>
+                      </button>
+      
+                      <!-- Delete Button with link to specific post page -->
+                      <button class="btn icon-button" id="btn_delete" data-post-id="${postElement.post_id}">
+                        <i class="fa-solid fa-trash-can fa-lg"></i>
+                      </button>
+                    </div>
+      
+                  </div>
+      
+                  <button class="btn read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
+      
+                </div>
+              </div>
+            `; 
+            
+      
+            postsContainer.appendChild(postCard);       
+      
+            
+          });
+        })
+        .catch(error => {
+            console.error('Error loading search results:', error);
+            const postsContainer = document.getElementById('posts_container');
+            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+        });
     });
 
     

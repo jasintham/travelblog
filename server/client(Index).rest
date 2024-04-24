@@ -9,10 +9,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhd
 ### Search a Title or Content
 GET http://localhost:3001/index/search?query=new
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcxMzk3MDIyOSwiZXhwIjoxNzEzOTk5MDI5fQ.v-l5EVMtHXP7VybPeMGM8IKq6UuYg60E101nJRiIXYE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzk5NTgzNSwiZXhwIjoxNzE0MDI0NjM1fQ.6ORUS-s0gwtNxThAV21jSu_N5Ek9gv1aUuT6GsNvBpc
 
 
 ### Search a Post by Category Name
 GET http://localhost:3001/index/search?query=Wildlife & Nature
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcxMzk3MDIyOSwiZXhwIjoxNzEzOTk5MDI5fQ.v-l5EVMtHXP7VybPeMGM8IKq6UuYg60E101nJRiIXYE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzk5NTgzNSwiZXhwIjoxNzE0MDI0NjM1fQ.6ORUS-s0gwtNxThAV21jSu_N5Ek9gv1aUuT6GsNvBpc

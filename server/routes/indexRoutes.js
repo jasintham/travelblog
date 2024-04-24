@@ -41,7 +41,7 @@ indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
 
 
 // Endpoint to search posts
-indexRouter.get('/search', async (req, res) => 
+indexRouter.get('/search', authenticateToken ,async (req, res) => 
 {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
     if (!searchQuery) {
