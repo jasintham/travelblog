@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const card = document.createElement('div');
         card.className = 'card blog-card mb-3';
         card.innerHTML = `
-            <img src="${post.cover_image}" class="card-img-top" alt="...">
+            <img src="http://localhost:3001/${post.cover_image}" class="card-img-top" alt="...">
             <div class="card-body">
                 <div class="post-content-container">
                     <div class="post-meta post-meta-one">

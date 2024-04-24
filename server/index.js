@@ -12,6 +12,12 @@ app.use(express.urlencoded({extended: false}));
 
 
 
+// Static files
+app.use(express.static('public'));
+
+
+
+
 // Routes setup
 const loginRouter = require("./routes/loginRoutes.js"); // Import login route object
 app.use("/login", loginRouter); // Use the Login Route

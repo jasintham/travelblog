@@ -2,20 +2,58 @@ const express = require('express')
 const {query} = require('../helpers/db.js')
 const authenticateToken = require('../middleware/authenticateToken.js')
 
+const fileUpload = require('express-fileupload');
+const path = require('path');
+
+
 const addNewPostRouter = express.Router()
 
 
-addNewPostRouter.post("/new",authenticateToken,async(req,res)=>
-{
+/// Enable files upload
+addNewPostRouter.use(fileUpload({
+    createParentPath: true,
+    limits: { fileSize: 15 * 1024 * 1024 }, // 5MB limit
+}));
+
+addNewPostRouter.post("/new", authenticateToken, async (req, res) => {
     try {
-        const sql = 'INSERT INTO posts (user_id, title, category_name, content, cover_image) VALUES ($1, $2, $3, $4, $5) returning *'
-        const result = await query(sql,[req.user.userId, req.body.title, req.body.catName, req.body.content, req.body.coverpic])
-        res.status(200).json(result.rows[0])} 
-        catch(error){        
+
+        console.log('Received title:', req.body.title);
+        console.log('Received category name:', req.body.catName);
+        console.log('Received content:', req.body.content);
+        console.log('Received cover image path:', req.body.coverpic);
+
+
+        // Check if the file was uploaded
+        const coverImage = req.files ? req.files.coverpic : null;
+        if (!coverImage) {
+            return res.status(400).send('No cover image uploaded.');
+        }
+
+        
+        // Define the upload path using the 'path' module for better handling
+        const uploadPath = path.join(__dirname, '../public/images', coverImage.name);
+
+        // Use the mv() method to place the file on the server
+        coverImage.mv(uploadPath, async (err) => {
+            if (err) {
+                return res.status(500).send(err);
+            }
+
+            // Store the path relative to the server root or a URL to the image
+            const relativePath = path.join('images', coverImage.name);
+            const sql = 'INSERT INTO posts (user_id, title, category_name, content, cover_image) VALUES ($1, $2, $3, $4, $5) returning *';
+            const result = await query(sql, [req.user.userId, req.body.title, req.body.catName, req.body.content, relativePath]);
+            res.status(200).json(result.rows[0]);
+        });
+    } catch (error) {
         console.error('Error is ', error);
         res.status(500).json({ message: 'Server error' });
     }
-})
+});
+
+
+
 
 addNewPostRouter.delete("/delete/:id", async(req,res)=> {
     const id = Number(req.params.id)

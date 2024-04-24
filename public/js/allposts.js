@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function()
             <small>Posted on ${new Date(postElement.post_date).toLocaleDateString()}</small>
           </p>
 
-          <img src="${postElement.cover_image}" class="post-img" alt="Post Image" style="max-width: 600px; width: 100%; height: auto;">
+          <img src="http://localhost:3001/${postElement.cover_image}" class="post-img" alt="Post Image" style="max-width: 600px; width: 100%; height: auto;">
           
           <div class="post-body mt-3">
             <p class="post-text pt-3">${postElement.content.substring(0, 100)}...</p>     
