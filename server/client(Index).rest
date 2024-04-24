@@ -3,4 +3,4 @@
 ### Get Header Details
 GET http://localhost:3001/index/allPosts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzcwNjk0NCwiZXhwIjoxNzEzNzM1NzQ0fQ.coFCHaJsaYeCP96JNmbkkGS3VJfU2L3eAkZT5I3I0C4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcxMzk3MDIyOSwiZXhwIjoxNzEzOTk5MDI5fQ.v-l5EVMtHXP7VybPeMGM8IKq6UuYg60E101nJRiIXYE

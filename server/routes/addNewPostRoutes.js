@@ -2,6 +2,7 @@ const express = require('express')
 const {query} = require('../helpers/db.js')
 const authenticateToken = require('../middleware/authenticateToken.js')
 
+//These are for image uploading
 const fileUpload = require('express-fileupload');
 const path = require('path');
 
@@ -23,6 +24,9 @@ addNewPostRouter.post("/new", authenticateToken, async (req, res) => {
         console.log('Received content:', req.body.content);
         console.log('Received cover image path:', req.body.coverpic);
 
+        console.log(req.files);  // Debugging to check what files data is coming
+        console.log(req.body);   // Check other fields data
+
 
         // Check if the file was uploaded
         const coverImage = req.files ? req.files.coverpic : null;
@@ -35,7 +39,8 @@ addNewPostRouter.post("/new", authenticateToken, async (req, res) => {
         const uploadPath = path.join(__dirname, '../public/images', coverImage.name);
 
         // Use the mv() method to place the file on the server
-        coverImage.mv(uploadPath, async (err) => {
+        coverImage.mv(uploadPath, async (err) => 
+        {
             if (err) {
                 return res.status(500).send(err);
             }

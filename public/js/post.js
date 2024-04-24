@@ -51,6 +51,9 @@ fetch('http://localhost:3001/post/getPostData' ,{
     const coverImageElement = document.getElementById('post_image');
     coverImageElement.src = `http://localhost:3001/${response.cover_image}`;
     
+    //Set Profile Pic To Post Author
+    const author_pic = document.getElementById('author_image');
+    author_pic.src = `http://localhost:3001/${response.profile_picture}`;
 
 
 

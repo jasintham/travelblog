@@ -385,8 +385,78 @@ function updateBucketList(value) {
 
 
 
+//................................. PROFILE PIC UPLOADING .................................//
+const save_pic_btn = document.getElementById('pic_save_btn')
+save_pic_btn.addEventListener('click', function(event) 
+{
+    event.preventDefault();
+    console.log('Save Pic Button Clicked');
+
+    const formData = new FormData();
+
+    const fileInput = document.getElementById('formFile');
+    if (fileInput.files.length > 0) 
+    {
+        formData.append('profilePic', fileInput.files[0]);
+    } 
+    else 
+    {
+        alert('Please select a file to upload');
+        return;
+    }
+    
+    
+    
+    fetch('http://localhost:3001/profile/newpic', {
+        method: 'POST',
+        headers: 
+        {
+            'Authorization': `Bearer ${localStorage.getItem('token')}` 
+        },
+        body: formData
+    })
+    .then(response => 
+    {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(response => {
+        console.log('Profile image updated successfully:', response);
+        //Set Post Cover Pic
+        const coverImageElement = document.getElementById('profilePicture');
+        coverImageElement.src = `http://localhost:3001/${response.profile_picture}`;
+    })
+    .catch(error => console.error('Error uploading image:', error));
+});
 
 
+
+
+// ------------------------------------ To Get Profile Pic ------------------------------------
+fetch('http://localhost:3001/profile/getUserDetails' ,{
+    method: 'GET',
+    headers : {
+        'Content-Type':'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+})
+
+.then((response) =>
+{
+    return response.json();
+})
+
+.then((response)=>
+{   
+
+    console.log(response);
+    //Set Post Cover Pic
+    const coverImageElement = document.getElementById('profilePicture');
+    coverImageElement.src = `http://localhost:3001/${response.propic}`;   
+
+})
 
 
 

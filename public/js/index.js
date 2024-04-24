@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="card-body">
                 <div class="post-content-container">
                     <div class="post-meta post-meta-one">
+                    <img src="http://localhost:3001/${post.profile_picture}" id="author_image" alt="Avatar" class="main-post-avatar rounded-circle"/>
                         <span class="post-meta-author">by <a href="#" class="bypostauthor">${post.username} </a></span>
                         <br>
                         <a href="#" class="post-meta-date">${post.post_date.substring(0, 10)}</a>

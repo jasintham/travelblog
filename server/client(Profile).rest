@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 ### GET User Details (To From Control)
 GET http://localhost:3001/profile/getUserDetails
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzk2NjI5MSwiZXhwIjoxNzEzOTk1MDkxfQ.2uJPochQTJuM0NdPzJELHHTRi_5f_MyewvzXX8tfurw
 
 
 ### Update User Details (From From Control)
@@ -35,4 +35,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhd
 
 {
   "countriesVisited":"2"
+}
+
+
+
+### Update Profile Pic
+POST http://localhost:3001/profile/uploadProfilePic
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzk2NjI5MSwiZXhwIjoxNzEzOTk1MDkxfQ.2uJPochQTJuM0NdPzJELHHTRi_5f_MyewvzXX8tfurw
+
+{
+  "profilePic":"2"
 }

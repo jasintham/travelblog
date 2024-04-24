@@ -1,9 +1,15 @@
 // Importing necessary modules.
 const express = require('express');
-const profileRouter = express.Router();   // Initializing a router object.
-
 const { query } = require('../helpers/db.js'); 
 const authenticateToken = require('../middleware/authenticateToken.js');    //Middleware to Verify Token
+
+//These are for image uploading
+const fileUpload = require('express-fileupload');
+const path = require('path');
+
+
+const profileRouter = express.Router();   // Initializing a router object.
+
 
 //................................. ROUTE FOR USER PROFILE SECTION .................................//
 
@@ -94,7 +100,8 @@ profileRouter.get('/getUserDetails', authenticateToken, async (req, res) =>
             res.status(200).json(
                 {
                     username: resultQuery.rows[0].username,
-                    bio: resultQuery.rows[0].bio
+                    bio: resultQuery.rows[0].bio,
+                    propic: resultQuery.rows[0].profile_picture
                 });
         }
         
@@ -371,17 +378,51 @@ profileRouter.post('/bucketList', authenticateToken, async (req, res) => {
 
 
 
+//................................. ROUTE FOR UPLOADING PROFILE PIC .................................//
 
-//................................. ROUTE FOR RECENT REVIEW SECTION .................................//
-/*
-.
-.
-.
-.
-.
-.
+/// Enable files upload
+profileRouter.use(fileUpload({
+    createParentPath: true,
+    limits: { fileSize: 15 * 1024 * 1024 }, // 5MB limit
+}));
 
-*/
+
+profileRouter.post('/newpic', authenticateToken, async (req, res) => {
+    console.log(req.files);  // Debugging to check what files data is coming
+    console.log(req.body);   // Check other fields data
+    
+    
+    // Check if the file was uploaded
+    const profilePic = req.files ? req.files.profilePic : null;
+    if (!profilePic) {
+        return res.status(400).send('No profilePic image uploaded.');
+    }
+
+    const uploadPath = path.join(__dirname, '../public/pro-images/', `${req.user.userId}-${profilePic.name}`);
+
+    profilePic.mv(uploadPath, async (err) => 
+    {
+        if (err) {
+            console.error('Error saving file:', err);
+            return res.status(500).send(err);
+        }
+
+        const imagePath = `pro-images/${req.user.userId}-${profilePic.name}`;
+        const sql = 'UPDATE users SET profile_picture = $1 WHERE user_id = $2 returning *';
+        const result = await query(sql, [imagePath, req.user.userId]);
+
+        if (result.rows.length > 0) 
+        {
+            res.status(200).json(result.rows[0]);
+            console.log(result.rows[0])
+        } 
+        else 
+        {
+            res.status(404).json({ message: 'User not found.' });
+        }
+    });
+});
+
 
 
 

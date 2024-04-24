@@ -96,13 +96,13 @@
         <div class="profile-header-container text-center">
             <!-- For profile picture and image icon -->
             <div class="profile-image-container d-inline-block" >
-                <img src="../assets/img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg" id="profilePicture" alt="Profile Picture" class="profile-header-img mb-2">
+                <img src="./images/postpage/avatar.jpg" id="profilePicture" alt="Profile Picture" class="profile-header-img mb-2">
                 <!-- Upload Profile Picture Button with FontAwesome Icon -->
-                <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" onclick="document.getElementById('profilePicUpload').click()">
-                    <i class="fas fa-camera"></i> <!-- FontAwesome Camera Icon -->
+                <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" id="pic_save_btn">
+                    <i class="fas fa-camera"></i> Upload
                 </button>
                 <!-- Hidden File Input for Profile Picture Upload -->
-                <input type="file" id="profilePicUpload" class="d-none" accept="image/*">
+                <input class="form-control" type="file" id="formFile">                         
             </div>
             <!-- For profil picture and image icon -->
             <h2 id="userName">RyanWick1</h2>
