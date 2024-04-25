@@ -14,7 +14,7 @@ postRouter.post('/getPostData', authenticateToken, async (req, res) => {
         p.post_id,
         p.title,
         p.content,
-        p.post_date,
+        to_char(p.post_date, 'FMDay, FMDDth FMMonth YYYY at FMHH12:MIPM') as formatted_post_date,
         p.cover_image,
         u.username,
         u.profile_picture
@@ -52,7 +52,7 @@ postRouter.post('/getCommentData', authenticateToken, async (req, res) => {
             c.user_id,
             u.username,
             u.profile_picture,
-            c.comment_date,
+            to_char(c.comment_date, 'FMDay, FMDDth FMMonth YYYY at FMHH12:MIPM') as formatted_comment_date,
             c.comment_text
         FROM
             comments c
@@ -63,9 +63,15 @@ postRouter.post('/getCommentData', authenticateToken, async (req, res) => {
         ORDER BY
             c.comment_date DESC;`, [req.body.postId]);
 
-        if (resultQuery.rows.length > 0) {
-            res.json(resultQuery.rows);
-        } else {
+        if (resultQuery.rows.length > 0) 
+        {
+            res.json({
+                result: resultQuery.rows,
+                user: req.user.userId
+            });
+        } 
+        else 
+        {
             res.status(404).json({ message: 'Comment not found' });
         }
     } catch (error) {
@@ -113,6 +119,116 @@ postRouter.post('/makeComment', authenticateToken, async(req,res) =>
         });
 });
 
+
+// POST route to update a comment
+postRouter.post('/updateComment/:commentId', authenticateToken, async (req, res) => 
+{
+    try 
+    {
+        const result = await query(
+            'UPDATE comments SET comment_text = $1 WHERE comment_id = $2 AND user_id = $3 RETURNING *',
+            [req.body.commentText, req.params.commentId, req.user.userId]
+        );
+
+        if (result.rows.length > 0) 
+        {
+            res.status(200).json(result.rows[0]);
+        } 
+        else 
+        {
+            res.status(404).json({ message: 'Comment not found or you do not have permission to edit it' });
+        }
+    } 
+    catch (error) 
+    {
+        console.error('Error updating comment:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+// POST route to delete a comment
+postRouter.delete('/deleteComment/:commentId', authenticateToken, async (req, res) => 
+{
+
+    try {
+        // Perform the deletion only if the comment belongs to the user
+        const result = await query('DELETE FROM comments WHERE comment_id = $1 AND user_id = $2 RETURNING *', 
+        [req.params.commentId, req.user.userId]);
+
+        if (result.rows.length > 0) 
+        {
+            res.status(200).json({ message: 'Comment deleted successfully' });
+        } 
+        else 
+        {
+            // If no rows are affected, the comment did not exist or did not belong to the user
+            res.status(404).json({ message: 'Comment not found or not owned by user' });
+        }
+    } 
+    catch (error) 
+    {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
+// POST route to check a like
+// GET route to check if a post is liked by the current user
+postRouter.get('/checkLike/:postId', authenticateToken, async (req, res) => {
+    try {
+
+        const result = await query('SELECT * FROM likes WHERE user_id = $1 AND post_id = $2', [req.user.userId, req.params.postId]);
+        if (result.rowCount > 0) {
+            res.json({ alreadyLiked: true });
+        } else {
+            res.json({ alreadyLiked: false });
+        }
+    } catch (error) {
+        console.error('Error checking like status:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// POST route to make a like
+postRouter.post('/makeLike', authenticateToken, async (req, res) => 
+{
+    try 
+    {
+        // Check if the user has already liked the post
+        const checkLike = await query('SELECT * FROM likes WHERE user_id = $1 AND post_id = $2', 
+        [req.user.userId, req.body.postId]);
+
+        if (checkLike.rowCount > 0) 
+        {
+            return res.json(
+                { 
+                    alreadyLiked: true, 
+                    message: 'You have already liked this post.' 
+                });
+        }
+
+
+        else if(checkLike.rowCount === 0)
+        {
+            // Insert the like if not already liked
+            const insertLike = await query('INSERT INTO likes (user_id, post_id) VALUES ($1, $2) RETURNING *', [req.user.userId, req.body.postId]);
+            res.status(200).json(
+                { 
+                    alreadyLiked: false, 
+                    message: 'Like added successfully.' 
+                });
+        }
+        
+    } 
+    catch (error) 
+    {
+        console.error('Error making like:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 

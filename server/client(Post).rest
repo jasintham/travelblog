@@ -3,7 +3,7 @@
 ### Get a Post Specific Details
 POST http://localhost:3001/post/getPostData
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzg2MTA5OSwiZXhwIjoxNzEzODg5ODk5fQ.X3M4dWlePtXJ7wZbQeARqdsSlxsCNwrt0JQq8WhWqIk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTcxNDAxMDg3NSwiZXhwIjoxNzE0MDM5Njc1fQ.sGK_rNmXZYt_Ik53BSvmnr9JwmYSoQStM_oDmBE9CSY
 
 {
     "postId" : "1"
@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 ### Get a Post Specific Comment Details
 POST http://localhost:3001/post/getCommentData
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzUzMjQ4NSwiZXhwIjoxNzEzNTYxMjg1fQ.nYuorPYD67riSaj6G3KMvUaA8IDClrus-nmG_pq-kSo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzk5NTgzNSwiZXhwIjoxNzE0MDI0NjM1fQ.6ORUS-s0gwtNxThAV21jSu_N5Ek9gv1aUuT6GsNvBpc
 
 {
     "postId" : "1"
@@ -38,4 +38,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 {
     "postId" : "1",
     "comment" : "This is the comment 3"
+}
+
+
+
+### Update/Edit a comment to the database
+POST http://localhost:3001/post/updateComment/18
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDAwNjg1MiwiZXhwIjoxNzE0MDM1NjUyfQ.fsKCOQwZklkcqZkCc3NbRHZszt7Ow0y47jAHOVkaVWY
+
+{
+    "commentText" : "This is the comment 3"
 }
