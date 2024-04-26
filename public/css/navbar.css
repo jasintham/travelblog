@@ -150,3 +150,12 @@
     color: #ffffff; /* Greyed out */
 }
 
+
+
+.btn {
+    margin: 10px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}

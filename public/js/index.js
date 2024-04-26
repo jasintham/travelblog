@@ -183,14 +183,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link active')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -221,14 +221,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link active')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -256,14 +256,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link active')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -292,14 +292,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link active')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -328,14 +328,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link active')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -364,14 +364,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response); 
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link active')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -400,14 +400,14 @@ document.addEventListener('DOMContentLoaded', function()
             console.log(response);
             displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-            btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
-            btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
+            btn_search_all.setAttribute('class', 'nav-link')
+            btn_search_tips.setAttribute('class', 'nav-link')
+            btn_search_adventure.setAttribute('class', 'nav-link')
+            btn_search_solo.setAttribute('class', 'nav-link')
+            btn_search_family.setAttribute('class', 'nav-link')
+            btn_search_friends.setAttribute('class', 'nav-link')
+            btn_search_nature.setAttribute('class', 'nav-link')
+            btn_search_getaways.setAttribute('class', 'nav-link')
         })
         .catch(error => {
             console.error('Error loading search results:', error);
@@ -435,14 +435,14 @@ document.addEventListener('DOMContentLoaded', function()
              console.log(response); 
              displayPosts(response); // Call the displayPosts function to render the search results
  
-             btn_search_all.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_tips.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_adventure.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_solo.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_family.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_friends.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_nature.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill')
-             btn_search_getaways.setAttribute('class', 'd-flex py-2 mx-3 bg-light rounded-pill active')
+             btn_search_all.setAttribute('class', 'nav-link')
+             btn_search_tips.setAttribute('class', 'nav-link')
+             btn_search_adventure.setAttribute('class', 'nav-link')
+             btn_search_solo.setAttribute('class', 'nav-link')
+             btn_search_family.setAttribute('class', 'nav-link')
+             btn_search_friends.setAttribute('class', 'nav-link')
+             btn_search_nature.setAttribute('class', 'nav-link')
+             btn_search_getaways.setAttribute('class', 'nav-link active')
          })
          .catch(error => {
              console.error('Error loading search results:', error);
