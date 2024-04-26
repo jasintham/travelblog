@@ -24,8 +24,8 @@ addNewPostRouter.post("/new", authenticateToken, async (req, res) => {
         console.log('Received content:', req.body.content);
         console.log('Received cover image path:', req.body.coverpic);
 
-        console.log(req.files);  // Debugging to check what files data is coming
-        console.log(req.body);   // Check other fields data
+        //console.log(req.files);  // Debugging to check what files data is coming
+        //console.log(req.body);   // Check other fields data
 
 
         // Check if the file was uploaded

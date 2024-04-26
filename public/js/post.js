@@ -91,21 +91,13 @@ function loadAllComments()
             const comment_section = document.getElementById('post_comments');
             const commentDiv = document.createElement('div');
             commentDiv.innerHTML = `
-            <div class="card-body p-4">                
-                <div class="d-flex flex-start">
-                <img class="rounded-circle shadow-1-strong me-3"
-                    src="http://localhost:3001/${element.profile_picture}" alt="avatar" width="60" height="60" />
-                    <div>
-                        <h6 class="fw-bold mb-1">${element.username}</h6>
-
-                        <div class="d-flex align-items-center mb-3">
-                            <p class="mb-0">
-                                ${element.formatted_comment_date}
-                            </p>
-                        </div>
-
-                        <p class="mb-0">${element.comment_text}</p>
-                    </div>
+            <div class="d-flex align-items-center mb-3">
+                <img class="comment-avatar me-3"
+                    src="http://localhost:3001/${element.profile_picture}" alt="avatar"/>
+                <div>
+                    <h6 class="fw-bold mb-1">${element.username}</h6>
+                    <p class="text-muted">${element.formatted_comment_date}</p>
+                    <p>${element.comment_text}</p>
                 </div>
             </div>`;
 
