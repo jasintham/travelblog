@@ -22,7 +22,7 @@ saveBtn.addEventListener('click', (event)=>
     const fileInput = document.getElementById('formFile');
     if (fileInput.files.length > 0) 
     {
-        formData.append('coverpic', fileInput.files[0]);
+        formData.append('cover_image', fileInput.files[0]);
     } 
     else 
     {

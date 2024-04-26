@@ -22,7 +22,7 @@
     <link href="./css/navbar.css" rel="stylesheet">
 
     <!-- Font Awesome for a wide range of icons and css file for profile -->
-    <script src="https://kit.fontawesome.com/81702bbfaa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/public/images/fontawesome-free-6.5.2-web/css/all.css">
     
 </head>
 <body>
@@ -31,7 +31,7 @@
   <section class="custom-width">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
+            <a class="navbar-brand" href="./index.html"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -118,7 +118,7 @@
                             <img src="" id="postProfilePicture" class="img-thumbnail mb-2" alt="Profile Picture">
                             <div>
                                 <input type="file" class="form-control" id="newProfilePicture">
-                                <button type="button" class="btn btn-outline-secondary mt-2" onclick="removePicture()">Remove Picture</button>
+                                <button type="button" id="btn_remove_modalpic" class="btn btn-outline-secondary mt-2">Remove Picture</button>
                             </div>
                         </div>
                     </form>

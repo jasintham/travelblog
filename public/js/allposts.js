@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function()
         <div class="post" style="font-size: 0.9rem; padding: 10px;">          
 
           <p class="post-title">${postElement.title}</p>
-          <p hidden>${postElement.post_id}</p>
+          <p id="post_id" hidden>${postElement.post_id}</p>
 
           <p class="updatedtime mt-0 ms-3">
-            <small>Posted on ${new Date(postElement.post_date).toLocaleDateString()}</small>
+            <small>${postElement.formatted_post_date}</small>
           </p>
 
           <img src="http://localhost:3001/${postElement.cover_image}" class="post-img" alt="Post Image" style="max-width: 600px; width: 100%; height: auto;">
@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', function()
                 </button>
               </div>
 
+
+              <button class="btn btn-primary read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
+
+
               <div class="icons-right">
                 <!-- Edit Button with link to specific post page -->
                 <button class="btn icon-button" id="btn_edit" data-post-id="${postElement.post_id}" data-bs-toggle="modal" data-bs-target="#editPostModal">
@@ -65,9 +69,7 @@ document.addEventListener('DOMContentLoaded', function()
                 </button>
               </div>
 
-            </div>
-
-            <button class="btn read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
+            </div>            
 
           </div>
         </div>
@@ -233,7 +235,10 @@ document.addEventListener('DOMContentLoaded',()=>
             if (post) {
               document.getElementById('postTitle').value = post.title;
               document.getElementById('postContent').value = post.content;
-              document.getElementById('postProfilePicture').src = post.cover_image;
+              
+              const post_img = document.getElementById('postProfilePicture');
+              post_img.setAttribute('src', `http://localhost:3001/${post.cover_image}`)
+
 
               document.getElementById('post-id').textContent = post.post_id;
               // Trigger the modal display if it's not automatically shown by Bootstrap
@@ -288,9 +293,7 @@ document.addEventListener('DOMContentLoaded',()=>
             });
           }); 
         
-    })  
-
-        
+    })       
         
         
 
@@ -300,57 +303,74 @@ document.addEventListener('DOMContentLoaded',()=>
 
 
 // When user click on save button of each post modal, the new values save in the database
-document.addEventListener('DOMContentLoaded', ()=>
-{
-  document.getElementById('savePostForm').addEventListener('click', function(event) 
-  {
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('savePostForm').addEventListener('click', function(event) {
     event.preventDefault();
-    console.log('Save Post Button Clicked')
+    console.log('Save Post Button Clicked');
 
+    const formData = new FormData();
+    formData.append('title', document.getElementById('postTitle').value);
+    formData.append('content', document.getElementById('postContent').value);
+    const fileInput = document.getElementById('newProfilePicture');
+    if (fileInput.files.length > 0) {
+      formData.append('cover_image', fileInput.files[0]);
+    }
+    formData.append('post_id', document.getElementById('post-id').textContent);
 
-    const title = document.getElementById('postTitle').value;
-    const content = document.getElementById('postContent').value;
-    const cover_image = document.getElementById('postProfilePicture').src;
-    const post_id = document.getElementById('post-id').textContent;
-
-    console.log(post_id)
-
-    fetch('http://localhost:3001/allposts/updatePost/', {
+    fetch('http://localhost:3001/allposts/update', { // Ensure the endpoint is correct
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}` 
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify({
-            title: title,            
-            content: content,
-            cover_image: cover_image,
-            post_id: post_id
-        })
+        body: formData
     })
-    .then(response => 
-    {
-      if (!response.ok) 
-      {
-          throw new Error('Network response was not ok');
-      }
-      return response.json();
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Refresh or update UI as needed
     })
-    .then(data => 
-    {
-      console.log('Success:', data);
-      // Hide the modal using Bootstrap's JavaScript method
-      const modalElement = document.getElementById('editPostModal');
-      const modalInstance = bootstrap.Modal.getInstance(modalElement);
-      modalInstance.hide(); // Hide the modal
-
-      location.reload(); // Optional: reload page to see updated post
-    })
-    .catch((error) => {
+    .catch(error => {
         console.error('Error:', error);
     });
   });
-
 });
 
-//
+
+
+document.getElementById('btn_remove_modalpic').addEventListener('click', function() {
+  const postId = document.getElementById('post-id').textContent; // Get the post ID
+  if (!postId) {
+      console.error('Post ID is missing.');
+      return;
+  }
+
+  if (confirm('Are you sure you want to remove the picture?')) {
+      fetch(`http://localhost:3001/allposts/removePicture/${postId}`, {
+          method: 'DELETE',
+          headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to remove the picture.');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log('Picture removed successfully:', data);
+          document.getElementById('postProfilePicture').src = ''; // Clear the image src
+          alert('Picture removed successfully.');
+      })
+      .catch(error => {
+          console.error('Error removing picture:', error);
+          alert('Failed to remove the picture.');
+      });
+  }
+});
+
+
+
+
+
+

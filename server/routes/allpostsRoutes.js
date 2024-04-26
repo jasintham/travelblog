@@ -6,6 +6,13 @@ const { query } = require("../helpers/db.js"); //Import database helper
 
 const authenticateToken = require("../middleware/authenticateToken.js"); // Import authentication middleware
 
+
+const fileUpload = require('express-fileupload');
+const path = require('path');
+
+
+
+
 // Route to get all posts
 allpostsRouter.get("/getAllPosts/", authenticateToken, async (req, res) => {
   try {
@@ -16,7 +23,7 @@ allpostsRouter.get("/getAllPosts/", authenticateToken, async (req, res) => {
     p.post_id,
     p.title,
     p.content,
-    p.post_date,
+    to_char(p.post_date, 'FMDay, FMDDth FMMonth YYYY at FMHH12:MIPM') as formatted_post_date,
     p.cover_image,
     u.username,
     u.profile_picture,
@@ -45,30 +52,39 @@ allpostsRouter.get("/getAllPosts/", authenticateToken, async (req, res) => {
 });
 
 
-allpostsRouter.post('/updatePost', async (req, res) => 
-{
-  
-  try 
-  {
-      // Assuming you're using some ORM or database query method
-      const result = await query('UPDATE posts SET title = $1, content = $2, cover_image =$3 WHERE post_id = $4 RETURNING *', 
-      [req.body.title, req.body.content, req.body.cover_image, req.body.post_id]);
 
-      if(result.rowCount > 0) 
-      {
-        res.status(200).json(result.rows[0]);
-      } 
-      else 
-      {
-        res.status(404).json({ message: 'Post not found' });
-      }
-  } 
-  
-  catch (error) 
-  {
-      res.status(500).json({ message: 'Internal server error' });
+
+// To update the post details
+allpostsRouter.use(fileUpload({
+  createParentPath: true,
+  limits: { fileSize: 15 * 1024 * 1024 }, // 15MB limit
+}));
+
+allpostsRouter.post("/update", authenticateToken, async (req, res) => {
+  try {
+    const { title, content, post_id } = req.body;
+    let imagePath = req.body.cover_image; // Default path if no new file is uploaded
+
+    if (req.files && req.files.cover_image) {
+        const coverImage = req.files.cover_image;
+        const uploadPath = path.join(__dirname, '../public/images', `${post_id}-${coverImage.name}`);
+        await coverImage.mv(uploadPath);
+        imagePath = `images/${post_id}-${coverImage.name}`;
+    }
+
+    const result = await query('UPDATE posts SET title = $1, content = $2, cover_image = $3 WHERE post_id = $4 RETURNING *', [title, content, imagePath, post_id]);
+
+    if (result.rowCount > 0) {
+        res.json(result.rows[0]);
+    } else {
+        res.status(404).send('Post not found');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Server error');
   }
 });
+
 
 
 allpostsRouter.delete('/deletePost', async (req, res) => 
@@ -95,6 +111,28 @@ allpostsRouter.delete('/deletePost', async (req, res) =>
       res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+
+// Endpoint to remove a picture
+allpostsRouter.delete('/removePicture/:postId', authenticateToken, async (req, res) => {
+  const { postId } = req.params;
+
+  try {
+      const sql = 'UPDATE posts SET cover_image = NULL WHERE post_id = $1 RETURNING *';
+      const result = await query(sql, [postId]);
+
+      if (result.rowCount > 0) {
+          res.status(200).json({ message: 'Picture removed successfully.', post: result.rows[0] });
+      } else {
+          res.status(404).json({ message: 'Post not found.' });
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
 
 
 

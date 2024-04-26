@@ -139,3 +139,26 @@ body {
   margin-left: 10px; /* Adjusts space to your liking */
   margin-top: 30px; /* Adjusts space to your liking */
 }
+
+
+
+
+
+/* ------------------------------------------ */
+/* Button styles */
+
+/* Styles for primary buttons and outline primary buttons. */
+.btn-primary {
+    
+  border-radius: 20px; /* Rounds the borders of buttons. */    
+  font-weight: 700; /* Makes the button text bold. */
+  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);    
+  border: none;
+}
+
+/* Hover styles for primary buttons and outline primary buttons. */
+.btn-primary:hover {
+  /* Changes the direction of the gradient on hover for a visual effect. */
+  background-image: linear-gradient(120deg, #004cb8 0%, #008c99 100%);
+  color: rgb(164, 252, 169);
+}

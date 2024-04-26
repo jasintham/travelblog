@@ -1,7 +1,7 @@
 ###Get a Post Specific Details
 GET http://localhost:3001/allposts/getAllPosts/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzkzOTg2MiwiZXhwIjoxNzEzOTY4NjYyfQ.G1dJipFTrhH1RYaiCjCmv7Dq8Za9_NQe_mWRyCJvJ18
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDA4MTg5MSwiZXhwIjoxNzE0MTEwNjkxfQ.EN_vSKibaY_ZpldwfLYBM7zSupTmmk0V5_hBA2hDSDY
 
 ###Update a Post Specific Details
 POST http://localhost:3001/allposts/updatePost/

@@ -6,7 +6,7 @@ const { query } = require('../helpers/db.js');
 const authenticateToken = require('../middleware/authenticateToken.js');    //Middleware to Verify Token
 
 
-// Endpoint to get posts
+// Get All Posts
 indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
     try 
     {
@@ -40,7 +40,7 @@ indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
 });
 
 
-// Endpoint to search posts
+// Search a Title or Content
 indexRouter.get('/search', authenticateToken ,async (req, res) => 
 {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
@@ -64,7 +64,7 @@ indexRouter.get('/search', authenticateToken ,async (req, res) =>
 });
 
 
-// Endpoint to search posts by category name
+// Search a Post by Category Name
 indexRouter.get('/searchCategory', async (req, res) => 
 {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
@@ -85,6 +85,40 @@ indexRouter.get('/searchCategory', async (req, res) =>
     {
         console.error('Search Error:', error);
         res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+
+//Get Most Popular Posts
+indexRouter.get('/popularPosts', authenticateToken, async (req, res) => {
+    try 
+    {
+        const result = await query(`
+            SELECT 
+                p.post_id, 
+                p.title, 
+                p.cover_image,
+                COUNT(DISTINCT l.like_id) AS likes_count,
+                COUNT(DISTINCT c.comment_id) AS comments_count
+            FROM 
+                posts p
+            LEFT JOIN 
+                likes l ON p.post_id = l.post_id
+            LEFT JOIN 
+                comments c ON p.post_id = c.post_id
+            GROUP BY 
+                p.post_id
+            ORDER BY 
+                likes_count DESC, comments_count DESC
+            LIMIT 4;
+        `);
+        res.json(result.rows);
+    } 
+    
+    catch (error) 
+    {
+        console.error('Error fetching popular posts:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 });
 

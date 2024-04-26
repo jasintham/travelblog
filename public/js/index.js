@@ -482,6 +482,39 @@ add_post_button.addEventListener('click', (event)=>
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('http://localhost:3001/index/popularPosts', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const postsContainer = document.getElementById('popularPostsContainer');
+        postsContainer.innerHTML = data.map(post => `
+            <div class="single-recent d-flex pb-3 mb-3">
+                <div class="recent-image ratio-container">
+                <div class="ratio" style="width: 75px; height: 75px; overflow: hidden; border-radius: 50%; position: relative;">
+                    <img src="http://localhost:3001/${post.cover_image}" alt="Null" class="main-post-avatar rounded-circle" style="width: 100%; height: 100%; object-fit: cover; object-position: center;"/>
+                </div>
+                </div>
+                <div class="recent-content">
+                    <a href="#">
+                        <h6>${post.title}</h6>
+                    </a>
+                    <p>Likes: ${post.likes_count} | Comments: ${post.comments_count}</p>
+                </div>
+            </div>
+        `).join('');
+    })
+    .catch(error => {
+        console.error('Error loading popular posts:', error);
+        const postsContainer = document.getElementById('popularPostsContainer');
+        postsContainer.innerHTML = `<p>Error loading posts: ${error.message}</p>`;
+    });
+});
 
 
 

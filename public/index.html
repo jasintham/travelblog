@@ -10,10 +10,11 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+
     <link href="./css/custom.css" rel="stylesheet">
 
     <!-- Font Awesome for a wide range of icons and css file for icons -->
-    <script src="https://kit.fontawesome.com/81702bbfaa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/public/images/fontawesome-free-6.5.2-web/css/all.css">
 
     <!-- Path to nav bar css and it related css importing URL --> 
     <link href="./css/navbar.css" rel="stylesheet">
@@ -27,7 +28,7 @@
     <section class="custom-width">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
+                <a class="navbar-brand" href="./index.html"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -79,7 +80,7 @@
     </section>
     
 
-    <!-- Slder -->
+    <!-- Carousel -->
     <section>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -151,6 +152,7 @@
     <!-- Content Start -->
     <section class="container">
         <div class="row pt-5">
+            <!-- ------------------------- Catogoty Area ------------------------- -->
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
                     <button class="d-flex py-2 mx-3 bg-light rounded-pill active" id="btn_search_all">All</button>
@@ -176,102 +178,12 @@
             </div>
             <!-- ------------------------- End  Masonry area (POSTs Showing Part) ------------------------- -->
 
-            
-
-
             <!-- Start Side bar -->
             <div class="col-md-3 side-bar">
-                <h3 class="widget-title pb-3">Latest posts</h3>
-                <div class="recent-posts ">
-
-                    <div class="single-recent d-flex pb-3 mb-3">
-                        <div class="recent-image ratio-container">
-                            <div class="ratio" style="background-image: url(./images/post/post_1.jpg); width: 75px; height: 75px;">
-
-                            </div>
-                        </div>
-                        <div class="recent-content">
-                            <span class="post-meta-categories">
-                                <a href="#">People</a>, <a href="#">Travel</a> 
-                            </span>
-                            <a href="#">
-                                <h6>Trip that you’ll never ever forget</h6>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="single-recent d-flex pb-3 mb-3">
-                        <div class="recent-image ratio-container">
-                            <div class="ratio" style="background-image: url(./images/post/post_2.jpg); width: 75px; height: 75px;">
-
-                            </div>
-                        </div>
-                        <div class="recent-content">
-                            <span class="post-meta-categories">
-                                <a href="#">People</a>, <a href="#">Travel</a> 
-                            </span>
-                            <a href="#">
-                                <h6>Must-have gear</h6>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="single-recent d-flex pb-3 mb-3">
-                        <div class="recent-image ratio-container">
-                            <div class="ratio" style="background-image: url(./images/post/post_3.jpg); width: 75px; height: 75px;">
-
-                            </div>
-                        </div>
-                        <div class="recent-content">
-                            <span class="post-meta-categories">
-                                <a href="#">People</a>, <a href="#">Travel</a> 
-                            </span>
-                            <a href="#">
-                                <h6>Movielike photo shoot – B&W</h6>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="single-recent d-flex pb-3 mb-3">
-                        <div class="recent-image ratio-container">
-                            <div class="ratio" style="background-image: url(./images/post/post_4.jpg); width: 75px; height: 75px;">
-
-                            </div>
-                        </div>
-                        <div class="recent-content">
-                            <span class="post-meta-categories">
-                                <a href="#">People</a>, <a href="#">Travel</a> 
-                            </span>
-                            <a href="#">
-                                <h6>Trip that you’ll never ever forget</h6>
-                            </a>
-                        </div>
-                    </div>
+                <h3 class="widget-title pb-3">Hot Topics <i class="fa-solid fa-fire fa-bounce" style="color: #fe9d16;"></i> </h3> 
+                <div class="recent-posts " id="popularPostsContainer">  
                    
-                </div>
-                <!-- Start Popular tags -->
-
-                <div class="recent-posts-tag d-flex flex-wrap ">
-                    <a href="#"><span>BIKE</span></a>
-                    <a href="#"><span>BUILDING</span></a>
-                    <a href="#"><span>CAMERA</span></a>
-                    <a href="#"><span href="#">CRAFT</span></a>
-                    <a href="#"><span href="#">GEAR</span></a>
-                    <a href="#"><span href="#">GIRL</span></a>
-                    <a href="#"><span href="#">JUMPING</span></a>
-                    <a href="#"><span href="#">LAKE</span></a>
-                    <a href="#" ><span href="#">LIFESTYLE</span></a>
-                    <a href="#" ><span href="#">MASTER</span></a>
-                    <a href="#" ><span href="#">MOCK-UP</span></a>
-                    <a href="#" ><span href="#">MOTIVATION</span></a>
-                    <a href="#"><span href="#">MOUNTAIN</span></a>
-                    <a href="#" ><span href="#">MOVIE</span></a>
-                    <a href="#"><span href="#">NODEBOOK</span></a>
-                    <a href="#" ><span href="#">OFFICE</span></a>
-                    <a href="#"><span href="#">STROMTROOPER</span></a>
-                    <a href="#" ><span href="#">SWIMMING</span></a>
-                </div>
-                <!-- End Popular tag -->
+                </div>  
             </div>
 
             <!-- End Side bar -->
@@ -280,144 +192,7 @@
     </section>
     <!-- End Content -->
 
-    <!-- Start footer -->
-    <section class="container-fluid mt-5 g-0">
-        <footer class="text-white text-center text-lg-start bg-dark">
-            <!-- Grid container -->
-            <div class="container p-4">
-                <!--Grid row-->
-                <div class="row mt-4">
-                    <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4"> <a class="navbar-brand" href="#"><img src="./images/logo-large.png" alt="Logo" width="200px"></a></h5>
-                        <p>
-                            Pellentesque placerat tincidunt urna, vitae feugiat magna vestibulum non. Mauris ut sagittis
-                            est.
-                            Pellentesque a felis est. Duis in risus metus. Cras felis ante, sodales eget pretium eu,
-                            hendrerit at
-                            metus. Maecenas aliquam dictum sapien id ornare.
-                        </p>
-
-                        <div class="mt-4 footer-social">
-                            <a href=""><i class="bi bi-facebook fa-10x"></i></a>
-                            <a href=""><i class="bi bi-twitter fa-10x"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <div class="side-bar">
-                            <h3 class="widget-title pb-3">Recent posts</h3>
-                            <div class="recent-posts ">
-            
-                                <div class="single-recent d-flex pb-3">
-                                    <div class="recent-image ratio-container">
-                                        <div class="ratio" style="background-image: url(./images/post/post_1.jpg); width: 75px; height: 75px;">
-            
-                                        </div>
-                                    </div>
-                                    <div class="recent-content">
-                                        <span class="post-meta-categories">
-                                            <a href="#">People</a>, <a href="#">Travel</a> 
-                                        </span>
-                                        <a href="#">
-                                            <h6>Trip that you’ll never ever forget</h6>
-                                        </a>
-                                    </div>
-                                </div>
-            
-                                <div class="single-recent d-flex pb-3">
-                                    <div class="recent-image ratio-container">
-                                        <div class="ratio" style="background-image: url(./images/post/post_2.jpg); width: 75px; height: 75px;">
-            
-                                        </div>
-                                    </div>
-                                    <div class="recent-content">
-                                        <span class="post-meta-categories">
-                                            <a href="#">People</a>, <a href="#">Travel</a> 
-                                        </span>
-                                        <a href="#">
-                                            <h6>Must-have gear</h6>
-                                        </a>
-                                    </div>
-                                </div>
-            
-                                <div class="single-recent d-flex pb-3">
-                                    <div class="recent-image ratio-container">
-                                        <div class="ratio" style="background-image: url(./images/post/post_3.jpg); width: 75px; height: 75px;">
-            
-                                        </div>
-                                    </div>
-                                    <div class="recent-content">
-                                        <span class="post-meta-categories">
-                                            <a href="#">People</a>, <a href="#">Travel</a> 
-                                        </span>
-                                        <a href="#">
-                                            <h6>Movielike photo shoot – B&W</h6>
-                                        </a>
-                                    </div>
-                                </div>
-            
-                                <div class="single-recent d-flex pb-3">
-                                    <div class="recent-image ratio-container">
-                                        <div class="ratio" style="background-image: url(./images/post/post_4.jpg); width: 75px; height: 75px;">
-            
-                                        </div>
-                                    </div>
-                                    <div class="recent-content">
-                                        <span class="post-meta-categories">
-                                            <a href="#">People</a>, <a href="#">Travel</a> 
-                                        </span>
-                                        <a href="#">
-                                            <h6>Trip that you’ll never ever forget</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase mb-4">Tags</h5>
-                        <div class="recent-posts-tag footer-tag-content d-flex flex-wrap ">
-                            <a href="#"><span>BIKE</span></a>
-                            <a href="#"><span>BUILDING</span></a>
-                            <a href="#"><span>CAMERA</span></a>
-                            <a href="#"><span href="#">CRAFT</span></a>
-                            <a href="#"><span href="#">GEAR</span></a>
-                            <a href="#"><span href="#">GIRL</span></a>
-                            <a href="#"><span href="#">JUMPING</span></a>
-                            <a href="#"><span href="#">LAKE</span></a>
-                            <a href="#" ><span href="#">LIFESTYLE</span></a>
-                            <a href="#" ><span href="#">MASTER</span></a>
-                            <a href="#" ><span href="#">MOCK-UP</span></a>
-                            <a href="#" ><span href="#">MOTIVATION</span></a>
-                            <a href="#"><span href="#">MOUNTAIN</span></a>
-                            <a href="#" ><span href="#">MOVIE</span></a>
-                            <a href="#"><span href="#">NODEBOOK</span></a>
-                            <a href="#" ><span href="#">OFFICE</span></a>
-                            <a href="#"><span href="#">STROMTROOPER</span></a>
-                            <a href="#" ><span href="#">SWIMMING</span></a>
-        
-                            <a href="#">
-                                <span href="#">TROOPER</span>
-                            </a>          
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                &copy; 2024 Copyright: <a class="text-white" href="#">travelblog.com</a>
-            </div>
-            <!-- Copyright -->
-        </footer>
-    </section>
-
-    <!-- End footer -->
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 
