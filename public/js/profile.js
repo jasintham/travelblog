@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for form submission
     document.getElementById('editCountriesForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
+
         const countriesVisited = document.getElementById('countriesVisitedInput').value; // Get the new value
 
         // Call the function to update the server and UI
@@ -391,6 +392,17 @@ function updateBucketList(value) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //................................. PROFILE PIC UPLOADING .................................//
 // Profile Pic Uploading
 document.getElementById('profilePicUpload').addEventListener('change', function() {
@@ -458,6 +470,63 @@ fetch('http://localhost:3001/profile/getUserDetails' ,{
 
 
 
+//................................. MODAL OPENING RELATED CODES .................................//
+
+// JavaScript to handle modal opening
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for modal opening
+    document.getElementById('edit_btn_countriesVisited').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the button
+
+        // Get the current value of "Countries Visited"
+        const currentCountriesVisited = document.getElementById('countriesVisited').textContent;
+
+        // Set the value of the input field in the modal
+        document.getElementById('countriesVisitedInput').value = currentCountriesVisited;
+    });
+});
+
+// JavaScript to handle modal opening
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for modal opening
+    document.getElementById('edit_btn_citiesExplored').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the button
+
+        // Get the current value of "Countries Visited"
+        const currentCountriesVisited = document.getElementById('citiesExplored').textContent;
+
+        // Set the value of the input field in the modal
+        document.getElementById('citiesExploredInput').value = currentCountriesVisited;
+    });
+});
+
+// JavaScript to handle modal opening
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for modal opening
+    document.getElementById('edit_btn_favoriteDestination').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the button
+
+        // Get the current value of "Countries Visited"
+        const currentCountriesVisited = document.getElementById('favoriteDestination').textContent;
+
+        // Set the value of the input field in the modal
+        document.getElementById('favoriteDestinationInput').value = currentCountriesVisited;
+    });
+});
+
+// JavaScript to handle modal opening
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listener for modal opening
+    document.getElementById('edit_btn_bucketList').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the button
+
+        // Get the current value of "Countries Visited"
+        const currentCountriesVisited = document.getElementById('bucketList').textContent;
+
+        // Set the value of the input field in the modal
+        document.getElementById('bucketListInput').value = currentCountriesVisited;
+    });
+});
 
 
 

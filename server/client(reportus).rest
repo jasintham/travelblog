@@ -3,9 +3,8 @@
 ### check a contact us request made by earlier
 POST http://localhost:3001/reportus/report
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDMxNjY2NiwiZXhwIjoxNzE0MzQ1NDY2fQ.im_A-yVvq-qcw8mlaJmJOcm5_v_s6D-98YuBlOtIiXY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDMzMTM0MSwiZXhwIjoxNzE0MzYwMTQxfQ.wVCS8bQ0xolDuIOg5FHH50Rfe6yl2s87Hb1Qlp6cdXo
 
 {
-    "postId":"123",
     "reportReason":"xxxxx"
 }

@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function()
 
               <div class="icons-left">
                 <!-- Like Button with link to specific post page -->
-                <button class="btn icon-button" id="btn_like">
+                <button class="btn icon-button" id="btn_like" disabled>
                   <i class="fa-regular fa-heart fa-lg"></i> <p class="like-number count-style">${postElement.likes_count}</p>
                 </button>
                 
                 <!-- Comment Button with link to specific post page -->
-                <button class="btn icon-button" id="btn_comment">
+                <button class="btn icon-button" id="btn_comment" disabled>
                 <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
                 </button>                
               </div>

@@ -17,25 +17,37 @@ document.getElementById('btn_save').addEventListener('click', function(event)
 
     console.log(reqPayLoad);
 
-    // Implement fetch to send data to backend
-    fetch('http://localhost:3001/reportus/report', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token') // Assuming JWT for auth
-        },
-        body: reqPayLoad
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Report submitted:', data);
-        alert('Thank you for your report.');
-        window.location.href = 'index.html'; // or any other redirection
-    })
-    .catch(error => {
-        console.error('Error submitting report:', error);
-        alert('There was a problem submitting your report.');
-    });
+    if(!localStorage.getItem('token'))
+    {
+        alert('You have to create an account to be able to report!')
+    }
+
+    else
+    {
+        // Implement fetch to send data to backend
+        fetch('http://localhost:3001/reportus/report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token') // Assuming JWT for auth
+            },
+            body: reqPayLoad
+        })
+        .then(response => response.json())
+        .then(response => 
+        {
+            console.log('Report submitted:', response);
+            alert('Thank you for your report.');
+            //window.location.href = 'index.html'; // or any other redirection
+        })
+        .catch(error => 
+        {
+            console.error('Error submitting report:', error);
+            alert('There was a problem submitting your report.');
+        });
+    }
+
+    
 });
 
 

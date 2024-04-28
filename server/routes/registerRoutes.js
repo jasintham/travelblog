@@ -5,10 +5,15 @@ const registerRouter = express.Router();
 const {query } = require('../helpers/db.js');
 //const authenticateToken = require('../middleware/authenticateToken.js'); // Middleware to verify token
 
+
+const bcrypt = require('bcrypt');
+
+
 // Route handler for user registration
 registerRouter.post('/', /*authenticateToken,*/async (req, res) => {
   
-  try {
+  try 
+  {
     // Check if user with the provided username or email already exists
     const checkUser = await query('SELECT * FROM users WHERE username = $1', [req.body.username]);
 
@@ -19,8 +24,11 @@ registerRouter.post('/', /*authenticateToken,*/async (req, res) => {
 
     else
     {
+      // Hash the password before storing it in the database
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
       // User doesn't exist, proceed with registration
-      const resultQuery = await query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.body.username, req.body.password]);
+      const resultQuery = await query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.body.username, hashedPassword]);
 
       // Send back a response indicating successful registration
       res.status(201).json({ message: 'Registration successful' });

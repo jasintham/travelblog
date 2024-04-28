@@ -8,6 +8,8 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 
 
+const bcrypt = require('bcrypt');
+
 const profileRouter = express.Router();   // Initializing a router object.
 
 
@@ -16,7 +18,8 @@ const profileRouter = express.Router();   // Initializing a router object.
 // Define a GET route for '/headerdetails' to fetch user details. This route is protected by the authenticateToken middleware.
 profileRouter.get('/headerDetails', authenticateToken, async (req, res) => 
 {
-    try {
+    try 
+    {
         const result = await query('SELECT * FROM users WHERE user_id = $1', [req.user.userId]);    //This userID comes from token's user object
         
         if (result.rows.length > 0)     
@@ -123,9 +126,11 @@ profileRouter.post('/saveNewUserDetails', authenticateToken, async (req, res) =>
 
     try 
     {
+        // Hash the password before storing it in the database
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const result = await query(
             'UPDATE users SET username = $1, password = $2, bio = $3 WHERE user_id = $4 RETURNING username, bio;', // Not returning the password
-            [req.body.username, req.body.password, req.body.bio, req.user.userId]
+            [req.body.username, hashedPassword, req.body.bio, req.user.userId]
         );
 
         if (result.rows.length === 0) 

@@ -6,11 +6,8 @@ Content-Type: application/json
 
 {
   "username": "123",
-  "password": "1"
+  "password": "123"
 }
 
 
 
-
-
-//D:\project\travelblog\public\js\register.js

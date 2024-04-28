@@ -83,17 +83,25 @@
  
     
     <!--Form Area-->
-    <div class="report-section container">
-        <h1>Report Post</h1>
-        <form id="reportForm" class="report-form">
-            <input type="hidden" id="postId" name="postId">
-            <div class="mb-3">
-                <label for="reportDetails" class="form-label">Description</label>
-                <textarea class="form-control" id="reportDetails" placeholder="Description of the Report" rows="5"></textarea>
+    <div class="row" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div class="col-xl-2 image-container" style="display: flex; flex-direction: column; justify-content: flex-end;">
+            <img src="/public/images/megaphone pic.png" alt="">
+        </div>
+        <div class="col-xl-10" style="display: flex; flex-direction: column; justify-content: center; align-items: stretch;">
+            <div class="report-section " >
+                <h1>Report Post</h1>
+                <form id="reportForm" class="report-form">
+                    <input type="hidden" id="postId" name="postId">
+                    <div class="mb-3">
+                        <label for="reportDetails" class="form-label">Description</label>
+                        <textarea class="form-control" id="reportDetails" placeholder="Description of the Report" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btn_save">Submit Report</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary" id="btn_save">Submit Report</button>
-        </form>
+        </div>
     </div>
+   
     
     
     

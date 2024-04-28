@@ -15,11 +15,25 @@ reportusRouter.post('/report',authenticateToken,async(req,res) =>
         console.log(req.body.reportReason)
         console.log(req.user.userId)
 
-        // SQL to insert report into the database
-        const result = await query(`INSERT INTO reports (post_id, user_id, report_reason) VALUES ($1, $2, $3)`, 
-        [req.body.postId, req.user.userId, req.body.reportReason])
-            
-        res.status(200).json({ message: 'Report submitted successfully' });
+        if (req.body.postId == null) 
+        {
+            // SQL to insert report into the database
+            const result = await query(`INSERT INTO reports (user_id,report_reason) VALUES ($1, $2)`, 
+            [req.user.userId,req.body.reportReason])
+                
+            res.status(200).json({ message: 'Report submitted successfully' });
+
+        }
+        else
+        {
+            // SQL to insert report into the database
+            const result = await query(`INSERT INTO reports (post_id, user_id, report_reason) VALUES ($1, $2, $3)`, 
+            [req.body.postId, req.user.userId, req.body.reportReason])
+                
+            res.status(201).json({ message: 'Report submitted successfully' });
+        }
+
+        
 
     }
 
