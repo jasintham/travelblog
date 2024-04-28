@@ -438,7 +438,15 @@ a{
 }
 
 /* Category Buttons */
+
+.category-buttons li:hover{
+    background-color: #47c9e5 !important
+}
+.category-buttons li a{
+    color: #555;
+}
 .category-buttons .nav-link {
+    
     background-color: #f8f9fa;
     color: #555;
     margin: 5px;
@@ -447,9 +455,8 @@ a{
     transition: all 0.3s ease;
 }
 
-.category-buttons .nav-link:hover, .category-buttons .nav-link.active {
+.category-buttons .nav-link:hover, .category-buttons .nav-link.active, .category-buttons .active a {
     color: white;
-    background-color: #007bff;
 }
 
 .category-area {

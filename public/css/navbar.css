@@ -10,6 +10,12 @@
     z-index: 999;
     background-color: #212529!important;
     padding: 10px;
+    border-radius: 20px;
+}
+#searchInput{
+    height: 40px;
+    margin-top: 11px;
+    margin-left: 10px;
 }
 
 /* Ensure navbar inherits font family and sets background explicitly */

@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn_search.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the form from submitting traditionally
         const searchQuery = document.getElementById('searchInput').value;
+        const postsContainer = document.getElementById('post_container');
 
         fetch(`http://localhost:3001/index/search?query=${encodeURIComponent(searchQuery)}`, {
             method: 'GET',
@@ -133,7 +134,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(response => response.json())
             .then(response => {
-                console.log(response);
+                console.log(postsContainer)
+                postsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
                 displayPosts(response); // Call the displayPosts function to render the search results
             })
             .catch(error => {
@@ -144,7 +147,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    
+    filterPost = this.querySelectorAll('.category-buttons li');
+    filterPost.forEach((item) =>{
+       // console.table(item.getAttribute('data-key'))
+        item.addEventListener("click", categoriesPost);
+    })
 
+
+    function categoriesPost(){
+        console.table(this.getAttribute('data-key'));
+    }
 
     //................................. 1. SEARCH AN POST by CATEGORY "All" .................................//
     const btn_search_all = document.getElementById('btn_search_all')
@@ -436,16 +449,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-
-
-
-
-
-
-
-
-
-
 //................................. ADD POST Button .................................//
 const add_post_button = document.getElementById('add_post_btn');
 
@@ -498,42 +501,3 @@ document.addEventListener('DOMContentLoaded', function () {
 function redirectToPost(postId) {
     window.location.href = `post.html?postId=${postId}`;
 }
-
-
-
-
-
-//................................. NAV BAR ITEM's RELATED CODES .................................//
-
-
-function isLogin() {
-    if (localStorage.getItem('user')) {
-        const logiUserElement = document.querySelectorAll(".sesion-active");
-        logiUserElement.forEach((userItem) => {
-            userItem.style.display = 'block';
-        });
-        document.querySelector(".btn-login").style.display = 'none';
-        
-        return true
-    } else {
-        const logiUserElement = document.querySelectorAll(".sesion-inactive");
-        logiUserElement.forEach((userItem) => {
-            //userItem.style.display = 'none';
-        });
-        return false
-    }
-}
-
-//Login Nav Item Related Code
-addEventListener('DOMContentLoaded', () => {
-    isLogin()
-});
-
-
-//Logout related code
-const logoutLink = document.getElementById('logout_nav_item');
-
-logoutLink.addEventListener('click', () => {
-    localStorage.clear();
-    window.location.href = 'index.html'
-});

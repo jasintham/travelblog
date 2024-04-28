@@ -15,7 +15,8 @@
 
     <!-- Font Awesome for a wide range of icons and css file for profile -->
     <link rel="stylesheet" href="/public/images/fontawesome-free-6.5.2-web/css/all.css">
-    <link rel="stylesheet" href="./css/profile.css"> <!-- Path to profile custom CSS -->   
+    <link rel="stylesheet" href="./css/profile.css"> <!-- Path to profile custom CSS -->
+    <link href="./css/custom.css" rel="stylesheet">   
 
     <!-- Path to nav bar css and it related css importing URL --> 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -31,7 +32,7 @@
     <!-- Navigation -->
     <section class="custom-width">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
+            <div class="container" style="position: relative;">
                 <a class="navbar-brand" href="./index.html"><img src="./images/logo-large.png" alt="Logo" width="200px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,19 +40,27 @@
                 </button>
                 <div class="collapse navbar-collapse items-orientation" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto text-white">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="./index.html">Home</a>
                         </li>
-                        <li class="nav-item">
+
+                        <li class="nav-item sesion-active">
                             <a class="nav-link" href="./allposts.html">My posts</a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item sesion-active">
                             <a class="nav-link" href="./profile.html">My Profile</a>
-                        </li>                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="./reportus.html">Report Us</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contactus.html">Contact Us</a>
+                        </li>  
+                 
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="./reportus.html">Report Us</a>
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 More
                             </a>
@@ -60,24 +69,26 @@
                                 <a class="dropdown-item" href="./contactus.html">Contact Us</a>
                                 <a class="dropdown-item" href="#">Static Page 3</a>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link search-link disabled" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch">Search</a>
+                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch"><i class="bi bi-search"></i></a>
                         </li>
-                        <div class="collapse" id="navbarSearch">
-                            <form class="d-flex ms-auto">
-                                <input class="form-control me-2" type="search" placeholder="Search a Topic" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                        </div>
                         
-                        <li class="nav-item">
-                            <a class="nav-link login-link" id="login_nav_item" href="./login.html" style="display: block;">Login</a>
+                        
+                        <li class="nav-item sesion-inactive btn-login">
+                            <a class="nav-link login-link" href="./login.html">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link login-link" id="logout_nav_item" href="#" style="display: none;">Logout</a>
+                        <li class="nav-item  sesion-active">
+                            <a class="nav-link login-link" id="logout_nav_item" href="#">Logout</a>
                         </li>                        
                     </ul>
+                </div>
+
+                <div class="collapse" id="navbarSearch">
+                    <form class="d-flex ms-auto">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button id="btn_search" class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
         </nav>
@@ -253,9 +264,19 @@
             </div>
         </div>
     </div>
+</div>
 
-
-
+    <!-- Start footer -->
+    <section class="container-fluid g-0" style="background-color: rgba(0, 0, 0, 0.8);">
+        <!-- Copyright -->   
+        <div class="container" >
+            <div class="row py-4 text-white text-center">
+                <div class="col-sm-12">Copyright &copy; 2024. All rights reserved.</div>
+            </div>
+        </div>
+    <!-- Copyright -->
+    </section>
+    <!-- End footer -->
 
 
 <!-- Scripts -->
@@ -266,6 +287,7 @@
         crossorigin="anonymous"></script>
 
 <script src="./js/profile.js" type="module"></script>
+<script src="./js/nav.js"></script>
 
 
 </body>

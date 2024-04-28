@@ -44,12 +44,18 @@
                         </li>
                         <li class="nav-item sesion-active">
                             <a class="nav-link" href="./profile.html">My Profile</a>
-                        </li>   
-                 
-                        <li class="nav-item">
-                            <a class="nav-link" href="./reportus.html">Report Us</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./aboutus.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contactus.html">Contact Us</a>
+                        </li>  
+                 
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="./reportus.html">Report Us</a>
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 More
                             </a>
@@ -58,9 +64,9 @@
                                 <a class="dropdown-item" href="./contactus.html">Contact Us</a>
                                 <a class="dropdown-item" href="#">Static Page 3</a>
                             </div>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch">Search</a>
+                            <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch"><i class="bi bi-search"></i></a>
                         </li>
                         
                         
@@ -75,7 +81,7 @@
 
                 <div class="collapse" id="navbarSearch">
                     <form class="d-flex ms-auto">
-                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search a Topic" aria-label="Search">
+                        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button id="btn_search" class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -107,14 +113,12 @@
                     <img src="./images/slider/slider2.jpg" class="d-block w-100" alt="Second Slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="./images/slider/slider3.png" class="d-block w-100" alt="Third Slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>
             </div>
@@ -153,14 +157,14 @@
             <!-- ------------------------- Catogoty Area ------------------------- -->
             <div class="category-area text-center">
                 <ul class="nav nav-pills justify-content-center category-buttons">
-                    <button class="nav-link active" id="btn_search_all">All</button>
-                    <button class="nav-link" id="btn_search_tips">Travel Tips & Advice</button>
-                    <button class="nav-link" id="btn_search_adventure">Adventure Travel</button>
-                    <button class="nav-link" id="btn_search_solo">Solo Travel</button>
-                    <button class="nav-link" id="btn_search_family">Family Travel</button>
-                    <button class="nav-link" id="btn_search_friends">Travel with Friends</button>
-                    <button class="nav-link" id="btn_search_nature">Wildlife & Nature</button>
-                    <button class="nav-link" id="btn_search_getaways">Beach & Island Getaways</button>
+                    <li class="nav-link active" id="btn_search_all" data-key="all"><a href="">All</a></li>
+                    <li class="nav-link" id="btn_search_tips" data-key="tips"><a href="">Travel Tips & Advice</a></li>
+                    <li class="nav-link" id="btn_search_adventure" data-key="adventure"><a href="">Adventure Travel</a></li>
+                    <li class="nav-link" id="btn_search_solo" data-key="solo"><a href="">Solo Travel</a></li>
+                    <li class="nav-link" id="btn_search_family" data-key="family"><a href="">Family Travel</a></li>
+                    <li class="nav-link" id="btn_search_friends" data-key="friends"><a href="">Travel with Friends</a></li>
+                    <li class="nav-link" id="btn_search_nature" data-key="nature"><a href="">Wildlife & Nature</a></li>
+                    <li class="nav-link" id="btn_search_getaways" data-key="getaways"><a href=""></a>Beach & Island Getaways</li>
                 </ul>
             </div>
 
@@ -191,24 +195,20 @@
     <!-- End Content -->
 
 <!-- Start footer -->
-
 <section class="container-fluid g-0" style="background-color: rgba(0, 0, 0, 0.8);">
-     <!-- Copyright -->
-        
+     <!-- Copyright -->   
      <div class="container" >
-        <div class="row py-4 text-white">
-            <div class="col-sm-6">Copyright &copy; 2024. All rights reserved.</div>
+        <div class="row py-4 text-white text-center">
+            <div class="col-sm-12">Copyright &copy; 2024. All rights reserved.</div>
             
         </div>
     </div>
-    
-    
     <!-- Copyright -->
 </section>
-
 <!-- End footer -->
 
     <script src="./js/index.js"></script>
+    <script src="./js/nav.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
