@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function()
                 <!-- Comment Button with link to specific post page -->
                 <button class="btn icon-button" id="btn_comment">
                 <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
-                </button>
+                </button>                
               </div>
 
 

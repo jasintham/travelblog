@@ -67,10 +67,28 @@ img {
   border: none;
   color: #007bff;
 }
+.icon-button3 {
+  background: none;
+  border: none;
+  color: #007bff;  
+}
+.btn-group {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Ensure the button group takes full width */
+}
 
-.icon-button1:hover, .icon-button2:hover {
+.ml-auto {
+  margin-left: auto; /* This will push the div to the right */
+}
+.icon-button1:hover, .icon-button2:hover .icon-button3:hover{
   color: #0056b3;
 }
+
+.icon-button3:hover{
+  color: #b30000;
+}
+
 
 /* Sidebar and Card Styles */
 .card {

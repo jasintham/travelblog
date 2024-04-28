@@ -15,7 +15,7 @@
     <!-- Font Awesome for a wide range of icons and css file for profile -->
     <link rel="stylesheet" href="/public/images/fontawesome-free-6.5.2-web/css/all.css">
 
-    <link rel="stylesheet" href="./css/custom.css"> <!-- Path to profile custom CSS -->   
+    <link rel="stylesheet" href="./css/addnewpost.css"> <!-- Path to profile custom CSS -->   
 
     <!-- Path to nav bar css and it related css importing URL --> 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -78,84 +78,76 @@
 
     <div class="container addPost py-3">
         <form action="">
-            <div class="row px-2">
-                <div class="image-content col-md-6 col-sm-12">
-                    <div class="mb-3 postTitle my-2">
-                        <label for="title">Add New Post</label><br>
-                        <input type="text" id="titleName" name="titleName" placeholder="Title" class="w-100">
+            <div class="row gx-5">
+                <!-- Left column for Post Title and Description -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="titleName" class="form-label">Add New Post</label>
+                        <input type="text" id="titleName" name="titleName" placeholder="Title" class="form-control">
                     </div>
-                    <div class="postDescription my-2">
-                        <label for="description">Description</label><br>
-                        <textarea class="form-control custom-textarea" id="contentDetails" placeholder="Description of the post"></textarea>
+                    <div class="mb-3">
+                        <label for="contentDetails" class="form-label">Description</label>
+                        <textarea class="form-control" id="contentDetails" placeholder="Description of the post" rows="5"></textarea>
                     </div>
                 </div>
+                
+                <!-- Right column for Categories and Photo Upload -->
                 <div class="col-md-6">
-                    <div class="border-bottom my-2">
-                        <h5>Publish</h5>
-                    </div>
-                    <div class="my-2">
-                        <div class="my-2 bg-color">
-                            <div class="d-flex justify-content-between m-auto">
-                                <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" onclick="document.getElementById('profilePicUpload').click()">
-                                    <i class="fas fa-camera"></i> Add a Photo
-                                </button>
-                                <!-- Hidden File Input for Profile Picture Upload -->
-                                <input type="file" id="profilePicUpload" class="d-none" accept="image/*">                                
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Add a Photo</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-
-
+                    <div class="category-section mb-3">
+                        <h5 class="mb-2">Choose a Category</h5>
+                        <!-- Dynamically generate category inputs -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1" value="Travel Tips & Advice">
+                            <label class="form-check-label" for="radio1">Travel Tips & Advice</label>
                         </div>
-                        <div class="my-2 d-flex justify-content-between bg-color-publish">
-                            <button id="clear_btn"><i class="bi bi-trash3"></i> Clear</button>
-                            <button id="btn_save" value="publish" class="btn publish">Publish</button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2" value="Adventure Travel">
+                            <label class="form-check-label" for="radio2">Adventure Travel</label>
                         </div>
-                    </div>
-                    <div>
-                        
-                        <div class="bg-color">
-                            <div class="border-bottom">
-                                <h5>Categories</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio1" value="Travel Tips & Advice">
-                                    <label class="form-check-label" for="radio1">Travel Tips & Advice</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio2" value="Adventure Travel">
-                                    <label class="form-check-label" for="radio2">Adventure Travel</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio3" value="Solo Travel">
-                                    <label class="form-check-label" for="radio1">Solo Travel</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio4" value="Family Travel">
-                                    <label class="form-check-label" for="radio2">Family Travel</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio5" value="Travel with Friends">
-                                    <label class="form-check-label" for="radio1">Travel with Friends</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio6" value="Wildlife & Nature">
-                                    <label class="form-check-label" for="radio2">Wildlife & Nature</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio6" value="Beach & Island Getaways">
-                                    <label class="form-check-label" for="radio2">Beach & Island Getaways</label>
-                                </div>
-                            </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio3" value="Solo Travel">
+                            <label class="form-check-label" for="radio3">Solo Travel</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio4" value="Family Travel">
+                            <label class="form-check-label" for="radio4">Family Travel</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio5" value="Travel with Friends">
+                            <label class="form-check-label" for="radio5">Travel with Friends</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio6" value="Wildlife & Nature">
+                            <label class="form-check-label" for="radio6">Wildlife & Nature</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="radio7" value="Beach & Island Getaways">
+                            <label class="form-check-label" for="radio7">Beach & Island Getaways</label>
+                        </div>
+                        <br>
+                        <div class="mb-3">
+                            <label for="profilePicUpload" class="form-label">Upload Photo</label>
+                            <button type="button" class="btn btn-outline-secondary photo-upload-btn">
+                                <i class="fas fa-camera"></i> Add a Photo
+                            </button>
+                            <input type="file" id="profilePicUpload" class="d-none" accept="image/*" onchange="updateLabel()">
+                            <span id="file-chosen">No file chosen</span>
                         </div>
                         
+    
+                        <!-- Publish and Clear buttons -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button id="clear_btn" class="btn btn-secondary"><i class="bi bi-trash3"></i> Clear</button>
+                            <button id="btn_save" value="publish" class="btn btn-primary">Publish</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    
+    
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
