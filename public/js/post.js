@@ -56,7 +56,9 @@ fetch('http://localhost:3001/post/getPostData' ,{
     const author_pic = document.getElementById('author_image');
     author_pic.src = `http://localhost:3001/${response.profile_picture}`;
 
-
+    //Set Post ID
+    const postID = document.getElementById('post_id');
+    postID.textContent = response.post_id;
 
 
 })
@@ -345,6 +347,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const postId = urlParams.get('postId');
     setupLikeButton(postId);
 });
+
+
+
+// ------------------------------------ Report Button ------------------------------------
+document.getElementById('btn_report').addEventListener('click', function() {
+    const postId = document.getElementById('post_id').textContent;
+    console.log(postId)
+    window.location.href = `reportus.html?postId=${postId}`;
+});
+
+
+
+
+
+
+
+
+
 
 
 

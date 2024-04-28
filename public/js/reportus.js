@@ -1,64 +1,42 @@
-//To Check Whether User Logged in or Not
-document.addEventListener('DOMContentLoaded', ()=>{
-    if(!localStorage.getItem('token'))
-    {
-        return alert('Please Log in')
-    }
-});
+const urlParams = new URLSearchParams(window.location.search);
+const postId = urlParams.get('postId');
+console.log(postId); // Use this postId to fetch or display more details
 
 
-const contact_btn = document.getElementById('contact_btn');
 
-contact_btn.addEventListener('click', function(event) {
-    console.log('Button clicked'); // For debugging to confirm the button click event is captured
 
+document.getElementById('btn_save').addEventListener('click', function(event) 
+{
     event.preventDefault();
-
-    // Retrieve the values entered in the name,contact number,email address and message fields by the user.(can be a registered user or other user)
-    const name1 = document.getElementById('fullname').value;
-    const contactnumber1 = document.getElementById('contactnumber').value;
-    const emailaddress1 = document.getElementById('email').value;
-    const message1 = document.getElementById('message').value;
-
-    const reqPayLoad = JSON.stringify({fullname:name1 , contactnumber:contactnumber1 , email:emailaddress1 , message: message1});
-
-    try
-    {
-        // sending the request to the backend
-        fetch('http://localhost:3001/contactus/contactus/', {
-            method: 'POST' ,
-            headers: {
-                'Content-Type' :'application/json'
-            },
-            body: reqPayLoad
+    
+    const reqPayLoad = JSON.stringify(
+        {
+            postId: postId, 
+            reportReason: document.getElementById('reportDetails').value
         })
 
-        .then((response) =>
-    {
-        if(response.ok)
-        {
-            return response.json();
-        }
+    console.log(reqPayLoad);
+
+    // Implement fetch to send data to backend
+    fetch('http://localhost:3001/reportus/report', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token') // Assuming JWT for auth
+        },
+        body: reqPayLoad
     })
-
-    .then((response)=>
-{
-    alert('Message sent Successfully');
-
-    localStorage.setItem('token', response.token); // Set token in the cache
-
-    window.location.href = '/public/index.html';
-})
-    }
-
-    catch(error)
-    {
-        console.log(error);
-    }
-    
-    
+    .then(response => response.json())
+    .then(data => {
+        console.log('Report submitted:', data);
+        alert('Thank you for your report.');
+        window.location.href = 'index.html'; // or any other redirection
+    })
+    .catch(error => {
+        console.error('Error submitting report:', error);
+        alert('There was a problem submitting your report.');
+    });
 });
-
 
 
 

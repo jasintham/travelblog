@@ -1,0 +1,60 @@
+/* Container for the report section */
+.report-section {
+    background: #ffffff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limit the width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.report-section h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styling for form elements */
+.form-label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 10px;
+    font-size: 16px; /* Larger font size for easier reading */
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Extra margin for the button to separate it from the textarea */
+.btn-primary {
+    margin-top: 10px;
+}
