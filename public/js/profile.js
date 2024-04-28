@@ -49,7 +49,7 @@ fetchUserDetails();
 
 
 
-//................................. FETCH THE PROFILE HEADERS FROM BACKEND TO THE FRONTEND .................................//
+//................................. FETCH THE TRAVEL STATS FROM BACKEND TO THE FRONTEND .................................//
 async function fetchTravelerStats() {
     try 
     {        
@@ -141,6 +141,12 @@ document.addEventListener('DOMContentLoaded', function()
         if (newPassword !== confirmPassword) 
         {
             return alert('Passwords do not match!');
+        }
+
+        // Check password field empty or not
+        if (newPassword == '') 
+        {
+            return alert('Password fields cannot keep empty!');
         }
 
         // Prepare data to be sent
@@ -386,50 +392,40 @@ function updateBucketList(value) {
 
 
 //................................. PROFILE PIC UPLOADING .................................//
-const save_pic_btn = document.getElementById('pic_save_btn')
-save_pic_btn.addEventListener('click', function(event) 
-{
-    event.preventDefault();
-    console.log('Save Pic Button Clicked');
-
-    const formData = new FormData();
-
-    const fileInput = document.getElementById('formFile');
-    if (fileInput.files.length > 0) 
-    {
+// Profile Pic Uploading
+document.getElementById('profilePicUpload').addEventListener('change', function() {
+    const fileInput = this; // this refers to the file input element
+    if (fileInput.files && fileInput.files[0]) {
+        const formData = new FormData();
         formData.append('profilePic', fileInput.files[0]);
-    } 
-    else 
-    {
+
+        fetch('http://localhost:3001/profile/newpic', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Profile image updated successfully:', data);
+            // Update profile picture on the page
+            document.getElementById('profilePicture').src = `http://localhost:3001/${data.profile_picture}`;
+        })
+        .catch(error => {
+            console.error('Error uploading image:', error);
+            alert('Failed to upload image. Please try again.');
+        });
+    } else {
         alert('Please select a file to upload');
-        return;
     }
-    
-    
-    
-    fetch('http://localhost:3001/profile/newpic', {
-        method: 'POST',
-        headers: 
-        {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` 
-        },
-        body: formData
-    })
-    .then(response => 
-    {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(response => {
-        console.log('Profile image updated successfully:', response);
-        //Set Post Cover Pic
-        const coverImageElement = document.getElementById('profilePicture');
-        coverImageElement.src = `http://localhost:3001/${response.profile_picture}`;
-    })
-    .catch(error => console.error('Error uploading image:', error));
 });
+
 
 
 
@@ -457,6 +453,7 @@ fetch('http://localhost:3001/profile/getUserDetails' ,{
     coverImageElement.src = `http://localhost:3001/${response.propic}`;   
 
 })
+
 
 
 

@@ -2,6 +2,7 @@
 -- CREATE DATABASE travelBlog;
 
 -- DROP existing Tables
+DROP TABLE IF EXISTS reports;
 DROP TABLE IF EXISTS travel_stats;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS likes;
@@ -118,19 +119,3 @@ GROUP BY
 ORDER BY
     p.post_date DESC;
 
-
-    --___________________________________________________________________________________contactus table__________________
-    -- contactus table
-
-    CREATE TABLE contact_us (
-    contact_us_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL,
-    contact_number VARCHAR(20) NULL,
-    email VARCHAR(255) NOT NULL
-    comments VARCHAR(255) NOT NULL
-    
-);
-
--- insert data into the table
-
-insert into contact_us (name,contact_number,email,comments) values ('James Smith','+3580417230250','jame@foo.com','Need Assistance on adding images');
