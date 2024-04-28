@@ -33,6 +33,7 @@ login_btn.addEventListener('click', function(event) {
             if(response.message == 'Login successful')
             {
                 localStorage.setItem('token', response.token);  //Set token in the cache
+                localStorage.setItem('user', JSON.stringify(response.userDetails)); 
 
                 window.location.href = '/public/index.html';
             }

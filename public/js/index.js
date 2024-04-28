@@ -1,42 +1,36 @@
-document.addEventListener('DOMContentLoaded', function() 
-{
+document.addEventListener('DOMContentLoaded', function () {
     const postContainer = document.getElementById('post_container');
 
 
     // Function to fetch posts from the server
-    function fetchPosts() 
-    {
+    function fetchPosts() {
         fetch('http://localhost:3001/index/allPosts', {
-            method: 'GET', 
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json', 
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}` // Include the authentication token stored in localStorage in the Authorization header.
             },
         })
-        .then((response) => 
-        {
-            return response.json()
-        })
+            .then((response) => {
+                return response.json()
+            })
 
-        .then((response) => 
-        {
-            displayPosts(response)
-        })
+            .then((response) => {
+                displayPosts(response)
+            })
 
-        .catch((error) => {
-            console.error('Error loading posts:', error);
-            displayError('Failed to load posts. Please Login'); // Display a user-friendly error message
-        });
+            .catch((error) => {
+                console.error('Error loading posts:', error);
+                displayError('Failed to load posts. Please Login'); // Display a user-friendly error message
+            });
     }
 
     // Function to display posts in the DOM
-    function displayPosts(response) 
-    {
+    function displayPosts(response) {
         const postsContainer = document.getElementById('post_container');
         postsContainer.innerHTML = '';  // Clear existing posts
 
-        if (response.length === 0) 
-        {
+        if (response.length === 0) {
             postContainer.innerHTML = '<p>No posts to display.</p>';
             return;
         }
@@ -45,8 +39,7 @@ document.addEventListener('DOMContentLoaded', function()
         let divGrid = document.createElement('div');
         divGrid.className = 'row';
 
-        response.forEach((postElement, index) => 
-        {
+        response.forEach((postElement, index) => {
             // Create a new column for each post
             const divColumn = document.createElement('div');
             divColumn.className = 'col-md-6'; // Set the column to take half of the width on medium devices
@@ -69,15 +62,13 @@ document.addEventListener('DOMContentLoaded', function()
         });
 
         // Append the last row if it has any posts
-        if (response.length % 2 !== 0) 
-        {
+        if (response.length % 2 !== 0) {
             postContainer.appendChild(divGrid);
         }
     }
 
     // Function to create a post card element
-    function createPostCard(post) 
-    {
+    function createPostCard(post) {
         const card = document.createElement('div');
         card.className = 'card blog-card mb-3';
         card.innerHTML = `
@@ -129,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function()
 
     //................................. SEARCH AN POST by NAV BAR .................................//
     const btn_search = document.getElementById('btn_search')
-    btn_search.addEventListener('click', function(event) {
+    btn_search.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the form from submitting traditionally
         const searchQuery = document.getElementById('searchInput').value;
 
@@ -137,25 +128,24 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
 
 
-    
+
     //................................. 1. SEARCH AN POST by CATEGORY "All" .................................//
     const btn_search_all = document.getElementById('btn_search_all')
     const btn_search_tips = document.getElementById('btn_search_tips')
@@ -166,45 +156,43 @@ document.addEventListener('DOMContentLoaded', function()
     const btn_search_nature = document.getElementById('btn_search_nature')
     const btn_search_getaways = document.getElementById('btn_search_getaways')
 
-    btn_search_all.addEventListener('click', (event)=>
-    {
-        event.preventDefault(); 
+    btn_search_all.addEventListener('click', (event) => {
+        event.preventDefault();
 
         fetch(`http://localhost:3001/index/allPosts`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link active')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link active')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
 
     });
 
 
 
     //................................. 2. SEARCH AN POST by CATEGORY "Travel Tips & Advice" .................................//
-    btn_search_tips.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    btn_search_tips.addEventListener('click', function (event) {
+        event.preventDefault();
         const searchQuery = document.getElementById('btn_search_tips').textContent;
         console.log(searchQuery)
 
@@ -212,34 +200,33 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link active')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link active')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
     //................................. 3. SEARCH AN POST by CATEGORY "Adventure Travel" .................................//
-    btn_search_adventure.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    btn_search_adventure.addEventListener('click', function (event) {
+        event.preventDefault();
         const searchQuery = document.getElementById('btn_search_adventure').textContent;
         console.log(searchQuery)
 
@@ -247,35 +234,34 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link active')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link active')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
 
     //................................. 4. SEARCH AN POST by CATEGORY "Solo Travel" .................................//
-    btn_search_solo.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    btn_search_solo.addEventListener('click', function (event) {
+        event.preventDefault();
         const searchQuery = document.getElementById('btn_search_solo').textContent;
         console.log(searchQuery)
 
@@ -283,34 +269,33 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link active')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link active')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
 
     //................................. 5. SEARCH AN POST by CATEGORY "Family Travel" .................................//
-    btn_search_family.addEventListener('click', function(event) {
+    btn_search_family.addEventListener('click', function (event) {
         event.preventDefault();
         const searchQuery = document.getElementById('btn_search_family').textContent;
         console.log(searchQuery)
@@ -319,35 +304,34 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link active')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link active')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
 
     //................................. 6. SEARCH AN POST by CATEGORY "Travel with Friends" .................................//
-    btn_search_friends.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    btn_search_friends.addEventListener('click', function (event) {
+        event.preventDefault();
         const searchQuery = document.getElementById('btn_search_friends').textContent;
         console.log(searchQuery)
 
@@ -355,35 +339,34 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response); 
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link active')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link active')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
 
     //................................. 7. SEARCH AN POST by CATEGORY "Wildlife & Nature" .................................//
-    btn_search_nature.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    btn_search_nature.addEventListener('click', function (event) {
+        event.preventDefault();
         const searchQuery = document.getElementById('btn_search_nature').textContent;
         console.log(searchQuery)
 
@@ -391,65 +374,63 @@ document.addEventListener('DOMContentLoaded', function()
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(response => response.json())
-        .then(response => 
-        {
-            console.log(response);
-            displayPosts(response); // Call the displayPosts function to render the search results
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
 
-            btn_search_all.setAttribute('class', 'nav-link')
-            btn_search_tips.setAttribute('class', 'nav-link')
-            btn_search_adventure.setAttribute('class', 'nav-link')
-            btn_search_solo.setAttribute('class', 'nav-link')
-            btn_search_family.setAttribute('class', 'nav-link')
-            btn_search_friends.setAttribute('class', 'nav-link')
-            btn_search_nature.setAttribute('class', 'nav-link')
-            btn_search_getaways.setAttribute('class', 'nav-link')
-        })
-        .catch(error => {
-            console.error('Error loading search results:', error);
-            const postsContainer = document.getElementById('posts_container');
-            postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-        });
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
     });
 
-     //................................. 8. SEARCH AN POST by CATEGORY "Beach & Island Getaways" .................................//
-     btn_search_getaways.addEventListener('click', function(event) {
-         event.preventDefault(); 
-         const searchQuery = document.getElementById('btn_search_getaways').textContent;
-         console.log(searchQuery)
- 
-         fetch(`http://localhost:3001/index/searchCategory?query=${encodeURIComponent(searchQuery)}`, {
-             method: 'GET',
-             headers: {
-                 'Content-Type': 'application/json',
-                 'Authorization': `Bearer ${localStorage.getItem('token')}` 
-             }
-         })
-         .then(response => response.json())
-         .then(response => 
-         {
-             console.log(response); 
-             displayPosts(response); // Call the displayPosts function to render the search results
- 
-             btn_search_all.setAttribute('class', 'nav-link')
-             btn_search_tips.setAttribute('class', 'nav-link')
-             btn_search_adventure.setAttribute('class', 'nav-link')
-             btn_search_solo.setAttribute('class', 'nav-link')
-             btn_search_family.setAttribute('class', 'nav-link')
-             btn_search_friends.setAttribute('class', 'nav-link')
-             btn_search_nature.setAttribute('class', 'nav-link')
-             btn_search_getaways.setAttribute('class', 'nav-link active')
-         })
-         .catch(error => {
-             console.error('Error loading search results:', error);
-             const postsContainer = document.getElementById('posts_container');
-             postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
-         });
-     });
+    //................................. 8. SEARCH AN POST by CATEGORY "Beach & Island Getaways" .................................//
+    btn_search_getaways.addEventListener('click', function (event) {
+        event.preventDefault();
+        const searchQuery = document.getElementById('btn_search_getaways').textContent;
+        console.log(searchQuery)
+
+        fetch(`http://localhost:3001/index/searchCategory?query=${encodeURIComponent(searchQuery)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                displayPosts(response); // Call the displayPosts function to render the search results
+
+                btn_search_all.setAttribute('class', 'nav-link')
+                btn_search_tips.setAttribute('class', 'nav-link')
+                btn_search_adventure.setAttribute('class', 'nav-link')
+                btn_search_solo.setAttribute('class', 'nav-link')
+                btn_search_family.setAttribute('class', 'nav-link')
+                btn_search_friends.setAttribute('class', 'nav-link')
+                btn_search_nature.setAttribute('class', 'nav-link')
+                btn_search_getaways.setAttribute('class', 'nav-link active')
+            })
+            .catch(error => {
+                console.error('Error loading search results:', error);
+                const postsContainer = document.getElementById('posts_container');
+                postsContainer.innerHTML = `<p>Error loading search results: ${error.message}</p>`;
+            });
+    });
 
 
 
@@ -468,16 +449,13 @@ document.addEventListener('DOMContentLoaded', function()
 //................................. ADD POST Button .................................//
 const add_post_button = document.getElementById('add_post_btn');
 
-add_post_button.addEventListener('click', (event)=>
-{    
+add_post_button.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if(localStorage.getItem('token'))
-    {
+    if (localStorage.getItem('token')) {
         window.location.href = './addNewPost.html';
     }
-    else
-    {
+    else {
         alert('You need to login first!')
     }
 });
@@ -485,7 +463,7 @@ add_post_button.addEventListener('click', (event)=>
 
 
 //................................. HOT TOPICS Part .................................//
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     fetch('http://localhost:3001/index/popularPosts', {
         method: 'GET',
         headers: {
@@ -493,10 +471,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     })
-    .then(response => response.json())
-    .then(data => {
-        const postsContainer = document.getElementById('popularPostsContainer');
-        postsContainer.innerHTML = data.map(post => `
+        .then(response => response.json())
+        .then(data => {
+            const postsContainer = document.getElementById('popularPostsContainer');
+            postsContainer.innerHTML = data.map(post => `
             <div class="single-recent d-flex pb-3 mb-3" onclick="redirectToPost(${post.post_id})" style="cursor: pointer;">
                 <div class="recent-image ratio-container">
                     <div class="ratio" style="width: 75px; height: 75px; overflow: hidden; border-radius: 50%; position: relative;">
@@ -509,11 +487,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `).join('');
-    })
-    .catch(error => {
-        console.error('Error loading popular posts:', error);
-        postsContainer.innerHTML = `<p>Error loading posts: ${error.message}</p>`;
-    });
+        })
+        .catch(error => {
+            console.error('Error loading popular posts:', error);
+            postsContainer.innerHTML = `<p>Error loading posts: ${error.message}</p>`;
+        });
 });
 
 // Function to redirect to the post detail page
@@ -528,32 +506,34 @@ function redirectToPost(postId) {
 //................................. NAV BAR ITEM's RELATED CODES .................................//
 
 
-//Login Nav Item Related Code
-addEventListener('DOMContentLoaded', ()=>
-{
-    if(localStorage.getItem('token'))
-    {
-        const loginNavItem = document.getElementById('login_nav_item')
-        loginNavItem.style.display = 'none'
+function isLogin() {
+    if (localStorage.getItem('user')) {
+        const logiUserElement = document.querySelectorAll(".sesion-active");
+        logiUserElement.forEach((userItem) => {
+            userItem.style.display = 'block';
+        });
+        document.querySelector(".btn-login").style.display = 'none';
+        
+        return true
+    } else {
+        const logiUserElement = document.querySelectorAll(".sesion-inactive");
+        logiUserElement.forEach((userItem) => {
+            //userItem.style.display = 'none';
+        });
+        return false
     }
-});
+}
 
-//Logout Nav Item Related Code
-addEventListener('DOMContentLoaded', ()=>
-{
-    if(localStorage.getItem('token'))
-    {
-        const loginNavItem = document.getElementById('logout_nav_item')
-        loginNavItem.style.display = 'block'
-    }
+//Login Nav Item Related Code
+addEventListener('DOMContentLoaded', () => {
+    isLogin()
 });
 
 
 //Logout related code
 const logoutLink = document.getElementById('logout_nav_item');
 
-logoutLink.addEventListener('click', ()=>
-{
-    localStorage.removeItem('token');
+logoutLink.addEventListener('click', () => {
+    localStorage.clear();
     window.location.href = 'index.html'
 });

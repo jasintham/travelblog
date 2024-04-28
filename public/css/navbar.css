@@ -1,3 +1,17 @@
+
+.sesion-active{display: none;}
+.sesion-inactive{display: block;}
+
+#navbarSearch{
+    position: absolute;
+    margin-top: 20px;
+    right: 0;
+    top: 50px;
+    z-index: 999;
+    background-color: #212529!important;
+    padding: 10px;
+}
+
 /* Ensure navbar inherits font family and sets background explicitly */
 .navbar {
     font-family: 'Montserrat', sans-serif;

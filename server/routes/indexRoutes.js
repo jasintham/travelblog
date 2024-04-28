@@ -3,11 +3,9 @@ const express = require('express');
 const indexRouter = express.Router();   // Initializing a router object.
 
 const { query } = require('../helpers/db.js'); 
-const authenticateToken = require('../middleware/authenticateToken.js');    //Middleware to Verify Token
-
 
 // Get All Posts
-indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
+indexRouter.get('/allPosts' ,async (req, res) => {
     try 
     {
         const result = await query(`
@@ -41,7 +39,7 @@ indexRouter.get('/allPosts', authenticateToken ,async (req, res) => {
 
 
 // Search a Title or Content
-indexRouter.get('/search', authenticateToken ,async (req, res) => 
+indexRouter.get('/search',async (req, res) => 
 {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
     if (!searchQuery) {
@@ -90,7 +88,7 @@ indexRouter.get('/searchCategory', async (req, res) =>
 
 
 //Get Most Popular Posts
-indexRouter.get('/popularPosts', authenticateToken, async (req, res) => {
+indexRouter.get('/popularPosts', async (req, res) => {
     try 
     {
         const result = await query(`
