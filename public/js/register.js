@@ -20,6 +20,11 @@ register_button.addEventListener('click', function(event) {
         return alert('Password Fields cannot be empty')
     }
 
+    if (input_username=='')
+    {
+        return alert('Username Field cannot be empty')
+    }
+
     else
     {
         const reqPayLoad = JSON.stringify({username:input_username , password: input_password});
