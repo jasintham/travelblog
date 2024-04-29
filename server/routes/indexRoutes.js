@@ -38,53 +38,85 @@ indexRouter.get('/allPosts' ,async (req, res) => {
 });
 
 
-// Search a Title or Content
-indexRouter.get('/search',async (req, res) => 
-{
+indexRouter.get('/search', async (req, res) => {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
     if (!searchQuery) {
         return res.status(400).json({ error: 'No search term provided' });
     }
 
-    try 
-    {
-        const results = await query(
-            "SELECT * FROM posts WHERE title ILIKE $1 OR content ILIKE $1",
-            [`%${searchQuery}%`] // Use placeholders to prevent SQL injection
+    try {
+        const results = await query(`
+            SELECT
+                p.post_id,
+                p.title,
+                p.content,
+                p.post_date,
+                p.cover_image,
+                p.category_name,
+                u.username,
+                u.profile_picture,
+                (SELECT COUNT(likes.like_id) FROM likes WHERE likes.post_id = p.post_id) AS likes_count,
+                (SELECT COUNT(*) FROM comments WHERE post_id = p.post_id) AS comments_count
+            FROM 
+                posts p
+            JOIN
+                users u ON p.user_id = u.user_id
+            WHERE
+                p.title ILIKE $1 OR p.content ILIKE $1
+            GROUP BY
+                p.post_id, u.username, u.profile_picture
+            ORDER BY 
+                p.post_date DESC
+            `, [`%${searchQuery}%`]
         );
         res.json(results.rows);
-    } 
-    catch (error) 
-    {
+    } catch (error) {
         console.error('Search Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
 
 
 // Search a Post by Category Name
-indexRouter.get('/searchCategory', async (req, res) => 
-{
+indexRouter.get('/searchCategory', async (req, res) => {
     const searchQuery = req.query.query; // Retrieve the 'query' parameter from the URL
-    if (!searchQuery) 
-    {
+    if (!searchQuery) {
         return res.status(400).json({ error: 'No search term provided' });
     }
 
-    try 
-    {
-        const results = await query(
-            "SELECT * FROM posts WHERE category_name ILIKE $1",
-            [`%${searchQuery}%`] // Use placeholders to prevent SQL injection
+    try {
+        const results = await query(`
+            SELECT
+                p.post_id,
+                p.title,
+                p.content,
+                p.post_date,
+                p.cover_image,
+                p.category_name,
+                u.username,
+                u.profile_picture,
+                (SELECT COUNT(likes.like_id) FROM likes WHERE likes.post_id = p.post_id) AS likes_count,
+                (SELECT COUNT(*) FROM comments WHERE post_id = p.post_id) AS comments_count
+            FROM 
+                posts p
+            JOIN
+                users u ON p.user_id = u.user_id
+            WHERE
+                p.category_name ILIKE $1
+            GROUP BY
+                p.post_id, u.username, u.profile_picture
+            ORDER BY 
+                p.post_date DESC
+            `, [`%${searchQuery}%`]
         );
         res.json(results.rows);
-    } 
-    catch (error) 
-    {
+    } catch (error) {
         console.error('Search Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
 
 
 //Get Most Popular Posts
