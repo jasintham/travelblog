@@ -1,3 +1,12 @@
+//To Check Whether User Logged in or Not
+document.addEventListener('DOMContentLoaded', ()=>{
+  if(!localStorage.getItem('token'))
+  {
+      alert('Please Log in')
+      window.location.href = '/public/index.html';
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() 
 {
   fetch('http://localhost:3001/allposts/getAllPosts', {

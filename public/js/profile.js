@@ -2,7 +2,8 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     if(!localStorage.getItem('token'))
     {
-        return alert('Please Log in')
+        alert('Please Log in')
+        window.location.href = '/public/index.html';
     }
 });
 

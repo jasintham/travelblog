@@ -1,10 +1,4 @@
-//To Check Whether User Logged in or Not
-document.addEventListener('DOMContentLoaded', ()=>{
-    if(!localStorage.getItem('token'))
-    {
-        return alert('Please Log in')
-    }
-});
+
 
 
 
