@@ -41,8 +41,10 @@ const reportusRouter = require('./routes/reportusRoutes.js');// Import contact_u
 app.use('/reportus',reportusRouter); // use the contact_us route
 
 const addNewPostRouter = require('./routes/addNewPostRoutes.js');// Import addNewPostRouter route object
-app.use('/newPost',addNewPostRouter); // use the caddNewPostRouter route
+app.use('/newPost',addNewPostRouter); // use the addNewPostRouter route
 
+const userDetailsRouter = require('./routes/userDetailsRoutes.js');// Import userDetailsRouter route object
+app.use('/userDetails',userDetailsRouter); // use the userDetailsRouter route
 
 
 

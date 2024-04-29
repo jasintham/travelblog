@@ -31,6 +31,7 @@ async function fetchUserDetails() {
             // Update the DOM elements with the user's details.
             document.getElementById('userName').textContent = response.username;
             document.getElementById('userBio').textContent = response.bio;
+            document.getElementById('user_id').textContent = response.user_id;
         })
 
     } 
@@ -424,10 +425,14 @@ document.getElementById('profilePicUpload').addEventListener('change', function(
             }
             return response.json();
         })
-        .then(data => {
-            console.log('Profile image updated successfully:', data);
+        .then(response => {
+            console.log( response.user_id);
             // Update profile picture on the page
-            document.getElementById('profilePicture').src = `http://localhost:3001/${data.profile_picture}`;
+            const image_container = document.getElementById('image_container');
+            image_container.innerHTML = `
+            <img src="http://localhost:3001/${response.profile_picture}" id="profilePicture" alt="Profile Picture" class="profile-header-img mb-3 profile-img">
+            `;
+            
         })
         .catch(error => {
             console.error('Error uploading image:', error);
@@ -439,7 +444,10 @@ document.getElementById('profilePicUpload').addEventListener('change', function(
 });
 
 
-
+// Function to redirect to the post detail page
+function redirectToPost(userId) {
+    window.location.href = `post.html?postId=${userId}`;
+}
 
 
 // ------------------------------------ To Get Profile Pic ------------------------------------
@@ -526,4 +534,47 @@ document.addEventListener('DOMContentLoaded', function() {
         // Set the value of the input field in the modal
         document.getElementById('bucketListInput').value = currentCountriesVisited;
     });
+});
+
+
+
+// ------------------------------------ Profile Image Click ------------------------------------
+document.getElementById('profilePicture').addEventListener('click', function() {
+    const userId = document.getElementById('user_id').textContent;
+    console.log('user id is' , userId)
+    window.location.href = `userDetails.html?userId=${userId}`;
+});
+
+
+//................................. NAV BAR ITEM's RELATED CODES .................................//
+
+
+//Login Nav Item Related Code
+addEventListener('DOMContentLoaded', ()=>
+{
+    if(localStorage.getItem('token'))
+    {
+        const loginNavItem = document.getElementById('login_nav_item')
+        loginNavItem.style.display = 'none'
+    }
+});
+
+//Logout Nav Item Related Code
+addEventListener('DOMContentLoaded', ()=>
+{
+    if(localStorage.getItem('token'))
+    {
+        const loginNavItem = document.getElementById('logout_nav_item')
+        loginNavItem.style.display = 'block'
+    }
+});
+
+
+//Logout related code
+const logoutLink = document.getElementById('logout_nav_item');
+
+logoutLink.addEventListener('click', ()=>
+{
+    localStorage.clear();
+    window.location.href = 'index.html'
 });

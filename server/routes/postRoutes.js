@@ -16,6 +16,7 @@ postRouter.post('/getPostData', authenticateToken, async (req, res) => {
         p.content,
         to_char(p.post_date, 'FMDay, FMDDth FMMonth YYYY at FMHH12:MIPM') as formatted_post_date,
         p.cover_image,
+        p.user_id,
         u.username,
         u.profile_picture
         FROM 

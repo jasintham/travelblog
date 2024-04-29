@@ -60,55 +60,49 @@ fetch('http://localhost:3001/post/getPostData' ,{
     const postID = document.getElementById('post_id');
     postID.textContent = response.post_id;
 
+    //Set User ID
+    const userID = document.getElementById('user_id');
+    userID.textContent = response.user_id;
 
 })
 
 
 // ------------------------------------ To Get Comment Data ------------------------------------
-function loadAllComments()
-{
+function loadAllComments() {
     const comment_section = document.getElementById('post_comments');
     comment_section.innerHTML = ''; // Clear existing comments
 
-    fetch('http://localhost:3001/post/getCommentData' ,{
+    fetch('http://localhost:3001/post/getCommentData', {
         method: 'POST',
-        headers : {
-            'Content-Type':'application/json',
+        headers: {
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body : reqPayLoad
+        body: reqPayLoad
     })
-
-    .then((response) =>
-    {
-        return response.json();
-    })
-
-    .then((response)=>
-    {
+    .then(response => response.json())
+    .then(response => {
         console.log(response);
 
-        response.result.forEach(element => 
-        {
-            const comment_section = document.getElementById('post_comments');
+        response.result.forEach(element => {
             const commentDiv = document.createElement('div');
+            commentDiv.className = 'individual-comment-area';
             commentDiv.innerHTML = `
-            <div class="d-flex align-items-center mb-3">
-                <img class="comment-avatar me-3"
-                    src="http://localhost:3001/${element.profile_picture}" alt="avatar"/>
-                <div>
-                    <h6 class="fw-bold mb-1">${element.username}</h6>
-                    <p class="text-muted">${element.formatted_comment_date}</p>
-                    <p>${element.comment_text}</p>
-                </div>
-            </div>`;
+                <div class="d-flex align-items-center mb-3">
+                    <p class="comment-user-id" hidden>${element.user_id}</p>
+                    <img class="comment-avatar me-3 profile-img profile-header-img"
+                        src="http://localhost:3001/${element.profile_picture}" alt="avatar"/>
+                    <div>
+                        <h6 class="fw-bold mb-1">${element.username}</h6>
+                        <p class="text-muted">${element.formatted_comment_date}</p>
+                        <p>${element.comment_text}</p>
+                    </div>
+                </div>`;
 
-            // Check if the comment belongs to the logged-in user
-            if (element.user_id === response.user) {  // Adjust this condition to correctly compare user IDs
+            if (element.user_id === response.user) {
                 const controlDiv = document.createElement('div');
                 controlDiv.className = 'comment-controls';
 
-                // Creating edit and delete buttons with event listeners safely attached
                 const editButton = document.createElement('button');
                 editButton.className = 'btn btn-primary btn-sm';
                 editButton.textContent = 'Edit';
@@ -125,17 +119,23 @@ function loadAllComments()
             }
 
             comment_section.append(commentDiv);
-            
             comment_section.appendChild(document.createElement('hr'));
-            
         });
-    })
+    });
 }
 
-document.addEventListener('DOMContentLoaded', ()=>
-{
-    loadAllComments();  // Call this function after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    loadAllComments();
+
+    document.getElementById('post_comments').addEventListener('click', function(event) {
+        if (event.target.classList.contains('comment-avatar')) {
+            const userId = event.target.closest('.individual-comment-area').querySelector('.comment-user-id').textContent;
+            console.log('User ID is', userId);
+            window.location.href = `userDetails.html?userId=${userId}`;
+        }
+    });
 });
+
 
 
 
@@ -359,6 +359,12 @@ document.getElementById('btn_report').addEventListener('click', function() {
 
 
 
+// ------------------------------------ Author Image Click ------------------------------------
+document.getElementById('author_image').addEventListener('click', function() {
+    const userId = document.getElementById('user_id').textContent;
+    console.log('user id is' , userId)
+    window.location.href = `userDetails.html?userId=${userId}`;
+});
 
 
 
@@ -398,6 +404,6 @@ const logoutLink = document.getElementById('logout_nav_item');
 
 logoutLink.addEventListener('click', ()=>
 {
-    localStorage.removeItem('token');
+    localStorage.clear();
     window.location.href = 'index.html'
 });

@@ -27,6 +27,7 @@ profileRouter.get('/headerDetails', authenticateToken, async (req, res) =>
             try //Try to catch if there any sytax error of this
             {
                 res.json({ 
+                    user_id: result.rows[0].user_id, 
                     username: result.rows[0].username, 
                     bio: result.rows[0].bio, 
                     profile_picture: result.rows[0].profile_picture,

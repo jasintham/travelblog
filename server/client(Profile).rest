@@ -3,7 +3,7 @@
 ### Get Header Details
 GET http://localhost:3001/profile/headerDetails
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMzI2NjE3NywiZXhwIjoxNzEzMjY5Nzc3fQ.LWPO0s2mOFLvA6jF95t-hWiKiliLpp6qWN4eOoiI7uI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDM0ODU0MiwiZXhwIjoxNzE0Mzc3MzQyfQ.jM0rE0NNuzKgOTeYzhQhOO1-b-WJ5QbI6HMc-VEWxCY
 
 ### Get Traveler Stats Details
 GET http://localhost:3001/profile/travelerStats

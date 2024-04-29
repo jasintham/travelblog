@@ -84,6 +84,6 @@ const logoutLink = document.getElementById('logout_nav_item');
 
 logoutLink.addEventListener('click', ()=>
 {
-    localStorage.removeItem('token');
+    localStorage.clear();
     window.location.href = 'index.html'
 });

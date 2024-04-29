@@ -9,9 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+
     <!-- Font Awesome for a wide range of icons and css file for profile -->
     <link rel="stylesheet" href="/public/images/fontawesome-free-6.5.2-web/css/all.css">
-    <link rel="stylesheet" href="./css/about.css"> <!-- Path to profile custom CSS -->   
+    <link rel="stylesheet" href="./css/userDetails.css"> <!-- Path to profile custom CSS -->   
 
     <!-- Path to nav bar css and it related css importing URL --> 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
@@ -75,34 +76,93 @@
             </div>
         </nav>
     </section>
-    <div class="container custom-container">
-        <div class="row-justify content-center">
-            <div class="col-md-10 text-center">
 
-    <h1> About Us <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #005eff;"></i> </h1>
-    <h4>Welcome to Travel Blog!</h4>
-    <img src="images/about.jpg" class="image-fluid" alt="about image" style="width: 400px; height: 300px">
-    <p class="lh-sm">We are a passionate team of travel enthusiasts dedicated to bringing you the best of the world's destinations, experiences, and hidden gems. Whether you're an avid adventurer, a culture seeker, or simply looking for your next getaway inspiration, you'll find a home here</p>
-    <h4>Our Mission</h4>
-    <p class="lh-sm">At Travel Blog, we believe that every journey is a story waiting to be told. Our mission is to inspire and empower fellow travellers like you to explore the world with curiosity and wanderlust. From sharing captivating travel narratives to providing practical tips and insights, we aim to be your trusted companion on your travel journey.</p>
-    <h4>What We Offer</h4>
-    <p class="lh-sm">Captivating Stories: Immerse yourself in our collection of travel tales from across the globe. From off-the-beaten-path adventures to must-see landmarks, our stories paint vivid pictures of the world's wonders.</p>
-    <p class="lh-sm">Interactive Experience: Engage with our community through comments and likes on posts. Share your thoughts, experiences, and recommendations with fellow travellers, creating a vibrant tapestry of shared knowledge.</p>
-    <p class="lh-sm">User-Friendly Features: Our platform offers easy registration and login features, allowing you to become a part of our community effortlessly. Edit and delete your posts or comments, ensuring your voice is heard and your content is just right.</p>
-    <p class="lh-sm">Discover and Connect: Use our search feature to find specific destinations or topics of interest. Have feedback or spotted something inappropriate? Reach out to us through our report us form; your input helps us improve and maintain the quality of our content.</p>
-    <h4>Our Team</h4>
-    <p class="lh-sm">Behind Travel Blog is a diverse team of writers, photographers, and travel enthusiasts who are passionate about storytelling. We come from different corners of the world, each bringing a unique perspective and love for travel. Together, we curate and create content that we hope will inspire your next adventure.</p>
-    <h4>Get in Touch</h4>
-    <p class="lh-sm">We would love to hear from you! Whether you have a question, a suggestion, or simply want to share your travel experiences, don't hesitate to reach out. Connect with us on social media or drop us a message through our contact form. Your stories, feedback, and adventures are what keep us inspired.</p>
-    <p class="lh-sm">Thank you for being part of the Travel blog community. Let's embark on this journey together, one story at a time.</p>
-    <p class="lh-sm">Happy travels!</p>
+
+    <div class="container">
+        <div class="row">
+            <!-- Main User Profile and Stats Section -->
+            <div class="col-md-8">
+                <!-- User Profile Section -->
+                <div class="user-profile mb-4">
+                    <h2>User Profile <i class="fa-regular fa-address-card fa-flip" style="color: #007bff;"></i> </h2>
+                    <div class="profile-details">
+                        <div class="profile-img-wrapper">
+                            <!-- Trigger for the Modal -->
+                        <img src="./images/default-avatar.jpg" class="profile-img" alt="Profile Picture" id="profilePicture" class="profile-img" data-bs-toggle="modal" data-bs-target="#profileImageModal">
+                        </div>                        
+                        <div class="user-info">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <p id="username">Username</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <p id="bio">Bio</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- User Stats Section -->
+                <div class="user-stats mb-4">
+                    <h2>User Stats</h2>
+                    <ul>
+                        <li>Total Posts: <span id="totalPosts"></span></li>
+                        <li>Total Likes: <span id="totalLikes"></span></li>
+                        <li>Total Comments: <span id="totalComments"></span></li>
+                    </ul>
+                </div>
+    
+                <!-- Travel Stats Section -->
+                <div class="travel-stats mb-4">
+                    <h2>Travel Stats</h2>
+                    <ul>
+                        <li>Countries Visited: <span id="countriesVisited"></span></li>
+                        <li>Cities Explored: <span id="citiesExplored"></span></li>
+                        <li>Favorite Destination: <span id="favoriteDestination"></span></li>
+                        <li>Bucket List: <span id="bucketList"></span></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Hot Topics Section - Positioned to the side -->
+            <div class="col-md-4">
+                <div class="hot-topics">
+                    <h2 style="display: flex; align-content: center;justify-content: center; gap: 20px;">Hot Topics <i class="fa-solid fa-fire fa-bounce" style="color: #fe9d16;"></i> </h2>
+                    <div id="hotTopicsContainer" class="scroll-container"></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    
+    
+    
+
+    <!-- Modal Structure -->
+    <div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="profileImageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileImageModalLabel">Profile Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="Profile Picture" id="modalProfilePicture" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
-    <script src="./js/aboutUs.js"></script>
+    <script src="/public/js/userDetails.js"></script>
 </body>
 </html>

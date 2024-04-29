@@ -196,7 +196,22 @@ img {
   border-top: 1px solid #e9ecef;
 }
 
+.profile-header-img {
+  width: 60px; /* Adjusted size for profile image */
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #6bc6d6;
+  object-fit: cover;
+  cursor: pointer; /* Indicates the image can be interacted with */
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Smooth transition for transformation and border color */
+}
 
+.profile-header-img:hover {
+  transform: scale(1.2); /* Scale the image up to 150% of its original size */
+  border-color: #d66b6b; /* Change border color on hover */
+  position: relative; /* Ensure the scaling doesn't affect layout */
+  z-index: 10; /* Make sure the image stays on top during hover */
+}
 
 
 /* CSS for the Comment Modal */
