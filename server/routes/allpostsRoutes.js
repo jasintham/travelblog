@@ -53,37 +53,58 @@ allpostsRouter.get("/getAllPosts/", authenticateToken, async (req, res) => {
 
 
 
-
 // To update the post details
 allpostsRouter.use(fileUpload({
   createParentPath: true,
   limits: { fileSize: 15 * 1024 * 1024 }, // 15MB limit
 }));
 
+// To update the post details
 allpostsRouter.post("/update", authenticateToken, async (req, res) => {
   try {
-    const { title, content, post_id } = req.body;
-    let imagePath = req.body.cover_image; // Default path if no new file is uploaded
+      console.log("Update endpoint hit");
+      const { title, content, post_id } = req.body;
+      console.log(title, content, post_id);
+      let imagePath;
 
-    if (req.files && req.files.cover_image) {
-        const coverImage = req.files.cover_image;
-        const uploadPath = path.join(__dirname, '../public/images', `${post_id}-${coverImage.name}`);
-        await coverImage.mv(uploadPath);
-        imagePath = `images/${post_id}-${coverImage.name}`;
-    }
+      if (req.files && req.files.cover_image) {
+          const coverImage = req.files.cover_image;
+          const uploadPath = path.join(__dirname, '../public/images', `${post_id}-${coverImage.name}`);
+          await coverImage.mv(uploadPath);
+          imagePath = `images/${post_id}-${coverImage.name}`;
+      }
 
-    const result = await query('UPDATE posts SET title = $1, content = $2, cover_image = $3 WHERE post_id = $4 RETURNING *', [title, content, imagePath, post_id]);
+      let sqlQuery;
+      let params;
 
-    if (result.rowCount > 0) {
-        res.json(result.rows[0]);
-    } else {
-        res.status(404).send('Post not found');
-    }
+      if (imagePath) 
+      {
+          console.log("Image has");
+          sqlQuery = 'UPDATE posts SET title = $1, content = $2, cover_image = $3 WHERE post_id = $4 RETURNING *';
+          params = [title, content, imagePath, post_id];
+      } else 
+      {
+          console.log("No image");
+          console.log(title, content, post_id);
+          sqlQuery = 'UPDATE posts SET title = $1, content = $2 WHERE post_id = $3 RETURNING *';
+          params = [title, content, post_id];
+      }
+
+      const result = await query(sqlQuery, params);
+      if (result.rows.length > 0) 
+      {
+          res.json(result.rows[0]);
+      } else {
+          res.status(404).json({ error: 'Post not found' });
+      }
   } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('Server error');
+      console.error('Error:', error);
+      res.status(500).json({ error: 'Server error', details: error.message });
   }
 });
+
+
+
 
 
 

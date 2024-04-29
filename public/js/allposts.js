@@ -143,7 +143,11 @@ document.addEventListener('DOMContentLoaded', function()
                       <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
                       </button>
                     </div>
+
+
+                    <button class="btn btn-primary read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
       
+                    
                     <div class="icons-right">
                       <!-- Edit Button with link to specific post page -->
                       <button class="btn icon-button" id="btn_edit" data-post-id="${postElement.post_id}" data-bs-toggle="modal" data-bs-target="#editPostModal">
@@ -157,8 +161,6 @@ document.addEventListener('DOMContentLoaded', function()
                     </div>
       
                   </div>
-      
-                  <button class="btn read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
       
                 </div>
               </div>
@@ -328,6 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
         console.log('Success:', data);
         // Refresh or update UI as needed
+        location.reload();
     })
     .catch(error => {
         console.error('Error:', error);

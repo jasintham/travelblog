@@ -492,4 +492,26 @@ a{
 }
 
 
+/* ------------ Footer Styles ------------*/
+.custom-footer {
+    background-color: rgba(0, 0, 0, 0.8); /* Moved from inline style to CSS for better maintenance */
+    display: flex;  /* Using Flexbox */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    padding: 1px 0; /* Padding for some spacing around the content */
+}
 
+.custom-footer .container {
+    width: 100%;  /* Ensures container takes full width available */
+    max-width: 960px; /* Maximum width of the content if needed */
+}
+
+.custom-footer .row {
+    flex-grow: 1; /* Ensures it takes available space in flex container */
+}
+
+.custom-footer .col-12 {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}

@@ -179,3 +179,11 @@
     font-weight: bold;
     transition: all 0.3s ease;
 }
+
+
+
+.nav-link .fa-magnifying-glass {
+    font-size: 1.2em;  /* Adjust the size as needed */
+    vertical-align: middle;  /* Aligns the icon vertically within the line */
+}
+
