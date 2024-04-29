@@ -1,24 +1,11 @@
 /* General background styles, font setup, and padding for the main content area */
-body, html {
-    height: 100%;
-    background: url('../images/profile-page-background1.png') no-repeat center center fixed; 
-    background-size: cover;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Montserrat';
-    
-}
+
 
 /* Consistent padding and background for the content containers */
 .container {
     max-width: 1200px;
     margin: auto;
 }
-
-
-
-
-
-
 
 /* ------------------------------------------ */
 /* Profile header styles */
