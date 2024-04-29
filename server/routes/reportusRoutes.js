@@ -46,5 +46,25 @@ reportusRouter.post('/report',authenticateToken,async(req,res) =>
 })
 
 
+
+
+reportusRouter.get('/details/:postId', authenticateToken, async (req, res) => {
+    const postId = req.params.postId;
+    try {
+        const result = await query(
+            "SELECT post_id, title, content, cover_image FROM posts WHERE post_id = $1",
+            [postId]
+        );
+        if (result.rows.length > 0) {
+            res.json(result.rows[0]);
+        } else {
+            res.status(404).json({ message: "Post not found" });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 module.exports = reportusRouter;
     

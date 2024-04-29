@@ -52,7 +52,23 @@ document.getElementById('btn_save').addEventListener('click', function(event)
 
 
 
-
+if (postId) {
+    fetch(`http://localhost:3001/reportus/details/${postId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('postPreview').style.display = 'block';
+        document.getElementById('postImage').src = `http://localhost:3001/${data.cover_image}`;
+        document.getElementById('postTitle').textContent = data.title;
+        document.getElementById('postContent').textContent = data.content;
+        document.getElementById('postId').value = postId;
+    })
+    .catch(error => console.error('Error fetching post details:', error));
+}
 
 
 //................................. NAV BAR ITEM's RELATED CODES .................................//
