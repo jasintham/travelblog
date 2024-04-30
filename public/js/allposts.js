@@ -29,56 +29,48 @@ document.addEventListener('DOMContentLoaded', function()
 
     response.forEach(postElement => {
       const postCard = document.createElement('div');
-      postCard.className = 'container-fluid post-card'; // Added 'post-card' class for styling
-      postCard.style.maxWidth = '75%';
+      postCard.className = 'col-md-6 post-card'; // Added 'post-card' class for styling
       postCard.style.margin = '20px auto';
       postCard.innerHTML = `
-        <div class="post" style="font-size: 0.9rem; padding: 10px;">          
+        <div class="post" style="font-size: 0.9rem;">          
 
           <p class="post-title">${postElement.title}</p>
           <p id="post_id" hidden>${postElement.post_id}</p>
 
-          <p class="updatedtime mt-0 ms-3">
+          <p class="updatedtime mt-0">
             <small>${postElement.formatted_post_date}</small>
           </p>
 
           <img src="http://localhost:3001/${postElement.cover_image}" class="post-img" alt="Post Image" style="max-width: 600px; width: 100%; height: auto;">
           
           <div class="post-body mt-3">
-            <p class="post-text pt-3">${postElement.content.substring(0, 100)}...</p>     
-            <hr>
-            <br>
+            <p class="post-text pt-2">${postElement.content.substring(0, 100)}...</p>     
+            <hr class="post-hr">
             <div class="blog-icons">
 
               <div class="icons-left">
-                <!-- Like Button with link to specific post page -->
+     
                 <button class="btn icon-button" id="btn_like" disabled>
                   <i class="fa-regular fa-heart fa-lg"></i> <p class="like-number count-style">${postElement.likes_count}</p>
                 </button>
                 
-                <!-- Comment Button with link to specific post page -->
                 <button class="btn icon-button" id="btn_comment" disabled>
-                <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
+                  <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
                 </button>                
               </div>
-
-
-              <button class="btn btn-primary read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
-
-
-              <div class="icons-right">
-                <!-- Edit Button with link to specific post page -->
-                <button class="btn icon-button" id="btn_edit" data-post-id="${postElement.post_id}" data-bs-toggle="modal" data-bs-target="#editPostModal">
-                  <i class="fa-regular fa-pen-to-square fa-lg"></i>
+              <button class="btn read-more-btn" data-post-id="${postElement.post_id}">Read More</button>
+            </div>
+            <div class="edit-cont-main">
+              <span class="edit-cont"> 
+                  <button class="btn icon-button" id="btn_edit" data-post-id="${postElement.post_id}" data-bs-toggle="modal" data-bs-target="#editPostModal">
+                  <i class="fa-regular fa-pen-to-square fa-sm"></i>
                 </button>
-
-                <!-- Delete Button with link to specific post page -->
                 <button class="btn icon-button" id="btn_delete" data-post-id="${postElement.post_id}">
-                  <i class="fa-solid fa-trash-can fa-lg"></i>
+                  <i class="fa-solid fa-trash-can fa-sm"></i>
                 </button>
-              </div>
-
-            </div>            
+              </span>
+                
+              </div>        
 
           </div>
         </div>

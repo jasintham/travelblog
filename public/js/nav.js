@@ -21,6 +21,17 @@ function isLogin() {
 //Login Nav Item Related Code
 addEventListener('DOMContentLoaded', () => {
     isLogin()
+
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-item');
+    const currentUrl = window.location.pathname;
+
+    navLinks.forEach(link => {
+        if (link.href.includes(currentUrl)) {
+        link.classList.add('active');
+        } else {
+        link.classList.remove('active');
+        }
+    });
 });
 
 
