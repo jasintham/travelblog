@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function()
     response.forEach(postElement => {
       const postCard = document.createElement('div');
       postCard.className = 'col-md-6 post-card'; // Added 'post-card' class for styling
-      postCard.style.margin = '20px auto';
+      postCard.style.margin = '0px auto';
       postCard.innerHTML = `
         <div class="post" style="font-size: 0.9rem;">          
 
@@ -238,6 +238,9 @@ document.addEventListener('DOMContentLoaded',()=>
             if (post) {
               document.getElementById('postTitle').value = post.title;
               document.getElementById('postContent').value = post.content;
+              tinymce.init({
+                selector: 'textarea#postContent'
+            });
               
               const post_img = document.getElementById('postProfilePicture');
               post_img.setAttribute('src', `http://localhost:3001/${post.cover_image}`)
@@ -309,7 +312,7 @@ document.addEventListener('DOMContentLoaded',()=>
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('savePostForm').addEventListener('click', function(event) {
     event.preventDefault();
-    console.log('Save Post Button Clicked');
+    tinymce.triggerSave();
 
     const formData = new FormData();
     formData.append('title', document.getElementById('postTitle').value);

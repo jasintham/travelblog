@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         console.log('Save Button Clicked');
 
+        tinymce.triggerSave();
+
         const formData = new FormData();
         formData.append('title', document.getElementById('titleName').value);
 
