@@ -62,6 +62,11 @@ img {
   color: #007bff;
   cursor: pointer;
 }
+
+.total-like{
+  margin-right: 10px;
+}
+
 .icon-button2 {
   background: none;
   border: none;
