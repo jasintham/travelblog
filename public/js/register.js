@@ -4,29 +4,38 @@ register_button.addEventListener('click', function(event) {
     console.log('Signup submission button clicked'); // For debugging purposes to confirm the button click event is captured.
     
     event.preventDefault(); //This line prevents the default action of the click event, which in this case would be to submit a form or refresh the page.
-
+    let isValid = true;
+    let errors = [];
     // Retrieve the values entered in the username and password fields by the user.
     const input_username = document.getElementById('username').value;
     const input_password = document.getElementById('password').value;
     const confirm_password  = document.getElementById('confirm_password').value;
     
+    
     if (input_password !== confirm_password)
     {
-        return alert('Passowrds are not matching')
+        errors.push('Password are not matching');
+        isValid = false;
     }
 
     if (input_password=='' || confirm_password =='')
     {
-        return alert('Password Fields cannot be empty')
+        errors.push('Password Fields cannot be empty.');
+        isValid = false;
     }
 
-    if (input_username=='')
+    if (input_username.length < 4)
     {
-        return alert('Username Field cannot be empty')
+        errors.push('Username must be at least 4 characters long.');
+        isValid = false;
     }
 
-    else
-    {
+    if (!isValid) {
+        displayError(errors);
+        return false;
+    }
+
+
         const reqPayLoad = JSON.stringify({username:input_username , password: input_password});
         
       
@@ -53,8 +62,12 @@ register_button.addEventListener('click', function(event) {
             {
 
                 if(response.message == 'Registration successful')
-                {    
-                    window.location.href = '/public/login.html';
+                {   
+                    displayError(['You have successfully registered. You will be redirected to the login page soon.'], 'success');
+                    setTimeout(function(){
+                        window.location.href = '/public/login.html';
+                    }, 4000);
+                    
                 }
 
                 else
@@ -72,7 +85,7 @@ register_button.addEventListener('click', function(event) {
         {
             console.log(error);
         }
-    }
+    
     
 
     

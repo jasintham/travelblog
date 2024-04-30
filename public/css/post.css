@@ -18,7 +18,7 @@ body {
 }
 
 img {
-  max-width: 100%;
+  max-width: 60%;
 }
 
 /* Post Content Styles */
@@ -134,10 +134,19 @@ img {
 
 /* Comments Section */
 .comments-section {
-  background: #f8f9fa;
+  background: #e7e7e79e;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.comment-box{
+  background: #e7e7e79e;
+  padding: 20px;
+}
+
+.comment-controls .btn-danger{
+  font-size: 15px;
 }
 
 .individual-comment-area{

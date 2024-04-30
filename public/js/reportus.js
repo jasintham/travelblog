@@ -17,9 +17,15 @@ document.getElementById('btn_save').addEventListener('click', function(event)
 
     console.log(reqPayLoad);
 
+    if(document.getElementById('reportDetails').value < 5){
+        displayError(['The repot us field cannot be empty.']);
+        return false;
+    }
+
     if(!localStorage.getItem('token'))
     {
-        alert('You have to create an account to be able to report!')
+        displayError(['You have to create an account to be able to report!']);
+        return false;
     }
 
     else
@@ -37,13 +43,14 @@ document.getElementById('btn_save').addEventListener('click', function(event)
         .then(response => 
         {
             console.log('Report submitted:', response);
-            alert('Thank you for your report.');
+            document.getElementById('reportDetails').value = '';
+            displayError(['Thank you for supporting our travel blog and amke it better place for all travelers. We will review and take the necessary action'], 'success');
             //window.location.href = 'index.html'; // or any other redirection
         })
         .catch(error => 
         {
             console.error('Error submitting report:', error);
-            alert('There was a problem submitting your report.');
+            displayError(['There was a problem submitting your report.'], 'success');
         });
     }
 
@@ -64,7 +71,7 @@ if (postId) {
         document.getElementById('postPreview').style.display = 'block';
         document.getElementById('postImage').src = `http://localhost:3001/${data.cover_image}`;
         document.getElementById('postTitle').textContent = data.title;
-        document.getElementById('postContent').textContent = data.content;
+        document.getElementById('postContent').innerHTML = data.content;
         document.getElementById('postId').value = postId;
     })
     .catch(error => console.error('Error fetching post details:', error));
@@ -72,14 +79,3 @@ if (postId) {
 
 
 //................................. NAV BAR ITEM's RELATED CODES .................................//
-
-
-//Login Nav Item Related Code
-addEventListener('DOMContentLoaded', ()=>
-{
-    if(localStorage.getItem('token'))
-    {
-        const loginNavItem = document.getElementById('login_nav_item')
-        loginNavItem.style.display = 'none'
-    }
-});

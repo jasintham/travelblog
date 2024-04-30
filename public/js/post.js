@@ -245,7 +245,13 @@ commentButton.addEventListener('click', (event)=>
     event.preventDefault();       
     console.log('Comment Button Clicked!');
 
-    const commentText = document.getElementById('comment_area').value;    
+    const commentText = document.getElementById('comment_area').value;  
+    
+    if (commentText.length < 2)
+    {
+        displayError(['The comments field cannot be empty.']);
+        return false;
+    }
 
     fetch('http://localhost:3001/post/makeComment' ,{
         method: 'POST',

@@ -92,7 +92,7 @@
         <h3>Your Contact Information</h3>
         </div>
       <br>
-      <form method="POST" action="/Utils/contact" name="contact" class="form">
+      <form method="POST" action="/Utils/contact" name="contact" id="contact-us" class="form">
             <!--Name-->
             <div class="mb-3">
             <label for="name" class="form-label">Name  *</label>
@@ -113,6 +113,7 @@
                 <label for="comments" class="form-label">Comments or Message *</label>
                 <textarea id="message" class="form-control" name="comments" rows="5" required placeholder="Write your message here..."></textarea>
             </div>
+            <div id="errorMessages"></div>
             <!--Send button-->  
                     <div class="d-grid gap-2">
                        <button id="contact_btn" type="submit" class="btn btn-primary">Send</button>

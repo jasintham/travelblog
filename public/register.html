@@ -39,7 +39,7 @@
             </button>
             <div class="collapse navbar-collapse items-orientation" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto text-white">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="./index.html">Home</a>
                     </li>
 
@@ -48,30 +48,25 @@
                     </li>
                     <li class="nav-item sesion-active">
                         <a class="nav-link" href="./profile.html">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./aboutus.html">About Us</a>
                     </li>   
              
                     <li class="nav-item">
-                        <a class="nav-link" href="./reportus.html">Report Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            More
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="./aboutus.html">About Us</a>
-                            <a class="dropdown-item" href="./contactus.html">Contact Us</a>
-                            <a class="dropdown-item" href="#">Static Page 3</a>
-                        </div>
+                        <a class="nav-link" href="./contactus.html">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link search-link disabled" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch">
+                        <a class="nav-link" href="./reportus.html">Report Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSearch">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </a>
                     </li>
-                    
-                    
-                    
-                    
+                    <li class="nav-item sesion-inactive btn-login">
+                        <a class="nav-link login-link" href="./login.html">Login</a>
+                    </li>
                     <li class="nav-item  sesion-active">
                         <a class="nav-link login-link" id="logout_nav_item" href="#">Logout</a>
                     </li>                        
@@ -90,7 +85,7 @@
 
 
 <!-- Main Container for Registration centered in the viewport -->
-<section class="vh-100 register-main-content">
+<section class="register-main-content">
     <div class="container h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -113,6 +108,7 @@
                                 <label class="form-label" for="confirm_password">Confirm Password</label>
                                 <input id="confirm_password" type="password" class="form-control" placeholder="Confirm Password" required>
                             </div>
+                            <div id="errorMessages"></div>
                             <button id="register_btn" type="button" class="btn btn-primary btn-block mb-3">SIGN UP</button>
                             <div class="text-center">
                                 <a href="/public/login.html" class="link-primary">Already have an account? Sign in here</a>
@@ -129,7 +125,7 @@
 
 
 <!-- Start footer -->
-<section class="container-fluid g-0 custom-footer">
+<section class="container-fluid g-0 custom-footer" style="position: fixed; bottom: 0px;">
     <div class="container">
         <div class="row py-4 text-white">
             <div class="col-12 text-center">  <!-- Changed for centering text -->
@@ -150,5 +146,6 @@ crossorigin="anonymous"></script>
 
 <!-- My Java Script File -->
 <script src="./js/register.js" type="module"> </script>
+<script src="./js/nav.js"></script>
 </body>
 </html>

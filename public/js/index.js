@@ -78,23 +78,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="post-content-container">
                     <div class="post-meta post-meta-one">
                     <img src="http://localhost:3001/${post.profile_picture}" id="author_image" alt="Avatar" class="main-post-avatar rounded-circle"/>
-                        <span class="post-meta-author">by <a href="#" class="bypostauthor">${post.username} </a></span>
-                        <br>
-                        <a href="#" class="post-meta-date">${post.post_date.substring(0, 10)}</a>
+                        <span class="post-meta-author">by <a href="#" class="bypostauthor">${post.username} &nbsp; &nbsp;${formatDate(post.post_date)}</a></span>
                     </div>
                     <a href="#" class="post-title"><h2>${post.title}</h2></a>
                     <div class="post-content">${post.content.substring(0, 100)}...</div>
+                    <br/><br/>
                     <div class="post-meta post-meta-two">
                         <div class="sh-columns post-meta-comments">
-                            <span class="post-meta-categories"><i class="fa-regular fa-heart fa-lg"></i></i></i> ${post.likes_count}</span>
-                            <br>
-                            <span class="post-meta-categories"><i class="fa-regular fa-comment fa-lg"></i></i> ${post.comments_count}</span>
-                            <br>
-                            <hr>
-                            <span class="post-meta-categories"> ${post.category_name}</span>
-                            <a href="#" class="post-meta-comments"><i class="fa-solid fa-eye"></i></i>Click for more details</a>
-                            <br>
+                            <a href="#" class="post-meta-comments">
+                                <span class="post-meta-categories"><i class="fa-regular fa-heart fa-lg"></i></i></i> ${post.likes_count}</span>
+                            </a>
+                            <a href="#" class="post-meta-likes">
+                                <span class="post-meta-categories"><i class="fa-regular fa-comment fa-lg"></i></i> ${post.comments_count}</span>
+                            </a>
                         </div>
+                    </div>
+                    <div class="post-card-cat">
+                        <span class="post-meta-categories"> ${post.category_name}</span>
                     </div>
                 </div>
             </div>
@@ -518,3 +518,28 @@ document.getElementById("backToTopBtn").addEventListener("click", function() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector('.carousel');
+    const sidebar = document.querySelector('.side-bar');
+  
+    const sidebarOriginalLeft = sidebar.getBoundingClientRect().left; 
+  
+    window.addEventListener('scroll', function() {
+      const sliderHeight = slider.offsetHeight; 
+      const scrolledHeight = window.pageYOffset; 
+  
+      if (scrolledHeight > (sliderHeight + 150)) {
+        sidebar.style.position = 'fixed';
+        sidebar.style.top = '10%';
+        sidebar.style.left = sidebarOriginalLeft + 'px'; 
+        sidebar.style.width = sidebar.offsetWidth + 'px'; 
+      } else {
+        sidebar.style.position = 'relative';
+        sidebar.style.top = '0';
+        sidebar.style.left = '0'; 
+      }
+    });
+  });
+  

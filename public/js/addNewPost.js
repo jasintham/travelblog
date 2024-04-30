@@ -17,28 +17,51 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup the save button click event
     saveBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log('Save Button Clicked');
+        let isValid = true;
+        let errors = [];
+
+        const titleName = document.getElementById('titleName').value;
+        const contentDetails = document.getElementById('contentDetails').value;
+        const radios = document.querySelectorAll('input[name="flexRadioDefault"]:checked');
 
         tinymce.triggerSave();
 
-        const formData = new FormData();
-        formData.append('title', document.getElementById('titleName').value);
-
-        function getCheckedCategory() {
-            const radios = document.querySelectorAll('input[name="flexRadioDefault"]:checked');
-            return radios.length > 0 ? radios[0].value : null;
+        if (titleName.length < 3){
+            errors.push('The post title cannot be empty');
+            isValid = false;
         }
-        console.log(getCheckedCategory());
 
-        formData.append('catName', getCheckedCategory());
-        formData.append('content', document.getElementById('contentDetails').value);
+        if (contentDetails.length < 4){
+            errors.push('The post title cannot be empty');
+            isValid = false;
+        }
+
+        
+        if (radios.length == 0){
+            console.log(radios.length)
+            errors.push('The post category cannot be empty');
+            isValid = false;
+        }
+      
+        const formData = new FormData();
+        formData.append('title', titleName);
+            
+        const catOption = radios.length > 0 ? radios[0].value : 'Solo Travel';
+
+        formData.append('catName', catOption);
+        formData.append('content', contentDetails);
 
         const fileInput = document.getElementById('profilePicUpload');
         if (fileInput.files.length > 0) {
             formData.append('coverpic', fileInput.files[0]);
         } else {
-            alert('Please select a file to upload');
-            return;
+            errors.push('Please select a file to upload');
+            isValid = false;
+        }
+
+        if (!isValid) {
+            displayError(errors);
+            return false;
         }
 
         fetch('http://localhost:3001/newPost/new/', {
@@ -51,6 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(response => {
             console.log('Add Post Successful', response);
+            displayError(['Your post has been successfully added. You will be redirected to the post page soon.'], 'success');
+                    setTimeout(function(){
+                        window.location.href = '/public/allposts.html';
+                    }, 4000);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -66,50 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
         radios.forEach(radio => radio.checked = false);
         document.getElementById('profilePicUpload').value = '';  // Reset file input
         document.getElementById('file-chosen').textContent = 'No file chosen';  // Reset file label
+        tinyMCE.activeEditor.setContent('');
+
     });
 });
 
-
-
-
-
-
-
-
-
-
-//................................. NAV BAR ITEM's RELATED CODES .................................//
-
-
-//Login Nav Item Related Code
-addEventListener('DOMContentLoaded', ()=>
-{
-    if(localStorage.getItem('token'))
-    {
-        const loginNavItem = document.getElementById('login_nav_item')
-        loginNavItem.style.display = 'none'
-    }
-});
-
-//Logout Nav Item Related Code
-addEventListener('DOMContentLoaded', ()=>
-{
-    if(localStorage.getItem('token'))
-    {
-        const loginNavItem = document.getElementById('logout_nav_item')
-        loginNavItem.style.display = 'block'
-    }
-});
-
-
-//Logout related code
-const logoutLink = document.getElementById('logout_nav_item');
-
-logoutLink.addEventListener('click', ()=>
-{
-    localStorage.removeItem('token');
-    window.location.href = 'index.html'
-});
 
 
 

@@ -80,27 +80,48 @@
         </nav>
     </section>
  
-    <br>
-    <!-- Post Preview Section -->
-
-    <!--Form Area-->
-    <div class="container mt-4" style="min-height: 75vh;">
-        <div class="row justify-content-center">
+    <section class="container mt-4" style="min-height: 80vh;">
+        <div class="row">
             <div class="col-md-8">
+                <!--Form Area-->
+   
                 <div class="report-section">
-                    <h1>Report the Issue</h1>
+                    <h1>Report Inappropriate Content <i class="bi bi-exclamation-triangle-fill"></i></h1>
+                    <p>
+                        At Travel Blog, we strive to create a safe and respectful community for all our users. We understand the importance of your voice and are committed to ensuring that our platform remains free of harmful, offensive, or inappropriate content.
+                    </p>
+                    <h5>Our Commitment:</h3>
+                    <p>Upon receiving a report, our dedicated moderation team will review the content thoroughly. We take every report seriously and will take the necessary actions based on our community guidelines and policies. This may include removing the content, suspending the offending account, or taking other appropriate actions.</p>
                     <form id="reportForm" class="report-form">
                         <input type="hidden" id="postId" name="postId">
                         <div class="mb-3">
                             <label for="reportDetails" class="form-label">Description</label>
                             <textarea class="form-control" id="reportDetails" placeholder="Description of the Report" rows="5"></textarea>
                         </div>
+                        <div id="errorMessages"></div>
                         <button type="submit" class="btn btn-primary" id="btn_save">Submit Report</button>
                     </form>
                 </div>
             </div>
+            
+            <div class="col-md-4">
+                <!-- Post Preview Section -->
+                <div id="postPreview" class="post-preview-container" style="display: none;">
+                    <div class="card report-card">
+                        <h4 style="display: flex;align-content: center;justify-content: center;">Report this Post?</h4>
+                        <img src="" id="postImage" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5 id="postTitle" class="card-title"></h5>
+                            <p id="postContent" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+    
+
+    
     <!-- Start footer -->
     <br>
     <section class="container-fluid g-0 custom-footer">

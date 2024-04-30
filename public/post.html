@@ -83,12 +83,15 @@
   <div class="row d-flex align-items-start">
 
     <!-- Post Column -->
-    <div class="col-md-7">          
+    <div class="col-md-8">          
       <div class="post mb-3">
         <p class="fs-3" id="post_title">Blog Topic</p>
         <p id="post_id" hidden>Post Id</p>
         <p id="user_id" hidden>User Id</p>
-        <img src="" id="post_image" class="post-img" alt="Post Image"/>
+        <div style="text-align: center; margin: auto;">
+          <img src="" id="post_image" class="post-img" alt="Post Image"/>
+        </div>
+        
 
         <div class="btn-group mt-3">
           <button class="icon-button1" id="btn_like">
@@ -121,12 +124,16 @@
           <p class="post-text pt-3 mt-3 border-top" id="post_content">This is the post body</p>
 
           <!-- Make a Comment -->
-          <div class="form-group mt-4">
-            <label for="comment_area">Add a Comment</label>
+          <br>
+          <div class="form-group mt-4 comment-box">
+            <label for="comment_area">Leave a Comment</label>
             <textarea class="form-control" id="comment_area" rows="3"></textarea>
+            <br>
+            <div id="errorMessages"></div>
+            <button id="comment_btn" class="btn btn-primary mt-2">Submit</button>
           </div>
 
-          <button id="comment_btn" class="btn btn-primary mt-2">Submit</button>
+          
         </div>
       </div>
     </div>

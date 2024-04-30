@@ -155,7 +155,7 @@
 
             <!-- ------------------------- Start  Masonry area (POSTs Showing Part) ------------------------- -->
             <div class="col-md-9">     
-                <div class="container" id="post_container">     <!-- ****** The Posts Grids should be generated under this DIV ****** -->
+                <div class="container" id="post_container" style="padding: 0px;">     <!-- ****** The Posts Grids should be generated under this DIV ****** -->
 
                     
 
@@ -166,11 +166,15 @@
             <!-- ------------------------- End  Masonry area (POSTs Showing Part) ------------------------- -->
 
             <!-- Start Side bar - Hot Topics -->
-            <div class="col-md-3 side-bar">
-                <h3 class="widget-title pb-3">Hot Topics <i class="fa-solid fa-fire fa-bounce" style="color: #fe9d16;"></i> </h3> 
-                <div class="recent-posts " id="popularPostsContainer">  
-                   
-                </div>  
+            
+            <div class="col-md-3" style="position: relative;">
+                <div class="side-bar" style="position: relative; top: 0;">
+                    <h3 class="widget-title">Hot Topics <i class="fa-solid fa-fire fa-bounce" style="color: #fe9d16;"></i> </h3> 
+                    <div class="recent-posts sidebar" id="popularPostsContainer">  
+                    
+                    </div>  
+                </div>
+                
             </div>
 
             <!-- End Side bar -->

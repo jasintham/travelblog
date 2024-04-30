@@ -59,9 +59,6 @@ div[class*="col-lg-"]{
 }
 */
 
-
-
-
 /* Post section */
 
 .blog-card .post-meta {
@@ -69,7 +66,7 @@ div[class*="col-lg-"]{
 }
 
 .blog-card .post-title h2 {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 700;
     font-family: "Montserrat";
     color: #3f3f3f;
@@ -91,21 +88,20 @@ div[class*="col-lg-"]{
 
 .blog-card .post-meta-two {
     margin-left: -17px;
-    padding: 19px 0 19px 18%;
     position: relative;
     font-size: 12px;
     color: #8d8d8d;
     font-weight: 400;
     line-height: 1.7;
-    border-top: 1px solid #e9e9e9;
 }
 
 .blog-card .post-meta-author a.bypostauthor {
     font-weight: 400;
     color: #8d8d8d;
+    width: 80px;
 }
 
-.post-meta-categories a {
+.post-meta-categories {
     font-size: 13px;
     text-transform: uppercase;
     color: #8d8d8d;
@@ -115,17 +111,30 @@ div[class*="col-lg-"]{
     position: relative;
 }
 
-.blog-card a.post-meta-comments {
+.blog-card a.post-meta-comments, .blog-card a.post-meta-likes {
     background-color: #f6f6f6;
     height: 40px;
     line-height: 40px;
     position: absolute;
     top: -41px;
-    right: -12px;
+    right: 70px;
     padding: 0 17px;
     border-radius: 100px;
     transition: .3s all ease-in-out;
     color: #8d8d8d;
+    z-index: 999;
+}
+
+.blog-card a.post-meta-likes{
+    right: 5px;
+}
+.post-card-cat{
+    border-top: 1px solid #e9e9e9;
+    position: relative;
+    left: -14px;
+    top: -19px;
+    width: 65%;
+    padding: 20px 30px 0px 30px
 }
 
 .blog-card a.post-meta-comments i {
@@ -260,14 +269,14 @@ a{
 
 .main-post-avatar {
     vertical-align: middle;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
   }
 
 /*New - Hot Topics*/
 /* Side Bar and Hot Topics Enhancements */
 .side-bar {
-    padding: 20px;
+    padding: 0px;
     background: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -280,6 +289,7 @@ a{
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px;
 }
 
 .single-recent {
@@ -291,6 +301,10 @@ a{
 .single-recent:hover {
     background-color: #f0f0f0;
     cursor: pointer;
+    
+}
+.single-recent:hover .recent-content h6{
+    color: #47c9e5 !important;
 }
 
 .recent-image {
@@ -353,12 +367,18 @@ a{
     transform: scale(1.05);
 }
 
+
+.card:hover .card-body h2 {
+    color: #47c9e5!important;
+}
+
+
 .card-img-top {
     object-fit: cover;
 }
 
 .card-body {
-    padding: 15px;
+    padding: 15px 15px 0px 15px;
 }
 
 .post-title h2 {
@@ -403,7 +423,7 @@ a{
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
 .btn-primary {
@@ -439,7 +459,8 @@ a{
 
 .category-buttons .nav-link:hover, .category-buttons .nav-link.active {
     color: white;
-    background-color: #007bff;
+    background-color: #47c9e5;
+
 }
 
 .category-area {
