@@ -140,6 +140,10 @@ img {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
+.individual-comment-area{
+  margin-top: 20px;
+}
+
 .comment-controls {
   display: flex;
   gap: 10px;
