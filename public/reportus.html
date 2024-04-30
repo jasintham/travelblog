@@ -36,7 +36,7 @@
                 </button>
                 <div class="collapse navbar-collapse items-orientation" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto text-white">
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="./index.html">Home</a>
                         </li>
 
@@ -53,7 +53,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./contactus.html">Contact Us</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="./reportus.html">Report Us</a>
                         </li>
                         <li class="nav-item">
@@ -82,48 +82,37 @@
  
     <br>
     <!-- Post Preview Section -->
-    <div id="postPreview" class="post-preview-container" style="display: none;">
-        <div class="card">
-            <h4 style="display: flex;align-content: center;justify-content: center;">Report this Post?</h4>
-            <img src="" id="postImage" class="card-img-top" alt="Post Image">
-            <div class="card-body">
-                <h5 id="postTitle" class="card-title"></h5>
-                <p id="postContent" class="card-text"></p>
-            </div>
-        </div>
-    </div>
 
-    
     <!--Form Area-->
-<div class="container mt-4" style="min-height: 80vh;">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="report-section">
-                <h1>Report the Issue</h1>
-                <form id="reportForm" class="report-form">
-                    <input type="hidden" id="postId" name="postId">
-                    <div class="mb-3">
-                        <label for="reportDetails" class="form-label">Description</label>
-                        <textarea class="form-control" id="reportDetails" placeholder="Description of the Report" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="btn_save">Submit Report</button>
-                </form>
+    <div class="container mt-4" style="min-height: 75vh;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="report-section">
+                    <h1>Report the Issue</h1>
+                    <form id="reportForm" class="report-form">
+                        <input type="hidden" id="postId" name="postId">
+                        <div class="mb-3">
+                            <label for="reportDetails" class="form-label">Description</label>
+                            <textarea class="form-control" id="reportDetails" placeholder="Description of the Report" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn_save">Submit Report</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
     <!-- Start footer -->
-<br>
-<section class="container-fluid g-0 custom-footer">
-    <div class="container">
-        <div class="row py-4 text-white">
-            <div class="col-12 text-center">  <!-- Changed for centering text -->
-                Copyright &copy; 2024. All rights reserved.
+    <br>
+    <section class="container-fluid g-0 custom-footer">
+        <div class="container">
+            <div class="row py-4 text-white">
+                <div class="col-12 text-center">  <!-- Changed for centering text -->
+                    Copyright &copy; 2024. All rights reserved.
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- End footer -->
+    </section>
+    <!-- End footer -->
     
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

@@ -25,9 +25,19 @@
 }
 
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
+    border-color: #35b8d0;
+    background-color: #94e0ee;
+    color: rgb(0, 0, 0);
+}
+
+.btn-primary:hover {
+    background-color: #35d2ef;
+    transform: scale(1.03); /* Slight scale effect on hover */
+}
+
+.btn-secondary:hover {
+    background-color: #2d2f31;
+    transform: scale(1.03); /* Slight scale effect on hover */
 }
 
 .btn-secondary {

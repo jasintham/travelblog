@@ -233,8 +233,7 @@ document.addEventListener('DOMContentLoaded',()=>
             //The find() is an array method returns the value of the first element that passes a test.
             //So when responseElement.post_id is eqal to postId, save it as a variable called post
             const post = response.find(responseElement => responseElement.post_id.toString() === postId);
-            console.log(post)
-            
+
             if (post) {
               document.getElementById('postTitle').value = post.title;
               document.getElementById('postContent').value = post.content;

@@ -78,14 +78,14 @@
 
 
 
-    <div class="container addPost py-3">
+    <div class="container addPost py-3" style="background-color: #f1f1f1ab;">
         <form action="">
             <div class="row gx-5">
                 <!-- Left column for Post Title and Description -->
                 <h3 style="padding-left: 12px;">Create a new article</h3>
                 <br>
                 <br>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="mb-3">
                         <label for="titleName" class="form-label">Your post Title</label>
                         <input type="text" id="titleName" name="titleName" placeholder="Title" class="form-control">
@@ -97,7 +97,7 @@
                 </div>
                 
                 <!-- Right column for Categories and Photo Upload -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="category-section mb-3">
                         <h5 class="mb-2">Choose a Category</h5>
                         <!-- Dynamically generate category inputs -->
@@ -136,6 +136,7 @@
                                 <i class="fas fa-camera"></i> Add a Photo
                             </button>
                             <input type="file" id="profilePicUpload" class="d-none" accept="image/*" onchange="updateLabel()">
+                            <br>
                             <span id="file-chosen">No file chosen</span>
                         </div>
                         

@@ -264,17 +264,6 @@ a{
     height: 25px;
   }
 
-
-
-
-
-
-
-
-
-
-
-
 /*New - Hot Topics*/
 /* Side Bar and Hot Topics Enhancements */
 .side-bar {
@@ -419,20 +408,22 @@ a{
 
 .btn-primary {
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    background-color: #007bff;
     border-radius: 30px; /* More pronounced rounded corners */
     transition: background-color 0.3s, transform 0.3s;
+    border-color: #35b8d0;
+    background-color: #94e0ee;
+    color: #000;
 }
 
 .btn-primary i {
     margin-left: 5px;
-    color: #21e82f; /* Make icon color consistent */
+    color: #202321 !important; /* Make icon color consistent */
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #35d2ef;
     transform: scale(1.05); /* Slight scale effect on hover */
 }
 
