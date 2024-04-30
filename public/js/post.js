@@ -71,7 +71,7 @@ fetch('http://localhost:3001/post/getPostData' ,{
 // ------------------------------------ To Get Comment Data ------------------------------------
 function loadAllComments() {
     const comment_section = document.getElementById('post_comments');
-    comment_section.innerHTML = ''; // Clear existing comments
+    //comment_section.innerHTML = '';  Clear existing comments
 
     fetch('http://localhost:3001/post/getCommentData', {
         method: 'POST',

@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="post-content">${post.content.substring(0, 100)}...</div>
                     <div class="post-meta post-meta-two">
                         <div class="sh-columns post-meta-comments">
-                            <span class="post-meta-categories"><i class="fa-solid fa-heart" style="color: #ff0000;"></i></i></i> ${post.likes_count}</span>
+                            <span class="post-meta-categories"><i class="fa-regular fa-heart fa-lg"></i></i></i> ${post.likes_count}</span>
                             <br>
-                            <span class="post-meta-categories"><i class="fa-solid fa-comment" style="color: #74C0FC;"></i></i> ${post.comments_count}</span>
+                            <span class="post-meta-categories"><i class="fa-regular fa-comment fa-lg"></i></i> ${post.comments_count}</span>
                             <br>
                             <hr>
                             <span class="post-meta-categories"> ${post.category_name}</span>
