@@ -39,7 +39,7 @@ fetch('http://localhost:3001/post/getPostData' ,{
 
     //Set Post Content
     const post_content = document.getElementById('post_content');
-    post_content.textContent = response.content;
+    post_content.innerHTML  = response.content;
 
     //Set Post Date
     const post_date = document.getElementById('post_date');
