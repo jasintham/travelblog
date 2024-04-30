@@ -1,5 +1,6 @@
 /* General Styles for Add Post Container */
 .container.addPost {
+    margin-top: 30px;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
