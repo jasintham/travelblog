@@ -59,8 +59,6 @@ img {
 .icon-button1 {
   background: none;
   border: none;
-  color: #007bff;
-  cursor: pointer;
 }
 
 .total-like{
@@ -70,7 +68,6 @@ img {
 .icon-button2 {
   background: none;
   border: none;
-  color: #007bff;
 }
 .icon-button3 {
   background: none;
@@ -85,9 +82,6 @@ img {
 
 .ml-auto {
   margin-left: auto; /* This will push the div to the right */
-}
-.icon-button1:hover, .icon-button2:hover .icon-button3:hover{
-  color: #0056b3;
 }
 
 .icon-button3:hover{
@@ -262,12 +256,17 @@ img {
   border-top: 2px solid #dee2e6; /* Solid border for clear separation */
   justify-content: flex-end; /* Aligns buttons to the right */
 }
+.fa-heart::before,
+.fa-comment::before{
+  color: grey;
+}
 
 /* Form Controls within Modal */
 .form-control {
   border-radius: 5px; /* Rounded borders for form elements */
   border: 1px solid #ced4da; /* Subtle border for inputs */
   height: auto; /* Auto height for text areas */
+  resize: none;
 }
 
 .form-label {

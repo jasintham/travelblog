@@ -50,11 +50,11 @@ document.addEventListener('DOMContentLoaded', function()
 
               <div class="icons-left">
      
-                <button class="btn icon-button" id="btn_like" disabled>
+                <button class="btn icon-button" id="btn_like">
                   <i class="fa-regular fa-heart fa-lg"></i> <p class="like-number count-style">${postElement.likes_count}</p>
                 </button>
                 
-                <button class="btn icon-button" id="btn_comment" disabled>
+                <button class="btn icon-button" id="btn_comment">
                   <i class="fa-regular fa-comment fa-lg"></i> <p class="comment-number count-style">${postElement.comments_count}</p>
                 </button>                
               </div>
