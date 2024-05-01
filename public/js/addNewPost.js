@@ -31,12 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
             isValid = false;
         }
 
-        if (contentDetails.length < 4){
-            errors.push('The post title cannot be empty');
-            isValid = false;
-        }
-
-        
         if (radios.length == 0){
             console.log(radios.length)
             errors.push('The post category cannot be empty');
@@ -80,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 4000);
         })
         .catch(error => {
-            console.error('Error:', error);
+            displayError([error]);
         });
     });
 
@@ -97,10 +91,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     });
 });
-
-
-
-
-
-
-
