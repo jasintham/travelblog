@@ -19,12 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         let isValid = true;
         let errors = [];
+        tinymce.triggerSave();
 
         const titleName = document.getElementById('titleName').value;
         const contentDetails = document.getElementById('contentDetails').value;
         const radios = document.querySelectorAll('input[name="flexRadioDefault"]:checked');
 
-        tinymce.triggerSave();
+        
 
         if (titleName.length < 3){
             errors.push('The post title cannot be empty');

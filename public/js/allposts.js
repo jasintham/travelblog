@@ -237,9 +237,10 @@ document.addEventListener('DOMContentLoaded',()=>
             if (post) {
               document.getElementById('postTitle').value = post.title;
               document.getElementById('postContent').value = post.content;
-              tinymce.init({
-                selector: 'textarea#postContent'
-            });
+              tinymce.activeEditor.setContent(post.content);
+              tinymce.triggerSave();
+
+
               
               const post_img = document.getElementById('postProfilePicture');
               post_img.setAttribute('src', `http://localhost:3001/${post.cover_image}`)
